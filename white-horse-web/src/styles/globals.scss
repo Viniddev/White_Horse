@@ -46,7 +46,6 @@ body {
 
 .flexRow{
   display: flex;
-  align-items: center;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -55,8 +54,16 @@ body {
 
 .flexColumn{
   display: flex;
-  align-items: center;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flexStart{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
 }

@@ -1,0 +1,14 @@
+.conteiner_promocoes{
+    width: 100%;
+    min-height: 60%;
+    padding: 1% 11%;
+}
+
+.conteiner_cards{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1.75rem;
+    flex-direction: row;
+}
