@@ -1,25 +1,18 @@
 import "../../styles/globals.scss"
-import CardProdutos from "../card_produtos/CardProdutos";
-import { MainTitle } from "../custom/title_aplication";
 import "./main.scss";
 
 export default function Main(){
     return (
       <main className="flexStart">
+        <img src="./banner2.jpg" alt="Banner principal da Porsche" className="bannerPrincipal"/>
         <div className="conteiner_promocoes">
-          <MainTitle hg="2rem" align="left">
-            Promoções do dia:
-          </MainTitle>
-
-          <hr className="separador"/>
+          {/* <h1 className="titlePromocoes">Promoções do dia:</h1>
 
           <div className="conteiner_cards">
             <CardProdutos />
             <CardProdutos />
             <CardProdutos />
-            <CardProdutos />
-            <CardProdutos />
-          </div>
+          </div> */}
         </div>
       </main>
     );

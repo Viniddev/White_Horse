@@ -1,0 +1,15 @@
+.footerLayout{
+    height: 4.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1% 10%;
+    background-color: var(--background);
+    border-top: 1px solid var(--foreground);
+}
+
+.textFooter{
+    font-weight: 600;
+    font-size: 1.15rem;   
+}

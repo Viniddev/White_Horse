@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #363636;
+    --background: #000000;
     --foreground: #ededed;
     --secondaryColor: #344CB7;
     --ternaryColor: #577BC1;
@@ -66,4 +66,10 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 15px;
+}
+
+.BodyLayout{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }

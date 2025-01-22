@@ -9,6 +9,15 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    gap: 1.75rem;
     flex-direction: row;
+    gap: 1.75rem;
+}
+
+.titlePromocoes{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.bannerPrincipal{
+    max-width: 100vw;
 }

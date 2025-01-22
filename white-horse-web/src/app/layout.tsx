@@ -8,6 +8,9 @@ import "primeflex/primeflex.scss";
 import "../styles/globals.scss";
 import React from "react";
 
+import Header from "../components/header/header";
+import Footer from "../components/footer/footer";
+
 export const metadata: Metadata = {
   title: "White Horse Inc.",
   description: "A open source organization that helps you build your dreams.",
@@ -26,8 +29,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="BodyLayout">
+        <Header />
         <PrimeReactProvider>{children}</PrimeReactProvider>
+        <Footer />
       </body>
     </html>
   );
