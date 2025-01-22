@@ -1,0 +1,37 @@
+
+.bannerPrincipal{
+    max-width: 100vw;
+}
+
+.banner{
+    background-image: url("./../../../public/bannerCarro.png");
+    height: 585px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1% 9%;
+    
+    display: grid;
+    grid-template-rows: auto auto;
+
+    .line1{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;  
+    }
+    .line2{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;  
+    }
+
+    .TextBanner{
+        font-size: 4.5rem;
+        font-weight: bolder;
+    }
+
+    .mark{
+        font-weight: 900;
+    }
+}

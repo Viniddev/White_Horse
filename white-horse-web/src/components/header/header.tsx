@@ -1,6 +1,6 @@
 import "./header.scss";
 import Link from "next/link";
-import { PROFILE } from "../../utils/front_end_urls/urls";
+import { PROFILE, HOME } from "../../utils/front_end_urls/urls";
 import "../../styles/globals.scss";
 import { Button } from "primereact/button";
 
@@ -8,7 +8,9 @@ export default function Header(){
     return (
       <section className="headerLayout">
         <div className="flexRow">
-          <img src="/logo_header.png" alt="logo" className="LogoHeader" />
+          <Link href={HOME}>
+            <img src="/logo_header.png" alt="logo" className="LogoHeader" />
+          </Link>
           <h1 className="titleHeader">White Horse Inc.</h1>
         </div>
 
