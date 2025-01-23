@@ -1,7 +1,8 @@
 .conteiner_promocoes{
-    width: 100%;
+    max-width: 100vw;
     min-height: 60%;
     padding: 1% 11%;
+    box-sizing: border-box;
 }
 
 .conteiner_cards{
@@ -11,9 +12,18 @@
     justify-content: space-evenly;
     flex-direction: row;
     gap: 1.75rem;
+    box-sizing: border-box;
 }
 
 .titlePromocoes{
     font-size: 2rem;
     font-weight: 500;
+}
+
+.principalSection{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  max-width: 100vw;
 }

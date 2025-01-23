@@ -35,7 +35,6 @@ body {
   font-variation-settings:
     "wdth" 100;
     
-  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,11 +64,23 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  gap: 15px;
 }
 
 .BodyLayout{
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 12px; 
+}
+
+body::-webkit-scrollbar-track {
+  background: #686D76; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #8B5CF6;
+  border-radius: 20px; 
 }

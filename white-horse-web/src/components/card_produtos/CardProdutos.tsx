@@ -1,12 +1,13 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import { CardProdutosProps } from "@/@types/components";
 
-export default function CardProdutos() {
+export default function CardProdutos({ prop }: CardProdutosProps) {
   const header = (
     <img
       alt="Card"
-      src="https://primefaces.org/cdn/primereact/images/usercard.png"
+      src={prop.link}
     />
   );
   const footer = (
@@ -24,18 +25,14 @@ export default function CardProdutos() {
   return (
     <div className="card flex justify-content-center">
       <Card
-        title="Advanced Card"
-        subTitle="Card subtitle"
+        title={prop.title}
+        subTitle={prop.subtitle}
         footer={footer}
         header={header}
         className="md:w-25rem"
+        style={{maxHeight:"560px"}}
       >
-        <p className="m-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
-          sed consequuntur error repudiandae numquam deserunt quisquam repellat
-          libero asperiores earum nam nobis, culpa ratione quam perferendis
-          esse, cupiditate neque quas!
-        </p>
+        <p className="m-0">{prop.description}</p>
       </Card>
     </div>
   );

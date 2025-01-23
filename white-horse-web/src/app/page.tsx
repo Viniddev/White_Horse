@@ -8,9 +8,8 @@ import Main from "@/components/main_structure/main";
 export default function Home() {
   return (
     <section>
-      <div className="banner">
-        <div className="line1"><p className="TextBanner">Aqui construimos</p></div>
-        <div className="line2"><p className="TextBanner mark">possibilidades.</p></div>
+      <div className="banner flexRow">
+        <img src="./blackFriday.jpg" alt="banner black friday" style={{maxWidth:"100%"}}/>
       </div>
 
       <Main />
