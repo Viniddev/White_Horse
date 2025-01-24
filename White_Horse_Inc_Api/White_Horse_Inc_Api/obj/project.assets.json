@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "White_Horse_Inc_Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/White_Horse_Inc_Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/White_Horse_Inc_Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "White_Horse_Inc_Core/1.0.0": {
+      "type": "project",
+      "path": "../White_Horse_Inc_Core/White_Horse_Inc_Core.csproj",
+      "msbuildProject": "../White_Horse_Inc_Core/White_Horse_Inc_Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "White_Horse_Inc_Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\vinicius.rodrigues\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj": {
+              "projectPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
