@@ -22,4 +22,25 @@ export const products: Array<ProductCardInformations> = [
       "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
     link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
   },
+  {
+    title: "Premium Leather Seats",
+    subtitle: "Comfort and elegance for about $1250",
+    description:
+      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
+    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+  },
+  {
+    title: "Premium Leather Seats",
+    subtitle: "Comfort and elegance for about $1250",
+    description:
+      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
+    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+  },
+  {
+    title: "Premium Leather Seats",
+    subtitle: "Comfort and elegance for about $1250",
+    description:
+      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
+    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+  },
 ];

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import "../styles/globals.scss";
-import "../styles/not_found/not_found.scss";
 import { Button } from "primereact/button";
 
 export default function NotFound() {

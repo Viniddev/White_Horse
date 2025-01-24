@@ -1,17 +1,19 @@
 "use client";
 import "./header.scss";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import "../../styles/globals.scss";
 import { Button } from "primereact/button";
-import { InputSwitch } from "primereact/inputswitch";
 import { PROFILE, HOME, LOGIN } from "../../utils/front_end_urls/urls";
+import { SelectButton } from "primereact/selectbutton";
 
 export default function Header(){
-  const [isMounted, setIsMounted] = React.useState(false); 
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isMounted, setIsMounted] = useState(false); 
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-
+  const options = ["Light", "Dark"];
+  const [value, setValue] = useState(options[0]);
+  
   React.useEffect(() => {
     setIsMounted(true); // Marca que o componente está montado
     const storedTheme = localStorage.getItem("theme") || "light";
@@ -34,27 +36,48 @@ export default function Header(){
 
   return (
     <section className="headerLayout">
-      <div className="flexRow">
+      <nav className="flexRow botoesNavegacao">
         <Link href={HOME}>
           <img src="/logo_header.png" alt="logo" className="LogoHeader" />
         </Link>
-        <h1 className="titleHeader">White Horse Inc.</h1>
-      </div>
 
-      <div className="flexRow">
+        <Link
+          href={"https://www.youtube.com/watch?v=kvVEaln7QNQ"}
+          className="HeaderOption"
+        >
+          <h1 className="titleHeader">Projetos</h1>
+        </Link>
+
+        <Link
+          href={"https://www.youtube.com/watch?v=kvVEaln7QNQ"}
+          className="HeaderOption"
+        >
+          <h1 className="titleHeader">Sobre nós</h1>
+        </Link>
+      </nav>
+
+      <nav className="flexRow">
         <Link href={LOGIN}>
           <Button label="Login" outlined />
         </Link>
 
-        <InputSwitch
-          checked={isDarkMode}
-          onChange={(e) => setIsDarkMode(e.value)}
+        <Link href={LOGIN}>
+          <Button label="Sair" severity="danger" outlined />
+        </Link>
+
+        <SelectButton
+          value={isDarkMode ? "Dark" : "Light"}
+          onChange={(e) => {
+            setValue(e.value);
+            setIsDarkMode(e.value === "Dark" ? true : false);
+          }}
+          options={options}
         />
 
         <Link href={PROFILE}>
           <img src="/profile.png" alt="profile" className="LogoHeader" />
         </Link>
-      </div>
+      </nav>
     </section>
   );
 }

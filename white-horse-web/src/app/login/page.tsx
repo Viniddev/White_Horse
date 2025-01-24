@@ -6,6 +6,8 @@ import React from "react";
 import InputTypeText from "@/components/inputs/input_type_text";
 import InputTypePassword from "@/components/inputs/input_type_password";
 import { Button } from "primereact/button";
+import Link from "next/link";
+import { CADASTRO } from "@/utils/front_end_urls/urls";
 
 export default function Login() {
   const [login, setLogin] = React.useState<string>("");
@@ -30,7 +32,18 @@ export default function Login() {
               label={"password"}
             />
 
-            <div className="card flex justify-content-end w-9">
+            <div className="sessaoEsqueciASenha">
+              <p>
+                <Link href="https://www.youtube.com/watch?v=4TwQa4lpYCg">
+                  esqueci minha senha
+                </Link>
+              </p>
+            </div>
+
+            <div className="sessaoBotoes">
+              <Link href={CADASTRO}>
+                <Button label="Cadastrar" outlined severity="warning" />
+              </Link>
               <Button label="Submit" />
             </div>
           </form>
