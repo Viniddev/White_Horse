@@ -5,16 +5,18 @@
   --secondaryColor: #577BC1;
   --ternaryColor: #000957;
   --quaternaryColor: #FFEB00;
+  --boxFormLogin: #F5EFFF;
+  --black: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ededed;
-    --secondaryColor: #344CB7;
-    --ternaryColor: #577BC1;
-    --quaternaryColor: #FFEB00;
-  }
+[data-theme="dark"]{
+  --background: #000000;
+  --foreground: #ededed;
+  --secondaryColor: #344CB7;
+  --ternaryColor: #577BC1;
+  --quaternaryColor: #FFEB00;
+  --boxFormLogin: #F5EFFF;
+  --black: #000000;
 }
 
 html,
@@ -70,6 +72,10 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+}
+
+.FullLine{
+  width:100%;
 }
 
 body::-webkit-scrollbar {
