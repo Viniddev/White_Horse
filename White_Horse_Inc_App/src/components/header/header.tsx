@@ -38,7 +38,11 @@ export default function Header(){
     <section className="headerLayout">
       <nav className="flexRow botoesNavegacao">
         <Link href={HOME}>
-          <img src="/logo_header.png" alt="logo" className="LogoHeader" />
+          <img
+            src="/logo_principal_sem_fundo.png"
+            alt="logo"
+            className="LogoHeader"
+          />
         </Link>
 
         <Link
