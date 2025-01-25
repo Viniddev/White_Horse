@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj": {}
+    "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj": {}
   },
   "projects": {
-    "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj": {
+    "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj",
+        "projectUniqueName": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj",
         "projectName": "White_Horse_Inc_Api",
-        "projectPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj",
-        "packagesPath": "C:\\Users\\vinicius.rodrigues\\.nuget\\packages\\",
-        "outputPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\obj\\",
+        "projectPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\White_Horse_Inc_Api.csproj",
+        "packagesPath": "C:\\Users\\Diasv\\.nuget\\packages\\",
+        "outputPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vinicius.rodrigues\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diasv\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj": {
-                "projectPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj"
+              "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj": {
+                "projectPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj"
               }
             }
           }
@@ -85,24 +85,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj": {
+    "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj",
+        "projectUniqueName": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj",
         "projectName": "White_Horse_Inc_Core",
-        "projectPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj",
-        "packagesPath": "C:\\Users\\vinicius.rodrigues\\.nuget\\packages\\",
-        "outputPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\obj\\",
+        "projectPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\White_Horse_Inc_Core.csproj",
+        "packagesPath": "C:\\Users\\Diasv\\.nuget\\packages\\",
+        "outputPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\White_Horse_Inc_Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vinicius.rodrigues\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diasv\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -135,18 +135,6 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[9.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -163,7 +151,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

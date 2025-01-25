@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("White_Horse_Inc_Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3217aac3795a1cd6fe4be40366a0fbe5c052ebb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b42abdc51d313b5af614cf28a374081e23703886")]
 [assembly: System.Reflection.AssemblyProductAttribute("White_Horse_Inc_Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("White_Horse_Inc_Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

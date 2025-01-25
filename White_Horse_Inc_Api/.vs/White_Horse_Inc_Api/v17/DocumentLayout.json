@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\ECOMERCE\\White_Horse_Inc\\White_Horse_Inc_Api\\",
+  "WorkspaceRootPath": "C:\\_Desenvolvimento\\WhiteHorse\\White_Horse_Inc_Api\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -11,6 +11,10 @@
           "DockedWidth": 1692,
           "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"

@@ -7,9 +7,17 @@ import Main from "@/components/main_structure/main";
 
 export default function Home() {
   return (
-    <section>
-      <div className="banner flexRow">
-        <img src="./blackFriday.jpg" alt="banner black friday" style={{maxWidth:"100%"}}/>
+    <section className="ConteinerHome">
+      <div className="bannerPrincipal flexRow">
+        <div className="conteinerTextBanner">
+          <p className="textHome">Aqui criamos</p>
+          <p className="textHome subText">possibilidades!</p>
+        </div>
+        <img
+          src="./logo_principal_sem_fundo.png"
+          alt="logo com texto"
+          className="imgBanner"
+        />
       </div>
 
       <Main />
