@@ -7,19 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Enuns\" />
-    <Folder Include="Handlers\" />
-    <Folder Include="Response\" />
-    <Folder Include="Requests\" />
+    <Compile Remove="Enuns\**" />
+    <Compile Remove="Handlers\**" />
+    <EmbeddedResource Remove="Enuns\**" />
+    <EmbeddedResource Remove="Handlers\**" />
+    <None Remove="Enuns\**" />
+    <None Remove="Handlers\**" />
   </ItemGroup>
 
 </Project>
