@@ -11,6 +11,7 @@ import { CADASTRO } from "@/utils/front_end_urls/urls";
 
 export default function Login() {
   const [login, setLogin] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
 
   return (
     <section className="ConteinerTelaLogin flexRow">
@@ -23,18 +24,18 @@ export default function Login() {
           />
         </div>
         <div className="secaoFormLogin flexColumn">
-          <form action="" className="formLogin flexColumn">
+          <form className="formLogin flexColumn">
             <InputTypeText state={login} setState={setLogin} label={"User"} />
 
             <InputTypePassword
-              state={login}
-              setState={setLogin}
+              state={password}
+              setState={setPassword}
               label={"password"}
             />
 
             <div className="sessaoEsqueciASenha">
               <p>
-                <Link href="https://www.youtube.com/watch?v=4TwQa4lpYCg">
+                <Link href="https://www.youtube.com/watch?v=4TwQa4lpYCg" className="EsqueciMinhaSenha">
                   esqueci minha senha
                 </Link>
               </p>

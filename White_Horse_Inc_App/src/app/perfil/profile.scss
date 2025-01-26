@@ -1,0 +1,157 @@
+.ProfileConteiner{
+    width: 100%;
+    height: 100%;
+
+    .FormularioProfile{
+        height: 90%;
+        width: 70%;
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        .sectionProfileImg{
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            flex: 15;
+            border-right: 1px solid var(--foreground);
+        }
+
+        .sectionUserInformations{
+            height: 100%;
+            
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            flex: 85;
+        }
+
+        .headerInformations{
+            flex: 30;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .boxUserInformations{
+            flex: 70;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .espacoVazio{
+            flex: 70;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .imgProfile{
+            height: 12rem;
+            width: 12rem;
+        }
+
+        .tituloProfile{
+            font-size: 1.75rem; 
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .imutableInformations{
+           font-size: 1.3rem; 
+           margin: 5px;
+           font-weight: 400;
+        }
+
+        .ajusteEspacamento{
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+            gap: 10%;
+            padding-left: 4rem;
+        }
+
+        .sessaoBotaoSalvar{
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding-right: 3.8rem;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .ProfileConteiner{
+
+        .FormularioProfile{
+            height: 90%;
+            width: 100%;
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .sectionProfileImg{
+                display: none;
+            }
+
+            .sectionUserInformations{
+                height: 100%;
+                
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                flex: 85;
+            }
+
+            .headerInformations{
+                flex: 30;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .espacoVazio{
+                display: none;
+            }
+
+            .imgProfile{
+                height: 12rem;
+                width: 12rem;
+            }
+
+            .tituloProfile{
+                font-size: 2rem; 
+                margin: 0;
+                font-weight: 500;
+            }
+
+            .imutableInformations{
+                font-size: 1.3rem; 
+                margin: 5px;
+                font-weight: 400;
+            }
+
+            .ajusteEspacamento{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 10%;
+            }
+
+            .sessaoBotaoSalvar{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-right: 0;
+            }
+        }
+    }
+}

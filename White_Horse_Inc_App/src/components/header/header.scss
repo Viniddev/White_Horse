@@ -26,3 +26,36 @@
 .botoesNavegacao{
     gap: 3rem;
 }
+
+.navegacaoSidebar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.linksSidebar{
+    width: 100%;
+}
+
+.headerMobile{
+    display: none;
+}
+
+.btnDarkMode{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+@media screen and (max-width: 800px) {
+    .headerMobile{
+        display: flex;
+    }
+
+    .headerDesktop{
+        display: none;
+    }
+}

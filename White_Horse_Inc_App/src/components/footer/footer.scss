@@ -6,9 +6,18 @@
     flex-direction: row;
     padding: 1% 10%;
     background-color: var(--background);
+    flex-wrap: wrap;
 }
 
 .textFooter{
     font-weight: 600;
-    font-size: 1.15rem;   
+    font-size: 1.15rem;  
+    text-align: center; 
+}
+
+@media screen and (max-width: 800px) {
+  .footerLayout{
+    justify-content: center;
+  }
+  
 }

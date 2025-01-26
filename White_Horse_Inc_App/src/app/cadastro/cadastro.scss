@@ -1,0 +1,30 @@
+.conteinerCadastro{
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .formCadastro{
+        width: 80%;
+        height: 90%;
+    }
+}
+
+.sessaoBotaoSalvar{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 4.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .sessaoBotaoSalvar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 0;
+    }
+}

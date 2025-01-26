@@ -18,7 +18,7 @@ export default function ProfileLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className="BodyLayout">
+    <section>
         {children}
     </section>
   )

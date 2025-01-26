@@ -7,7 +7,7 @@ export default function InputTypePassword({ state, setState, label }: BuildInput
     return (
       <div className="card flex justify-content-center FullLine">
         <div className="flex flex-column gap-2" style={{ width: "80%" }}>
-          <label htmlFor="username" style={{ color: "black" }}>
+          <label htmlFor="username" style={{fontWeight:"500"}}>
             {label}
           </label>
           <Password

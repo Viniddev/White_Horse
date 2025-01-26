@@ -13,22 +13,22 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;    
-        background-color: var(--boxFormLogin);
         border-radius: 10px;
 
        .secaoLogo {
             flex: 55;
             height: 100%;
             border-radius: 10px 0px 0px 10px;
+            background-color: var(--boxFormLogin);
         }
 
         .secaoFormLogin {
             flex: 50;
             height: 100%;
-            border-radius: 0px 10px 10px 0px;
-            background-color: #ffffff;
+            border-radius: 0px 10px 10px 0px;    
             padding: 15px;
             justify-content: end;
+            background-color: var(--formularioLogin);
         }
 
         .imagem_logo{
@@ -52,6 +52,47 @@
             width: 80%;
             display: flex;
             justify-content: flex-end;
+        }
+
+        .EsqueciMinhaSenha{
+            color: var(--foreground);
+        }
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .ConteinerTelaLogin{
+        .boxLogin{
+            .secaoLogo {
+                display: none;
+            }
+
+            .secaoFormLogin {
+                flex: 50;
+                height: 100%;
+                border-radius: 10px;    
+                padding: 15px;
+                justify-content: end;
+                background-color: var(--formularioLogin);
+            }
+
+            .sessaoBotoes{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sessaoEsqueciASenha{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .EsqueciMinhaSenha{
+                color: var(--foreground);
+            }
         }
     }
 }

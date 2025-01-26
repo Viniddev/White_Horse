@@ -15,3 +15,8 @@ export interface BuildInputText {
   setState: React.Dispatch<React.SetStateAction<string>>;
   label:string;
 }
+
+export interface SidebarToggle {
+  state: boolean;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+}
