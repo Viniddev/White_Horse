@@ -10,6 +10,7 @@ import React from "react";
 
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
+import { AppWrapper } from "@/routes/context";
 
 export const metadata: Metadata = {
   title: "White Horse Inc.",
@@ -30,9 +31,11 @@ export default function RootLayout({
         />
       </head>
       <body className="BodyLayout">
-        <Header />
-        <PrimeReactProvider>{children}</PrimeReactProvider>
-        <Footer />
+        <AppWrapper>
+          <Header />
+          <PrimeReactProvider>{children}</PrimeReactProvider>
+          <Footer />
+        </AppWrapper>
       </body>
     </html>
   );
