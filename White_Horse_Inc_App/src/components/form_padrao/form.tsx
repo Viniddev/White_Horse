@@ -2,10 +2,10 @@ import React from "react";
 import InputTypeText from "../inputs/input_type_text";
 import { Button } from "primereact/button";
 import { UserInformations } from "@/@types/req";
-import { EMPTY_USER } from "@/utils/constants/consts";
 import InputTypeNumber from "../inputs/input_type_number";
 import InputTypeMask from "../inputs/input_type_mask";
 import { BuildDefaultForm } from "@/@types/components";
+import InputCep from "../inputs/input_cep";
 
 export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
   
@@ -102,17 +102,9 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           />
         </div>
         <div className="field col-12 lg:col-6">
-          <InputTypeMask
-            state={userInformations.endereco.cep}
-            setState={(newValue: string) =>
-              setUserInformations((prevState) => ({
-                ...prevState,
-                endereco: {
-                  ...prevState.endereco,
-                  cep: newValue,
-                },
-              }))
-            }
+          <InputCep
+            state={userInformations}
+            setState={setUserInformations}
             mask="99999-999"
             label={"Cep"}
             required={true}

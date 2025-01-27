@@ -1,4 +1,4 @@
-import { retornoLoginComToken } from "@/@types/req";
+import { retornoLoginComToken } from "@/@types/resp";
 import { LOGIN } from "@/utils/back_end_urls/urls";
 
 

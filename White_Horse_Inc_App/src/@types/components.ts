@@ -1,4 +1,4 @@
-import { UserInformations } from "./req";
+import { Endereco, UserInformations } from "./req";
 
 export interface ProductCardInformations {
   title: string;
@@ -23,6 +23,14 @@ export interface BuildInputNumber {
   setState: (value: number) => void;
   label: string;
   required: boolean;
+}
+
+export interface BuildInputCep {
+  state: UserInformations;
+  setState: React.Dispatch<React.SetStateAction<UserInformations>>;
+  label: string;
+  required: boolean;
+  mask: string;
 }
 
 export interface SidebarToggle {

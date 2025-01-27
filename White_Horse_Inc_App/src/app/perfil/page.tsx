@@ -27,7 +27,7 @@ export default function Profile() {
             <InformacoesImutaveis />
           </div>
           <div className="boxUserInformations">
-              <FormPadrao IsRegister={true} DefaultUserInformations={EMPTY_USER} />
+            <FormPadrao IsRegister={false} DefaultUserInformations={EMPTY_USER} />
           </div>
         </div>
       </form>
