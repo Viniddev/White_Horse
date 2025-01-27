@@ -11,6 +11,7 @@ export default function InputTypePassword({ state, setState, label }: BuildInput
             {label}
           </label>
           <Password
+            id={`input_${label}`}
             value={state}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setState(e.target.value)

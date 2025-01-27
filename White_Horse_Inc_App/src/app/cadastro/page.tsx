@@ -8,7 +8,7 @@ export default function Cadastro(){
       <div className="conteinerCadastro">
         <form action="" className="formCadastro flexStart">
           <h1>Cadastro:</h1>
-          <FormPadrao />
+          <FormPadrao IsRegister={true} />
         </form>
       </div>
     );

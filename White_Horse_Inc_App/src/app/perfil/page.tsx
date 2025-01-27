@@ -8,7 +8,6 @@ import FormPadrao from "@/components/form_padrao/form";
 import InformacoesImutaveis from "@/components/informacoes_imutaveis/informacoesImutaveis";
 
 export default function Profile() {
-  const [teste, setTeste] = React.useState<string>("");
   return (
     <section className="ProfileConteiner flexRow">
       <form action="submit" className="FormularioProfile">
@@ -27,7 +26,7 @@ export default function Profile() {
             <InformacoesImutaveis />
           </div>
           <div className="boxUserInformations">
-            <FormPadrao />
+            <FormPadrao IsRegister={false} />
           </div>
         </div>
       </form>
