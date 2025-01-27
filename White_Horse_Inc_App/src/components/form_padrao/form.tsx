@@ -7,9 +7,9 @@ import InputTypeNumber from "../inputs/input_type_number";
 import InputTypeMask from "../inputs/input_type_mask";
 import { BuildDefaultForm } from "@/@types/components";
 
-export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
-  const [userInformations, setUserInformations] =
-    React.useState<UserInformations>(EMPTY_USER);
+export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
+  
+  const [userInformations, setUserInformations] = React.useState<UserInformations>(DefaultUserInformations);
 
   return (
     <div>
@@ -26,6 +26,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
                   }))
                 }
                 label={"Nome"}
+                required={IsRegister ? true : false}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -39,6 +40,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
                 }
                 mask="999.999.999-99"
                 label={"Cpf"}
+                required={IsRegister ? true : false}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -52,6 +54,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
                 }
                 mask="99.999.999"
                 label={"Rg"}
+                required={IsRegister ? true : false}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -64,6 +67,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
                   }))
                 }
                 label={"Cargo"}
+                required={IsRegister ? true : false}
               />
             </div>
           </>
@@ -80,6 +84,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
               }))
             }
             label={"E-mail"}
+            required={true}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -93,6 +98,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
             }
             mask="(99) 99999-9999"
             label={"Telefone"}
+            required={true}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -109,6 +115,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
             }
             mask="99999-999"
             label={"Cep"}
+            required={true}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -124,6 +131,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
               }))
             }
             label={"Rua"}
+            required={true}
           />
         </div>
 
@@ -140,6 +148,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
               }))
             }
             label={"Bairro"}
+            required={true}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -155,6 +164,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
               }))
             }
             label={"Número"}
+            required={true}
           />
         </div>
 
@@ -171,6 +181,7 @@ export default function FormPadrao({ IsRegister }: BuildDefaultForm) {
               }))
             }
             label={"Cidade"}
+            required={true}
           />
         </div>
 

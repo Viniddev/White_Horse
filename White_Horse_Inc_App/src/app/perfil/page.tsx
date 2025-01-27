@@ -6,6 +6,7 @@ import React from "react";
 import { Button } from "primereact/button";
 import FormPadrao from "@/components/form_padrao/form";
 import InformacoesImutaveis from "@/components/informacoes_imutaveis/informacoesImutaveis";
+import { EMPTY_USER } from "@/utils/constants/consts";
 
 export default function Profile() {
   return (
@@ -26,7 +27,7 @@ export default function Profile() {
             <InformacoesImutaveis />
           </div>
           <div className="boxUserInformations">
-            <FormPadrao IsRegister={false} />
+              <FormPadrao IsRegister={true} DefaultUserInformations={EMPTY_USER} />
           </div>
         </div>
       </form>

@@ -1,3 +1,4 @@
+import { UserInformations } from "./req";
 
 export interface ProductCardInformations {
   title: string;
@@ -14,12 +15,14 @@ export interface BuildInputText {
   state: string;
   setState: (value: string) => void;
   label: string;
+  required: boolean;
 }
 
 export interface BuildInputNumber {
   state: number;
   setState: (value: number) => void;
   label: string;
+  required: boolean;
 }
 
 export interface SidebarToggle {
@@ -32,8 +35,10 @@ export interface BuildMaskInput {
   setState: (value: string) => void;
   label: string;
   mask: string;
+  required: boolean;
 }
 
 export interface BuildDefaultForm {
   IsRegister: boolean;
+  DefaultUserInformations: UserInformations;
 }

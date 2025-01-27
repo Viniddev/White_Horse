@@ -7,6 +7,7 @@ export default function InputTypeText({
   state,
   setState,
   label,
+  required
 }: BuildInputText) {
   return (
     <div className="card flex justify-content-center FullLine">
@@ -18,6 +19,7 @@ export default function InputTypeText({
           value={state}
           onChange={(e) => setState(e.target.value)}
           id={`input_${label}`}
+          required={required}
         />
       </div>
     </div>
