@@ -4,7 +4,7 @@ import "../../styles/globals.scss";
 import InputTypeText from "@/components/inputs/input_type_text";
 import React from "react";
 import { Button } from "primereact/button";
-import FormPadrao from "@/components/form_padrao/form";
+import FormPadrao from "@/components/form_padrao_usuario/form";
 import InformacoesImutaveis from "@/components/informacoes_imutaveis/informacoesImutaveis";
 import { EMPTY_USER } from "@/utils/constants/consts";
 

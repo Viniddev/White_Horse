@@ -2,45 +2,45 @@ import { ProductCardInformations } from "@/@types/components"
 
 export const products: Array<ProductCardInformations> = [
   {
-    title: "Luxury Alloy Wheels",
-    subtitle: "Top-notch car wheels for about $450",
+    title: "Desenvolvimento Web Full-Stack",
+    subtitle: "Domine front-end e back-end por apenas R$ 450",
     description:
-      "High-performance alloy wheels designed to enhance your car's aesthetics and performance.",
-    link: "https://quatrorodas.abril.com.br/wp-content/uploads/2023/11/2FLP5386-Enhanced-NR-e1700664760154.jpg?crop=1&resize=1212,909",
+      "Curso completo cobrindo React, Next.js, Node.js e bancos de dados para construir aplicações full-stack.",
+    link: "https://vtricks.in/lms/public/frontend/infixlmstheme/img/blog/full-stack-web-development.jpg",
   },
   {
-    title: "Carbon Fiber Spoilers",
-    subtitle: "Aerodynamic and stylish for about $950",
+    title: "Inteligência Artificial e Machine Learning",
+    subtitle: "Aprenda técnicas avançadas de IA por apenas R$ 950",
     description:
-      "Durable carbon fiber spoilers that improve your car's aerodynamics and add a sporty touch.",
-    link: "https://www.rwcarbon.com/media/uploads_ckeditor/rw-carbon-fiber-bmw-dtm-style-carbon-fiber-rear-wing-13.jpg",
+      "Explore aprendizado profundo, redes neurais e soluções baseadas em IA com projetos práticos.",
+    link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkUmjc10OK_06y5eOynvj_EmBoJkAW7wHzPQ&s",
   },
   {
-    title: "Premium Leather Seats",
-    subtitle: "Comfort and elegance for about $1250",
+    title: "Fundamentos de Cibersegurança",
+    subtitle: "Proteja sistemas e redes por apenas R$ 1250",
     description:
-      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
-    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+      "Aprimore seus conhecimentos em hacking ético, testes de penetração e melhores práticas de segurança cibernética.",
+    link: "https://media.licdn.com/dms/image/v2/D4D12AQGai1fk9P1hTw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1714033756274?e=2147483647&v=beta&t=cIpYSyiO-20JIkPlXkQ9BxTPow9JPuiMs0Bq3X39z38",
   },
   {
-    title: "Premium Leather Seats",
-    subtitle: "Comfort and elegance for about $1250",
+    title: "Computação em Nuvem com AWS",
+    subtitle: "Domine infraestrutura em nuvem por apenas R$ 1250",
     description:
-      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
-    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+      "Aprenda sobre os serviços da AWS, estratégias de implantação e segurança na nuvem com exemplos do mundo real.",
+    link: "https://images.squarespace-cdn.com/content/v1/60cfd646701da4034512a1c5/1654217981309-RTSZMBJWA9YJ5V32UN8R/AWS-Cloud.png",
   },
   {
-    title: "Premium Leather Seats",
-    subtitle: "Comfort and elegance for about $1250",
+    title: "Ciência de Dados e Análise",
+    subtitle: "Extraia insights de dados por apenas R$ 1250",
     description:
-      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
-    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+      "Analise dados, construa modelos preditivos e utilize Python para tomadas de decisão baseadas em dados.",
+    link: "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/05/18141-scaled.jpg",
   },
   {
-    title: "Premium Leather Seats",
-    subtitle: "Comfort and elegance for about $1250",
+    title: "Desenvolvimento de Aplicativos Mobile",
+    subtitle: "Crie apps para iOS e Android por apenas R$ 1250",
     description:
-      "Custom-made leather seats for ultimate comfort and luxury in your driving experience.",
-    link: "https://files.porsche.com/filestore/image/multimedia/none/exclusive-erwin-teaser2/preview/ebb7423a-5f67-11e9-80c4-005056bbdc38;sL;twebp/porsche-preview.webp",
+      "Aprenda React Native e Flutter para desenvolver aplicativos móveis de alto desempenho.",
+    link: "https://www.techmango.net/wp-content/uploads/2022/04/mobile-app-development.png",
   },
 ];

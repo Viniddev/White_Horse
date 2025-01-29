@@ -10,6 +10,7 @@
   --red: #A31D1D;
   --bannerColor: #FAF0E6;
   --formularioLogin: #FBFBFB;
+  --light-grey: #d3d7de;
 }
 
 [data-theme="dark"]{
@@ -22,8 +23,9 @@
   --black: #000000;
   --red: #A31D1D;
   --bannerColor: #040D12;
-   --formularioLogin: #1A1A1D;
-}
+  --formularioLogin: #1A1A1D;
+  --light-grey: #d3d7de;
+  }
 
 html,
 body {

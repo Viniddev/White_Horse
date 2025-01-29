@@ -1,12 +1,8 @@
 "use client";
 import "./header.scss";
 import React, { useState } from "react";
-import Link from "next/link";
 import "../../styles/globals.scss";
 import { Button } from "primereact/button";
-import { PROFILE, HOME, LOGIN } from "../../utils/front_end_urls/urls";
-import { SelectButton } from "primereact/selectbutton";
-import { Sidebar } from "primereact/sidebar";
 import SidebarHeader from "../sidebar/SebarHeader";
 import HeaderDesktop from "../navbar_desktop/navbar";
 import LinksNavegacao from "../navegacao/navegacao";

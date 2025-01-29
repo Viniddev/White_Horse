@@ -50,3 +50,7 @@ export interface BuildDefaultForm {
   IsRegister: boolean;
   DefaultUserInformations: UserInformations;
 }
+
+export interface Prop {
+  list: Array<ProductCardInformations>;
+}

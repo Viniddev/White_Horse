@@ -1,5 +1,5 @@
 "use client";
-import FormPadrao from "@/components/form_padrao/form";
+import FormPadrao from "@/components/form_padrao_usuario/form";
 import "../../styles/globals.scss";
 import "./cadastro.scss";
 import { EMPTY_USER } from "@/utils/constants/consts";

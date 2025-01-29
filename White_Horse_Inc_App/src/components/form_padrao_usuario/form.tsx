@@ -182,8 +182,6 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             <Button
               label="Atualizar"
               severity="danger"
-              type="button"
-              onClick={() => console.log(userInformations)}
             />
           </div>
         </div>

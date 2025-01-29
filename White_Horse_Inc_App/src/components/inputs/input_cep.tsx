@@ -2,8 +2,7 @@ import React from "react";
 import "../../styles/globals.scss";
 import { BuildInputCep } from "@/@types/components";
 import { InputMask } from "primereact/inputmask";
-import { Endereco, UserInformations } from "@/@types/req";
-import PostRequest from "@/routes/post_request";
+import { GetFullAddress } from "@/validators/get_full_address";
 
 export default function InputCep({state, setState, label ,required, mask}: BuildInputCep) {
   return (
@@ -27,25 +26,4 @@ export default function InputCep({state, setState, label ,required, mask}: Build
   );
 }
 
-async function GetFullAddress(cep: string, setState:  React.Dispatch<React.SetStateAction<UserInformations>>){
-  cep = cep.replace("_","").replace("-", "")
-  
-  if(cep.length == 8){
-    var response: any = await PostRequest(cep);
 
-    if (!response.erro) {
-      var enderecoCompleto: Endereco = {
-        rua: response.logradouro,
-        cep: response.cep,
-        bairro: response.bairro,
-        cidade: response.localidade,
-        numero: 0,
-      };
-
-      setState((prevState) => ({
-        ...prevState,
-        endereco: enderecoCompleto,
-      }));
-    }
-  }
-}
