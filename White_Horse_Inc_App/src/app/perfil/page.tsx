@@ -1,11 +1,11 @@
 "use client";
 import "./profile.scss";
 import "../../styles/globals.scss";
-import InputTypeText from "@/components/inputs/input_type_text";
+import InputTypeText from "@/components/inputs/inputTypeText";
 import React from "react";
 import { Button } from "primereact/button";
-import FormPadrao from "@/components/form_padrao_usuario/form";
-import InformacoesImutaveis from "@/components/informacoes_imutaveis/informacoesImutaveis";
+import FormPadrao from "@/components/formPadraoUsuario/form";
+import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
 import { EMPTY_USER } from "@/utils/constants/consts";
 
 export default function Profile() {

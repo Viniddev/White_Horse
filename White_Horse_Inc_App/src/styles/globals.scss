@@ -86,6 +86,11 @@ body {
   width:100%;
 }
 
+.spaceEvenly{
+  width:100%;
+  justify-content: space-evenly;
+}
+
 body::-webkit-scrollbar {
   width: 12px; 
 }

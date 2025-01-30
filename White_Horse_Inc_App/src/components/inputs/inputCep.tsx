@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/globals.scss";
 import { BuildInputCep } from "@/@types/components";
 import { InputMask } from "primereact/inputmask";
-import { GetFullAddress } from "@/validators/get_full_address";
+import { GetFullAddress } from "@/validators/getFullAddress";
 
 export default function InputCep({state, setState, label ,required, mask}: BuildInputCep) {
   return (

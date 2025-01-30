@@ -1,13 +1,12 @@
 import { FiltroFormularioPrincipal, Prop, Topico } from "@/@types/components";
-import "./form_pesquisa.scss";
+import "./formPesquisa.scss";
 import "../../styles/globals.scss";
-import InputTypeText from "../inputs/input_type_text";
+import InputTypeText from "../inputs/inputTypeText";
 import React from "react";
 import { EMPTY_FILTRO_FORMULARIO_PRINCIPAL } from "@/utils/constants/consts";
-import InputTypeNumber from "../inputs/input_type_number";
 import { Button } from "primereact/button";
-import DropDown from "../inputs/input_type_drop_down";
-import InputTypeCurrency from "../inputs/input_type_currency";
+import DropDown from "../inputs/inputTypeDropDown";
+import InputTypeCurrency from "../inputs/inputTypeCurrency";
 
 export default function FormularioPesquisa(Prop: Prop) {
   const [filtro, setFiltro] = React.useState<FiltroFormularioPrincipal>( EMPTY_FILTRO_FORMULARIO_PRINCIPAL );

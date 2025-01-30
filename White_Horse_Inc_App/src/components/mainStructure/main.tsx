@@ -1,5 +1,5 @@
 import "../../styles/globals.scss"
-import CardProdutos from "../card_produtos/CardProdutos";
+import CardProdutos from "../cardProdutos/CardProdutos";
 import "./main.scss";
 import { Prop } from "@/@types/components";
 

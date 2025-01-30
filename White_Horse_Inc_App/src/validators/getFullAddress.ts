@@ -1,5 +1,5 @@
 import { Endereco, UserInformations } from "@/@types/req";
-import PostRequest from "@/routes/post_request";
+import PostRequest from "@/routes/postRequest";
 
 
 export async function GetFullAddress(cep: string, setState:  React.Dispatch<React.SetStateAction<UserInformations>>){

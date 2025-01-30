@@ -1,11 +1,11 @@
 import React from "react";
-import InputTypeText from "../inputs/input_type_text";
+import InputTypeText from "../inputs/inputTypeText";
 import { Button } from "primereact/button";
 import { UserInformations } from "@/@types/req";
-import InputTypeNumber from "../inputs/input_type_number";
-import InputTypeMask from "../inputs/input_type_mask";
+import InputTypeNumber from "../inputs/inputTypeNumber";
+import InputTypeMask from "../inputs/inputTypeMask";
 import { BuildDefaultForm } from "@/@types/components";
-import InputCep from "../inputs/input_cep";
+import InputCep from "../inputs/inputCep";
 
 export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
   

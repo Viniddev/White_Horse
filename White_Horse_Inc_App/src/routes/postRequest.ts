@@ -1,4 +1,4 @@
-import { VIACEP } from "@/utils/back_end_urls/urls";
+import { VIACEP } from "@/utils/backEndUrls/urls";
 
 export default async function PostRequest(param: any){
     var response: any = await fetch(VIACEP(param), {

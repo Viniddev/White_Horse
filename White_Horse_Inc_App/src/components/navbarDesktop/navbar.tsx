@@ -1,10 +1,10 @@
-import { LOGIN, PROFILE } from "@/utils/front_end_urls/urls";
+import { LOGIN, PROFILE } from "@/utils/frontEndUrls/urls";
 import Link from "next/link";
 import { Button } from "primereact/button";
 import { SelectButton } from "primereact/selectbutton";
 import React from "react";
 import { useState } from "react";
-import DarkModeButton from "../btn_dark_mode/btnDarkMode";
+import DarkModeButton from "../btnDarkMode/btnDarkMode";
 
 export default function HeaderDesktop(){
 

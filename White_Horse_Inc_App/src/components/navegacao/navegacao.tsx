@@ -1,4 +1,4 @@
-import { HOME } from "@/utils/front_end_urls/urls";
+import { HOME } from "@/utils/frontEndUrls/urls";
 import Link from "next/link";
 
 

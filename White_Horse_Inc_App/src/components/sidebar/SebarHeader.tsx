@@ -1,10 +1,10 @@
 import { SidebarToggle } from "@/@types/components";
-import { LOGIN, PROFILE } from "@/utils/front_end_urls/urls";
+import { LOGIN, PROFILE } from "@/utils/frontEndUrls/urls";
 import Link from "next/link";
 import { Button } from "primereact/button";
 import { Sidebar } from "primereact/sidebar";
 import { useState } from "react";
-import DarkModeButton from "../btn_dark_mode/btnDarkMode";
+import DarkModeButton from "../btnDarkMode/btnDarkMode";
 
 export default function SidebarHeader({ state, setState }: SidebarToggle) {
 

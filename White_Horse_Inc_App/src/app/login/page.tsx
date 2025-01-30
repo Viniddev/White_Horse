@@ -3,11 +3,11 @@ import "./login.scss";
 import "../../styles/globals.scss";
 import { SetStateAction } from "react";
 import React from "react";
-import InputTypeText from "@/components/inputs/input_type_text";
-import InputTypePassword from "@/components/inputs/input_type_password";
+import InputTypeText from "@/components/inputs/inputTypeText";
+import InputTypePassword from "@/components/inputs/inputTypePassword";
 import { Button } from "primereact/button";
 import Link from "next/link";
-import { CADASTRO } from "@/utils/front_end_urls/urls";
+import { CADASTRO } from "@/utils/frontEndUrls/urls";
 
 export default function Login() {
   const [login, setLogin] = React.useState<string>("");
@@ -25,12 +25,13 @@ export default function Login() {
         </div>
         <div className="secaoFormLogin flexColumn">
           <form className="formLogin flexColumn">
-            <InputTypeText state={login} setState={setLogin} label={"User"} />
+            <InputTypeText state={login} setState={setLogin} label={"User"} required={false} />
 
             <InputTypePassword
               state={password}
               setState={setPassword}
-              label={"password"}
+              label={"password"} 
+              required={false}
             />
 
             <div className="sessaoEsqueciASenha">

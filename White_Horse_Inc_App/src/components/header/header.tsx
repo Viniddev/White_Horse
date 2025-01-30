@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "../../styles/globals.scss";
 import { Button } from "primereact/button";
 import SidebarHeader from "../sidebar/SebarHeader";
-import HeaderDesktop from "../navbar_desktop/navbar";
+import HeaderDesktop from "../navbarDesktop/navbar";
 import LinksNavegacao from "../navegacao/navegacao";
 
 export default function Header(){
