@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace White_Horse_Inc_Core.Models.Account
 {
-    public class User
+    public class UserLogin
     {
         public string Email { get; set; } = string.Empty;
+        public required string Password { get; set; }
         public Dictionary<string, string> Claims { get; set; } = [];
     }
 }
