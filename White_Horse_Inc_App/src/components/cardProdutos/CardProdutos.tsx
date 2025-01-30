@@ -1,8 +1,10 @@
 import React from "react";
-import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { CardProdutosProps } from "@/@types/components";
+
 import "../../styles/globals.scss"
+import "./cardProdutos.scss";
+import { Card } from "primereact/card";
 
 export default function CardProdutos({ prop }: CardProdutosProps) {
   const header = (
@@ -12,6 +14,7 @@ export default function CardProdutos({ prop }: CardProdutosProps) {
       style={{maxHeight:"350px"}}
     />
   );
+
   const footer = (
     <div className="flexRow spaceEvenly">
       <Button
@@ -27,7 +30,7 @@ export default function CardProdutos({ prop }: CardProdutosProps) {
   //criar meu proprio card, esse ta paioso e generico
 
   return (
-    <div className="card flex justify-content-center">
+    <div className="card flex justify-content-center sm:w-5 lg:w-auto">
       <Card
         title={prop.title}
         subTitle={prop.subtitle}
@@ -40,3 +43,9 @@ export default function CardProdutos({ prop }: CardProdutosProps) {
     </div>
   );
 }
+
+
+
+{/* <div className="cardProdutos">
+  <h1>aaaa</h1>
+</div>; */}

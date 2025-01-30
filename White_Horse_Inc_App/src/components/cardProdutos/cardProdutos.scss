@@ -1,0 +1,14 @@
+.cardProdutos{
+    width: 25rem;
+    height: 450px;
+    background-color: var(--secondaryColor);
+    border-radius: 10px 50px 10px 50px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .cardProdutos{
+        min-height: 350px;
+        width: 300;
+    }
+}
