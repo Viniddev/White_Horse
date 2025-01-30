@@ -11,7 +11,6 @@ namespace White_Horse_Inc_Api.Commom.Api
 {
     public static class BuilderExtension
     {
-        //isso é um metodo de extensão do Builder
         public static void AddConfiguration(this WebApplicationBuilder builder)
         {
             //pega a connection string default
@@ -73,38 +72,28 @@ namespace White_Horse_Inc_Api.Commom.Api
 
         public static void AddEndpointInfrastructure(this WebApplicationBuilder builder)
         {
-            //aqui identificamos o identity como dependencia
+            var tokenConfigSection = configuration.GetSection("TokenConfiguration");
+            var tokenConfiguration = tokenConfigSection.Get<TokenConfigurations>();
 
-            var appKey = Encoding.ASCII.GetBytes(Configuration.JwtKey);
-            builder.Services.AddAuthentication(x =>
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
             {
-                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(appKey),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidIssuer = tokenConfiguration!.Issuer,
+                    ValidAudience = tokenConfiguration.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.IssuerSigningKey)),
+                    RequireExpirationTime = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
-            //transient ->
-            //   sempre cria uma nova instancia do category independente de quantas vezes eu chame os metodos em uma mesma requisição
+            builder.Services.AddAuthorization();
 
-            //scoped ->
-            //   sempre usa a mesma versão por requisição (que nem o addDbContext)
-
-            //singleton ->
-            //   so tem uma instancia por aplicação (possui o mesmo manipulador pra todas as requisicoes independente do usuario)
-
-            builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
-            builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
         }
 
     }

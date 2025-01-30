@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using White_Horse_Inc_Core.Models;
 
-namespace White_Horse_Inc_Core.Models.Account
+namespace White_Horse_Inc_Api.Models
 {
-    public class UserInformations: BaseEntity
+    public class UserInformations : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
         public string Cpf { get; set; } = string.Empty;

@@ -1,6 +1,6 @@
 ﻿
 
-using White_Horse_Inc_Core.Models.Account;
+using White_Horse_Inc_Api.Models;
 
 namespace White_Horse_Inc_Core.Models
 {

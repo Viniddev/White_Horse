@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace White_Horse_Inc_Core.Models.Account
+namespace White_Horse_Inc_Api.Models
 {
     public class UserLogin
     {
