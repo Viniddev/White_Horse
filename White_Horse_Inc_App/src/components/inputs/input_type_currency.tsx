@@ -3,7 +3,7 @@ import "../../styles/globals.scss";
 import { BuildInputNumber } from "@/@types/components";
 import { InputNumber } from "primereact/inputnumber";
 
-export default function InputTypeNumber({state,setState,label,required,}: BuildInputNumber) {
+export default function InputTypeCurrency({state,setState,label,required,}: BuildInputNumber) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
@@ -15,6 +15,9 @@ export default function InputTypeNumber({state,setState,label,required,}: BuildI
           value={state ?? 0}
           onValueChange={(e) => setState(e.value ?? 0)}
           required={required}
+          mode="currency"
+          currency="BRL"
+          locale="pt-BR"
         />
       </div>
     </div>

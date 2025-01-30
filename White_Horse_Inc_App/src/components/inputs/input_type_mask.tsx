@@ -3,16 +3,10 @@ import "../../styles/globals.scss";
 import { BuildMaskInput } from "@/@types/components";
 import { InputMask } from "primereact/inputmask";
 
-export default function InputTypeMask({
-  state,
-  setState,
-  label,
-  mask,
-  required,
-}: BuildMaskInput) {
+export default function InputTypeMask({state,setState,label,mask,required}: BuildMaskInput) {
   return (
     <div className="card flex justify-content-center FullLine">
-      <div className="flex flex-column gap-2" style={{ width: "80%" }}>
+      <div className="flex flex-column gap-2" style={{ width: "90%" }}>
         <label htmlFor="username" style={{ fontWeight: "500" }}>
           {label}
         </label>

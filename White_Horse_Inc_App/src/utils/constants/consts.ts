@@ -14,3 +14,8 @@ export const EMPTY_USER = {
   },
 };
 
+export const EMPTY_FILTRO_FORMULARIO_PRINCIPAL = {
+  preco: 0,
+  nome: "",
+  topico: ""
+};

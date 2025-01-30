@@ -7,7 +7,7 @@ import { GetFullAddress } from "@/validators/get_full_address";
 export default function InputCep({state, setState, label ,required, mask}: BuildInputCep) {
   return (
     <div className="card flex justify-content-center FullLine">
-      <div className="flex flex-column gap-2" style={{ width: "80%" }}>
+      <div className="flex flex-column gap-2" style={{ width: "90%" }}>
         <label htmlFor="username" style={{ fontWeight: "500" }}>
           {label}
         </label>

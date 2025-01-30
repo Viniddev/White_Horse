@@ -54,3 +54,18 @@ export interface BuildDefaultForm {
 export interface Prop {
   list: Array<ProductCardInformations>;
 }
+
+export interface FiltroFormularioPrincipal{
+  preco: number;
+  nome: string;
+  topico: string;
+}
+
+export interface Topico {
+  name: string;
+  code: string;
+}
+
+export interface ListaTopico {
+  list: Array<Topico>;
+}

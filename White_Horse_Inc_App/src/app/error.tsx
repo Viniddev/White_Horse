@@ -1,6 +1,8 @@
 "use client"; // Error boundaries must be Client Components
 
 import { useEffect } from "react";
+import '../styles/globals.scss';
+import { Button } from "primereact/button";
 
 export default function Error({
   error,
@@ -14,15 +16,16 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <div className="flexColumn">
       <h2>Something went wrong!</h2>
-      <button
-        onClick={
-          () => reset()
-        }
-      >
-        Try again
-      </button>
+
+      <Button
+        label="Tentar Novamente"
+        severity="warning"
+        outlined
+        type="button"
+        onClick={() => reset()}
+      />
     </div>
   );
 }
