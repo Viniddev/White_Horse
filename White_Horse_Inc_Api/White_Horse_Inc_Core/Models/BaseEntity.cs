@@ -10,7 +10,7 @@ namespace White_Horse_Inc_Core.Models
     {
         public long Id { get; init; }
         public DateTime CreationDate { get; init; }
-        public DateTime UpdateDate { get; private set; }
+        public DateTime? UpdateDate { get; private set; }
         public bool IsActive { get; private set; }
 
         public void UpdateValues()
