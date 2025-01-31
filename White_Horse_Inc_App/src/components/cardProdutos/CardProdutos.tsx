@@ -43,9 +43,3 @@ export default function CardProdutos({ prop }: CardProdutosProps) {
     </div>
   );
 }
-
-
-
-{/* <div className="cardProdutos">
-  <h1>aaaa</h1>
-</div>; */}

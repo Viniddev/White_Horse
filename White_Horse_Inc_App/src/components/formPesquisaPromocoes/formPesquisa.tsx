@@ -1,4 +1,4 @@
-import { FiltroFormularioPrincipal, Prop, Topico } from "@/@types/components";
+import { FiltroFormularioPrincipal, Prop } from "@/@types/components";
 import "./formPesquisa.scss";
 import "../../styles/globals.scss";
 import InputTypeText from "../inputs/inputTypeText";
@@ -7,17 +7,11 @@ import { EMPTY_FILTRO_FORMULARIO_PRINCIPAL } from "@/utils/constants/consts";
 import { Button } from "primereact/button";
 import DropDown from "../inputs/inputTypeDropDown";
 import InputTypeCurrency from "../inputs/inputTypeCurrency";
+import { TopicosDeDesenvolvimento } from "@/utils/mocks/products";
+import orderByDescendingFunction from "./formPesquisa";
 
 export default function FormularioPesquisa(Prop: Prop) {
   const [filtro, setFiltro] = React.useState<FiltroFormularioPrincipal>( EMPTY_FILTRO_FORMULARIO_PRINCIPAL );
-
-  const TopicosDeDesenvolvimento: Array<Topico> = [
-    { name: "Desenvolvimento Web", code: "1" },
-    { name: "Desenvolvimento Mobile", code: "2" },
-    { name: "Analise de dados", code: "3" },
-    { name: "Machine Learning", code: "4" },
-    { name: "Cloud Computing", code: "5" },
-  ];
 
   return (
     <div className="flexRow conteinerFormularioPesquisa">
@@ -61,11 +55,14 @@ export default function FormularioPesquisa(Prop: Prop) {
                   severity="warning"
                   outlined
                   className="botoesFiltro"
+                  type="button"
+                  onClick={() => Prop.setList(orderByDescendingFunction(Prop.list))}
                 />
                 <Button
                   label="Filtrar"
                   severity="danger"
                   className="botoesFiltro"
+                  type="button"
                 />
               </div>
             </div>

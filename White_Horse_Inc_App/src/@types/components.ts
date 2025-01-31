@@ -53,6 +53,7 @@ export interface BuildDefaultForm {
 
 export interface Prop {
   list: Array<ProductCardInformations>;
+  setList: (value: Array<ProductCardInformations>) => void;
 }
 
 export interface FiltroFormularioPrincipal{
