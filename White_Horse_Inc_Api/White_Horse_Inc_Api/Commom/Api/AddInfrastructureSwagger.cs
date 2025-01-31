@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace White_Horse_Inc_Api.Properties
+namespace White_Horse_Inc_Api.Commom.Api
 {
     public static class AddInfrastructureSwagger
     {
@@ -9,13 +9,13 @@ namespace White_Horse_Inc_Api.Properties
             services.AddSwaggerGen(c =>
             {
 
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "API",
                     Version = "v1"
                 });
 
-                c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Name = "Authorization",
                     Type = SecuritySchemeType.Http,
@@ -25,7 +25,7 @@ namespace White_Horse_Inc_Api.Properties
                     Description = "Insira o token JWT assim: Bearer {seu_token}",
                 });
 
-                c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
                     {
                         new OpenApiSecurityScheme()

@@ -12,7 +12,7 @@ namespace White_Horse_Inc_Core.Models
         public string City { get; set; } = string.Empty;
         public int Number { get; set; }
 
-        public UserLogin User { get; set; } = null!;
+        public UserInformations User { get; set; } = null!;
         public int UserId { get; set; }
     }
 }

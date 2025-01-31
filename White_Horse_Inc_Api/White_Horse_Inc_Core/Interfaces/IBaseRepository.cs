@@ -1,4 +1,10 @@
-﻿namespace White_Horse_Inc_Core.Implementations.Interfaces
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace White_Horse_Inc_Core.Interfaces
 {
     public interface IBaseRepository<TModel>
     {

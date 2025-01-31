@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using White_Horse_Inc_Api.Data;
-using White_Horse_Inc_Api.Properties;
+using White_Horse_Inc_Api.Implementation;
+using White_Horse_Inc_Api.Mappings;
 using White_Horse_Inc_Core;
+using White_Horse_Inc_Core.Interfaces;
 
 namespace White_Horse_Inc_Api.Commom.Api
 {
@@ -15,7 +16,6 @@ namespace White_Horse_Inc_Api.Commom.Api
         {
             //pega a connection string default
             Configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
-
             Configuration.FrontEndUrl = builder.Configuration.GetConnectionString("FrontEndUrl") ?? string.Empty;
             Configuration.BackEndUrl = builder.Configuration.GetConnectionString("BackEndUrl") ?? string.Empty;
             Configuration.JwtKey = builder.Configuration.GetConnectionString("JwtKey") ?? string.Empty;
@@ -26,29 +26,10 @@ namespace White_Horse_Inc_Api.Commom.Api
             //essa config do "n.FullName" serve para que o nosso swagger não se confunda
             //quando estiver lidando com entidades ou classes que estejam sendo recebidas
             //por parametro e que tem o mesmo nome
-            builder.Services.AddSwaggerGen(x =>
-            {
-                x.CustomSchemaIds(n => n.FullName);
-                x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "White_Horse_Inc",
-                    Version = "v1"
-                });
-            });
 
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddInfrastructure();
-            builder.Services.AddControllers();
-        }
-
-        public static void AddSecurity(this WebApplicationBuilder builder)
-        {
-            //precisa ser adicionado nessa ordem
-            builder.Services
-                .AddAuthentication(IdentityConstants.ApplicationScheme)
-                .AddIdentityCookies();
-
-            builder.Services.AddAuthorization();
         }
 
         public static void AddCrossOrigin(this WebApplicationBuilder builder)
@@ -72,30 +53,45 @@ namespace White_Horse_Inc_Api.Commom.Api
 
         public static void AddEndpointInfrastructure(this WebApplicationBuilder builder)
         {
-            var tokenConfigSection = configuration.GetSection("TokenConfiguration");
-            var tokenConfiguration = tokenConfigSection.Get<TokenConfigurations>();
+            var jwtKey = builder.Configuration["JwtKey"] ?? throw new InvalidOperationException("Chave JWT não configurada.");
+            var appKey = Encoding.ASCII.GetBytes(jwtKey);
 
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            // Configuração de autenticação com JWT
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
             .AddJwtBearer(options =>
             {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(appKey),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = tokenConfiguration!.Issuer,
-                    ValidAudience = tokenConfiguration.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.IssuerSigningKey)),
-                    RequireExpirationTime = true,
-                    ClockSkew = TimeSpan.Zero
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"]
                 };
             });
 
-            builder.Services.AddAuthorization();
 
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Swagger",
+                    policy => policy.RequireAssertion(context =>
+                        context.Resource?.ToString()?.Contains("/swagger") == true ||
+                        context.Resource?.ToString()?.Contains("/swagger/v1/swagger.json") == true
+                    )
+                );
+            });
+
+            // Adicionando dependências com ciclo de vida adequado
+            builder.Services.AddScoped<IBaseRepository<CompanyRoleMapping>, CompanyRoleRepository>();
+            //builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
         }
-
     }
 }
 

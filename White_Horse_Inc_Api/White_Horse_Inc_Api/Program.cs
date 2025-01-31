@@ -7,8 +7,6 @@ builder.AddConfiguration();
 
 builder.AddDocumentation();
 
-builder.AddSecurity();
-
 builder.AddCrossOrigin();
 
 builder.AddDataBaseContext();

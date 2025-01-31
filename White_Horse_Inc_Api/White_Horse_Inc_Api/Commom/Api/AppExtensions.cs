@@ -7,9 +7,6 @@
             //adiciona extensões pro swagger em ambiente de dev
             app.UseSwagger();
             app.UseSwaggerUI();
-            app.MapSwagger().RequireAuthorization();
-
-            app.UseHttpsRedirection();
         }
 
         public static void AddAppSecurity(this WebApplication app)
@@ -23,6 +20,7 @@
         public static void AddAppInfrastructure(this WebApplication app)
         {
             //mapeamento para endpoints e identificação do versionamento do app
+
             app.MapControllers();
 
             app.MapGet("/", () => "Hello World!");

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using White_Horse_Inc_Api.Data;
-using White_Horse_Inc_Core.Data;
-using White_Horse_Inc_Core.Implementations.Interfaces;
+using White_Horse_Inc_Core.Interfaces;
+using White_Horse_Inc_Core.Models;
 
-namespace White_Horse_Inc_Core.Implementations.Handlers
+namespace White_Horse_Inc_Api.RepositoryMethods
 {
     public class BaseRepository<TModel>(AppDbContext context, ILogger<BaseRepository<TModel>> logger) : IBaseRepository<TModel> where TModel : BaseEntity
     {
@@ -12,9 +12,6 @@ namespace White_Horse_Inc_Core.Implementations.Handlers
 
         public async Task<List<TModel>> GetAsync(CancellationToken cancellationToken)
             => await _dbSet.ToListAsync(cancellationToken: cancellationToken);
-
-        public async Task<TModel> GetAsync(long id, CancellationToken cancellationToken)
-            => await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
 
         public async Task CreateAsync(TModel model, CancellationToken cancellationToken)
         {
@@ -25,13 +22,6 @@ namespace White_Horse_Inc_Core.Implementations.Handlers
         public async Task UpdateAsync(TModel model, CancellationToken cancellationToken)
         {
             _dbSet.Update(model);
-            await SaveChangesAsync(cancellationToken);
-        }
-
-        public async Task DeleteAsync(long id, CancellationToken cancellationToken)
-        {
-            var model = await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
-            _dbSet.Remove(model);
             await SaveChangesAsync(cancellationToken);
         }
 
@@ -56,7 +46,16 @@ namespace White_Horse_Inc_Core.Implementations.Handlers
             {
                 await context.Database.CloseConnectionAsync();
             }
+        }
 
+        public async Task<TModel> GetAsync(long id, CancellationToken cancellationToken)
+            => await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
+
+        public async Task DeleteAsync(long id, CancellationToken cancellationToken)
+        {
+            var model = await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
+            _dbSet.Remove(model);
+            await SaveChangesAsync(cancellationToken);
         }
     }
 }
