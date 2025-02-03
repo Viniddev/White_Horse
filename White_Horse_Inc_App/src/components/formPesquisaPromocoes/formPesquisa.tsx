@@ -1,14 +1,14 @@
-import { FiltroFormularioPrincipal, Prop } from "@/@types/components";
 import "./formPesquisa.scss";
 import "../../styles/globals.scss";
 import InputTypeText from "../inputs/inputTypeText";
 import React from "react";
-import { EMPTY_FILTRO_FORMULARIO_PRINCIPAL } from "@/utils/constants/consts";
 import { Button } from "primereact/button";
 import DropDown from "../inputs/inputTypeDropDown";
 import InputTypeCurrency from "../inputs/inputTypeCurrency";
-import { TopicosDeDesenvolvimento } from "@/utils/mocks/products";
-import orderByDescendingFunction from "./formPesquisa";
+import orderByDescendingFunction from "../mainStructure/formPesquisa";
+import { Prop, FiltroFormularioPrincipal } from "../../@types/components";
+import { TopicosDeDesenvolvimento } from "../../utils/mocks/products";
+import {EMPTY_FILTRO_FORMULARIO_PRINCIPAL} from "../../utils/constants/consts";
 
 export default function FormularioPesquisa(Prop: Prop) {
   const [filtro, setFiltro] = React.useState<FiltroFormularioPrincipal>( EMPTY_FILTRO_FORMULARIO_PRINCIPAL );

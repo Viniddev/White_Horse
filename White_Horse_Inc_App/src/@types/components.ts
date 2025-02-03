@@ -5,6 +5,8 @@ export interface ProductCardInformations {
   subtitle: string;
   description: string;
   link: string;
+  price: number;
+  topic: number;
 }
 
 export interface CardProdutosProps {
@@ -56,17 +58,19 @@ export interface Prop {
   setList: (value: Array<ProductCardInformations>) => void;
 }
 
-export interface FiltroFormularioPrincipal{
+export interface FiltroFormularioPrincipal {
   preco: number;
   nome: string;
-  topico: string;
+  topico: Topico;
 }
 
 export interface Topico {
   name: string;
-  code: string;
+  code: number;
 }
 
-export interface ListaTopico {
+export interface TopicOptions {
+  state: Topico;
+  setState: (value: Topico) => void;
   list: Array<Topico>;
 }
