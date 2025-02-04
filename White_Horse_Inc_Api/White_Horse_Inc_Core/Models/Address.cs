@@ -1,6 +1,5 @@
-﻿
-
-using White_Horse_Inc_Api.Models;
+﻿using White_Horse_Inc_Core.Models.Base;
+using White_Horse_Inc_Core.Requests.Authentication;
 
 namespace White_Horse_Inc_Core.Models
 {

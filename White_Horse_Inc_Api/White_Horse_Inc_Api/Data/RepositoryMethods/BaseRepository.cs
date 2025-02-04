@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using White_Horse_Inc_Api.Data;
 using White_Horse_Inc_Core.Interfaces;
-using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.Models.Base;
 
-namespace White_Horse_Inc_Api.RepositoryMethods
+namespace White_Horse_Inc_Api.Data.RepositoryMethods
 {
     public class BaseRepository<TModel>(AppDbContext context, ILogger<BaseRepository<TModel>> logger) : IBaseRepository<TModel> where TModel : BaseEntity
     {

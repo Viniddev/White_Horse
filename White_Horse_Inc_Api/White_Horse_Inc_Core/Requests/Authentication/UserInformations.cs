@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.Models.Base;
 
-namespace White_Horse_Inc_Api.Models
+namespace White_Horse_Inc_Core.Requests.Authentication
 {
     public class UserInformations : BaseEntity
     {
@@ -13,6 +14,7 @@ namespace White_Horse_Inc_Api.Models
         public string Cpf { get; set; } = string.Empty;
         public string Rg { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
 
 

@@ -3,13 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using White_Horse_Inc_Api.Data;
-using White_Horse_Inc_Api.Mappings;
-using White_Horse_Inc_Api.RepositoryMethods;
+using White_Horse_Inc_Api.Data.RepositoryMethods;
 using White_Horse_Inc_Core;
 using White_Horse_Inc_Core.Interfaces;
 using White_Horse_Inc_Core.Models;
 
-namespace White_Horse_Inc_Api.Commom.Api
+namespace White_Horse_Inc_Api.Commom
 {
     public static class BuilderExtension
     {
@@ -89,7 +88,6 @@ namespace White_Horse_Inc_Api.Commom.Api
                 );
             });
 
-            // Adicionando dependências com ciclo de vida adequado
             builder.Services.AddScoped<IBaseRepository<CompanyRole>, BaseRepository<CompanyRole>>();
 
         }

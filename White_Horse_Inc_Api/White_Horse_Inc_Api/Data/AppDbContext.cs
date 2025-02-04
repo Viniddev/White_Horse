@@ -11,7 +11,20 @@ namespace White_Horse_Inc_Api.Data
         //esse metodo aplica configurações iniciais ao banco se for sua primeira execucao
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
+
+            var entityTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes())
+                .Where(t =>
+                    t.IsClass &&
+                    !t.IsAbstract &&
+                    t.IsPublic &&
+                    t.Namespace == "White_Horse_Inc_Core.Models");
+
+            foreach (var type in entityTypes)
+            {
+                modelBuilder.Entity(type);
+            }
         }
     }
 }

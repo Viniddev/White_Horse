@@ -1,5 +1,4 @@
-﻿
-namespace White_Horse_Inc_Core.Common.Extensions
+﻿namespace White_Horse_Inc_Core.Common
 {
     public static class DateTimeExtensions
     {

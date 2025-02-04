@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace White_Horse_Inc_Api.Commom.Api
+namespace White_Horse_Inc_Api.Commom
 {
     public static class AddInfrastructureSwagger
     {

@@ -1,4 +1,4 @@
-﻿namespace White_Horse_Inc_Api.Commom.Api
+﻿namespace White_Horse_Inc_Api.Commom
 {
     public static class AppExtensions
     {
@@ -22,8 +22,6 @@
             //mapeamento para endpoints e identificação do versionamento do app
 
             app.MapControllers();
-
-            app.MapGet("/", () => "Hello World!");
         }
     }
 }

@@ -1,4 +1,4 @@
-using White_Horse_Inc_Api.Commom.Api;
+using White_Horse_Inc_Api.Commom;
 using White_Horse_Inc_Core;
 
 var builder = WebApplication.CreateBuilder(args);
