@@ -13,7 +13,7 @@ namespace White_Horse_Inc_Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20250131162439_init")]
-    partial class init
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

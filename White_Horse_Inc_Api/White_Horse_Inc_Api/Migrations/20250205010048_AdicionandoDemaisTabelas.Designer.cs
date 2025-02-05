@@ -13,7 +13,7 @@ namespace White_Horse_Inc_Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20250205010048_adicionando demais tabelas")]
-    partial class adicionandodemaistabelas
+    partial class AdicionandoDemaisTabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -81,7 +81,8 @@ namespace White_Horse_Inc_Api.Commom
 
         public static void AddMethodsInfrastructure(this WebApplicationBuilder builder) 
         {
-            builder.Services.AddScoped<ICompanyRoleRepository, CompanyRoleRepository>();
+            builder.Services.AddTransient<ICompanyRoleRepository, CompanyRoleRepository>();
+            builder.Services.AddTransient<IUserAddressRepository, UserAddressRepository>();
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace White_Horse_Inc_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class adicionandodemaistabelas : Migration
+    public partial class AdicionandoDemaisTabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

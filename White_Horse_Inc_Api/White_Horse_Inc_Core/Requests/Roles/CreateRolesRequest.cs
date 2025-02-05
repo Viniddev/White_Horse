@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace White_Horse_Inc_Core.Requests.Roles
 {
-    public class CreateRolesRequest
+    public class CreateRoleRequest
     {
         [Required(ErrorMessage = "Name Isn't a optional parameter")]
         public string Name { get; set; } = string.Empty;

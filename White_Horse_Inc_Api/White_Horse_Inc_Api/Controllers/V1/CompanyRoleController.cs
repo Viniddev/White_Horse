@@ -11,8 +11,8 @@ namespace White_Horse_Inc_Api.Controllers.V1
     [Route("V1")]
     public class CompanyRoleController(ICompanyRoleRepository companyRoleRepository) : ControllerBase
     {
-        [HttpPost]
-        [Route("GetAll")]
+        [HttpPut]
+        [Route("GetAllRoles")]
         public async Task<IActionResult> GetAllRolesAsync(PagedRequest pagedRequest,CancellationToken cancellationToken)
         {
             try
@@ -21,14 +21,14 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 return Ok(response);
             }
-            catch (Exception ex) 
+            catch 
             {
                 return BadRequest(new PagedResponse<List<CompanyRole?>>(null, 500, "Couldn't find any item or a bad request happened."));
             }
         }
 
         [HttpPut]
-        [Route("GetById/{Id}")]
+        [Route("GetRolesById/{Id}")]
         public async Task<IActionResult> GetRolesByIdAsync([FromRoute] int Id, CancellationToken cancellationToken)
         {
             try
@@ -37,7 +37,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 500, "Couldn't find any item or a bad request happened."));
             }
@@ -45,7 +45,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
         [HttpPost]
         [Route("CreateRole")]
-        public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRolesRequest createRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest createRequest, CancellationToken cancellationToken)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 var response = await companyRoleRepository.CreateAsync(newRole, cancellationToken);
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 500, "Couldn't find any item or a bad request happened."));
             }
@@ -91,7 +91,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 400, "Couldn't find any item or a bad request happened."));
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 500, "Couldn't find any item or a bad request happened."));
             }
@@ -99,12 +99,12 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
         [HttpDelete]
         [Route("DeleteRole")]
-        public async Task<IActionResult> DeleteRoleAsync([FromBody] DeleteRoleRequest updateRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteRoleAsync([FromBody] DeleteAddressRequest deleteRequest, CancellationToken cancellationToken)
         {
             try
             {
                 var ListRoles = await companyRoleRepository.GetAllAsync(cancellationToken);
-                var RoleToDisable = ListRoles.Data?.FirstOrDefault(x => x.Id == updateRequest.Id);
+                var RoleToDisable = ListRoles.Data?.FirstOrDefault(x => x.Id == deleteRequest.Id);
 
                 if (RoleToDisable is not null)
                 {
@@ -116,7 +116,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 400, "This item has already been registered in the system."));
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 500, "Couldn't find any item or a bad request happened."));
             }
