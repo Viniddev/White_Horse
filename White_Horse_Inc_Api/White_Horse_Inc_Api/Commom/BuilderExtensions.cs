@@ -55,8 +55,7 @@ namespace White_Horse_Inc_Api.Commom
 
         public static void AddEndpointInfrastructure(this WebApplicationBuilder builder)
         {
-            var jwtKey = builder.Configuration["JwtKey"] ?? throw new InvalidOperationException("Chave JWT não configurada.");
-            var appKey = Encoding.ASCII.GetBytes(jwtKey);
+            var appKey = Encoding.ASCII.GetBytes(Configuration.JwtKey);
 
             // Configuração de autenticação com JWT
             builder.Services.AddAuthentication(options =>

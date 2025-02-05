@@ -10,7 +10,7 @@ namespace White_Horse_Inc_Api.Data.RepositoryMethods
 {
     public class TokenService
     {
-        public string GenerateToken(UserInformations user)
+        public string GenerateToken(UserInformations user, IConfiguration configuration)
         {
             //aqui instanciamos um objeto jwt para manipulação do token e retemos o codigo
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -32,8 +32,8 @@ namespace White_Horse_Inc_Api.Data.RepositoryMethods
 
             //aqui ocorre a definição do token jwt para utilização
             var token = new JwtSecurityToken(
-                issuer: "Dev_Vinicius",
-                audience: "http://localhost",
+                issuer: configuration["Jwt:Issuer"],
+                audience: configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(8),
                 signingCredentials: creds

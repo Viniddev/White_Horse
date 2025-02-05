@@ -9,7 +9,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 {
     [ApiController]
     [Route("v1")]
-    public class Authentication : ControllerBase
+    public class Authentication(IConfiguration configuration) : ControllerBase
     {
         [HttpPost]
         [Route("login")]
@@ -26,7 +26,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 return NotFound("não existe o usuário no banco de dados, camarada");
 
             TokenService tokenService = new TokenService();
-            var token = tokenService.GenerateToken(userInDatabase);
+            var token = tokenService.GenerateToken(userInDatabase, configuration);
 
             return Ok(
                 new
