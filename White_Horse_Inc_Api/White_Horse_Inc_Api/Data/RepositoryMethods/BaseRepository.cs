@@ -31,6 +31,16 @@ namespace White_Horse_Inc_Api.Data.RepositoryMethods
             await SaveChangesAsync(cancellationToken);
         }
 
+        public async Task<TModel> GetAsync(long id, CancellationToken cancellationToken)
+           => await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
+
+        public async Task DeleteAsync(long id, CancellationToken cancellationToken)
+        {
+            var model = await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
+            _dbSet.Remove(model);
+            await SaveChangesAsync(cancellationToken);
+        }
+
         protected async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             try
@@ -46,16 +56,6 @@ namespace White_Horse_Inc_Api.Data.RepositoryMethods
             {
                 await context.Database.CloseConnectionAsync();
             }
-        }
-
-        public async Task<TModel> GetAsync(long id, CancellationToken cancellationToken)
-            => await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
-
-        public async Task DeleteAsync(long id, CancellationToken cancellationToken)
-        {
-            var model = await _dbSet.SingleAsync(w => w.Id == id, cancellationToken);
-            _dbSet.Remove(model);
-            await SaveChangesAsync(cancellationToken);
         }
     }
 }
