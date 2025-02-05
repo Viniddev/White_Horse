@@ -4,6 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using White_Horse_Inc_Api.Data;
 using White_Horse_Inc_Api.Data.RepositoryMethods;
+using White_Horse_Inc_Api.Implementations.Interfaces;
+using White_Horse_Inc_Api.Implementations.Repositories;
 using White_Horse_Inc_Core;
 using White_Horse_Inc_Core.Interfaces;
 using White_Horse_Inc_Core.Models;
@@ -76,20 +78,11 @@ namespace White_Horse_Inc_Api.Commom
                     ValidAudience = builder.Configuration["Jwt:Audience"]
                 };
             });
+        }
 
-
-            builder.Services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Swagger",
-                    policy => policy.RequireAssertion(context =>
-                        context.Resource?.ToString()?.Contains("/swagger") == true ||
-                        context.Resource?.ToString()?.Contains("/swagger/v1/swagger.json") == true
-                    )
-                );
-            });
-
-            builder.Services.AddScoped<IBaseRepository<CompanyRole>, BaseRepository<CompanyRole>>();
-
+        public static void AddMethodsInfrastructure(this WebApplicationBuilder builder) 
+        {
+            builder.Services.AddScoped<ICompanyRoleRepository, CompanyRoleRepository>();
         }
     }
 }

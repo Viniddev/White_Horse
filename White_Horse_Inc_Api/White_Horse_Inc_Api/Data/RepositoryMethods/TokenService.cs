@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using White_Horse_Inc_Core;
-using White_Horse_Inc_Core.Requests.Authentication;
+using White_Horse_Inc_Core.Models;
 
 namespace White_Horse_Inc_Api.Data.RepositoryMethods
 {
