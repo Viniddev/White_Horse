@@ -9,9 +9,9 @@ namespace White_Horse_Inc_Core.Models.Base
     public class BaseEntity
     {
         public long Id { get; init; }
-        public DateTime CreationDate { get; init; }
+        public DateTime CreationDate { get; init; } = DateTime.Now;
         public DateTime? UpdateDate { get; private set; }
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; private set; } = true;
 
         public void UpdateValues()
         {

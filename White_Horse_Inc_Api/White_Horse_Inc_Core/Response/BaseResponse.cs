@@ -8,7 +8,6 @@ namespace White_Horse_Inc_Core.Response
         private readonly int _StatusCode;
         //TData é um tipo generico que é atribuido sempre que instanciamos o BaseResponse
         public TData? Data { get; set; }
-
         public string? Message { get; set; } = string.Empty;
 
         [JsonIgnore]

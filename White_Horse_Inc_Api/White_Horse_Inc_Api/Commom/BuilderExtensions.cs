@@ -18,9 +18,9 @@ namespace White_Horse_Inc_Api.Commom
         {
             //pega a connection string default
             Configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
-            Configuration.FrontEndUrl = builder.Configuration.GetConnectionString("FrontEndUrl") ?? string.Empty;
-            Configuration.BackEndUrl = builder.Configuration.GetConnectionString("BackEndUrl") ?? string.Empty;
-            Configuration.JwtKey = builder.Configuration.GetConnectionString("JwtKey") ?? string.Empty;
+            Configuration.FrontEndUrl = builder.Configuration["FrontEndUrl"]?? string.Empty;
+            Configuration.BackEndUrl = builder.Configuration["BackEndUrl"] ?? string.Empty;
+            Configuration.JwtKey = builder.Configuration["JwtKey"] ?? string.Empty;
         }
 
         public static void AddDocumentation(this WebApplicationBuilder builder)
