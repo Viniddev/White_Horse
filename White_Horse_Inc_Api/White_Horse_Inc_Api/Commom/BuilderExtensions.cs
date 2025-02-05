@@ -78,20 +78,11 @@ namespace White_Horse_Inc_Api.Commom
                     ValidAudience = builder.Configuration["Jwt:Audience"]
                 };
             });
+        }
 
-
-            builder.Services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Swagger",
-                    policy => policy.RequireAssertion(context =>
-                        context.Resource?.ToString()?.Contains("/swagger") == true ||
-                        context.Resource?.ToString()?.Contains("/swagger/v1/swagger.json") == true
-                    )
-                );
-            });
-
+        public static void AddMethodsInfrastructure(this WebApplicationBuilder builder) 
+        {
             builder.Services.AddScoped<ICompanyRoleRepository, CompanyRoleRepository>();
-
         }
     }
 }

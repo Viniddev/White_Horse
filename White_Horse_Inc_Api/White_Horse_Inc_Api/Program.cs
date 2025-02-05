@@ -13,6 +13,8 @@ builder.AddDataBaseContext();
 
 builder.AddEndpointInfrastructure();
 
+builder.AddMethodsInfrastructure();
+
 //--------------------------------------------------------------//
 
 var app = builder.Build();
