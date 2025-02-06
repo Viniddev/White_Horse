@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using White_Horse_Inc_Api.Implementations.Interfaces;
 using White_Horse_Inc_Core.Models;
 using White_Horse_Inc_Core.Requests;
@@ -7,6 +8,7 @@ using White_Horse_Inc_Core.Response;
 
 namespace White_Horse_Inc_Api.Controllers.V1
 {
+    [Authorize]
     [ApiController]
     [Route("V1")]
     public class UserAddressController(IUserAddressRepository userAddressRepository) : ControllerBase
