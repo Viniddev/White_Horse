@@ -83,6 +83,7 @@ namespace White_Horse_Inc_Api.Commom
         {
             builder.Services.AddTransient<ICompanyRoleRepository, CompanyRoleRepository>();
             builder.Services.AddTransient<IUserAddressRepository, UserAddressRepository>();
+            builder.Services.AddTransient<IUserInformationsRepository, UserInformationsRepository>();
         }
     }
 }

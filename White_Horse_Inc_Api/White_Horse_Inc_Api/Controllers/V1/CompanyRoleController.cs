@@ -11,6 +11,11 @@ namespace White_Horse_Inc_Api.Controllers.V1
     [Route("V1")]
     public class CompanyRoleController(ICompanyRoleRepository companyRoleRepository) : ControllerBase
     {
+
+        /// <summary>
+        /// Obtém uma lista paginada de todas as roles da empresa.
+        /// </summary>
+        /// <returns>Retorna uma lista paginada de roles ou uma mensagem de erro.</returns>
         [HttpPut]
         [Route("GetAllRoles")]
         public async Task<IActionResult> GetAllRolesAsync(PagedRequest pagedRequest,CancellationToken cancellationToken)
@@ -27,6 +32,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Obtém uma role específica pelo ID.
+        /// </summary>
+        /// <returns>Retorna a role correspondente ao ID fornecido.</returns>
         [HttpPut]
         [Route("GetRolesById/{Id}")]
         public async Task<IActionResult> GetRolesByIdAsync([FromRoute] int Id, CancellationToken cancellationToken)
@@ -43,6 +52,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Cria uma nova role.
+        /// </summary>
+        /// <returns>Retorna a role criada ou uma mensagem de erro.</returns>
         [HttpPost]
         [Route("CreateRole")]
         public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest createRequest, CancellationToken cancellationToken)
@@ -71,6 +84,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Atualiza uma role existente.
+        /// </summary>
+        /// <returns>Retorna a role atualizada ou uma mensagem de erro.</returns>
         [HttpPut]
         [Route("UpdateRoles")]
         public async Task<IActionResult> UpdateRolesAsync([FromBody] UpdateRolesRequest updateRequest, CancellationToken cancellationToken)
@@ -82,8 +99,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 if (RoleToUpdate is not null)
                 {
-                    RoleToUpdate.Name = updateRequest.Name;
-                    RoleToUpdate.Description = updateRequest.Description;
+                    RoleToUpdate.Update(updateRequest);
 
                     var response = await companyRoleRepository.UpdateAsync(RoleToUpdate, cancellationToken);
                     return Ok(response);
@@ -97,6 +113,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Exclui uma role pelo ID.
+        /// </summary>
+        /// <returns>Retorna a role desativada ou uma mensagem de erro.</returns>
         [HttpDelete]
         [Route("DeleteRole")]
         public async Task<IActionResult> DeleteRoleAsync([FromBody] DeleteAddressRequest deleteRequest, CancellationToken cancellationToken)

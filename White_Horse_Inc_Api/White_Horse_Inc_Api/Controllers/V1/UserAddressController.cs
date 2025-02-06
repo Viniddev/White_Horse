@@ -11,6 +11,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
     [Route("V1")]
     public class UserAddressController(IUserAddressRepository userAddressRepository) : ControllerBase
     {
+        /// <summary>
+        /// Obtém uma lista paginada de todos os endereços dos usuários.
+        /// </summary>
+        /// <returns>Retorna uma lista paginada de endereços ou uma mensagem de erro.</returns>
         [HttpPut]
         [Route("GetAllAddress")]
         public async Task<IActionResult> GetAllAddressAsync(PagedRequest pagedRequest,CancellationToken cancellationToken)
@@ -27,6 +31,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Obtém um endereço pelo ID.
+        /// </summary>
+        /// <returns>Retorna o endereço correspondente ou uma mensagem de erro.</returns>
         [HttpPut]
         [Route("GetAddressById/{Id}")]
         public async Task<IActionResult> GetAddressByIdAsync([FromRoute] int Id, CancellationToken cancellationToken)
@@ -43,6 +51,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Cria um novo endereço.
+        /// </summary>
+        /// <returns>Retorna o endereço criado ou uma mensagem de erro.</returns>
         [HttpPost]
         [Route("CreateAddress")]
         public async Task<IActionResult> CreateAddressAsync([FromBody] CreateAddressRequest createRequest, CancellationToken cancellationToken)
@@ -74,6 +86,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Atualiza um endereço existente.
+        /// </summary>
+        /// <returns>Retorna o endereço atualizado ou uma mensagem de erro.</returns>
         [HttpPut]
         [Route("UpdateAddress")]
         public async Task<IActionResult> UpdateAddressAsync([FromBody] UpdateAddressRequest updateRequest, CancellationToken cancellationToken)
@@ -85,11 +101,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 if (RoleToUpdate is not null)
                 {
-                    RoleToUpdate.Cep = updateRequest.Cep;
-                    RoleToUpdate.City = updateRequest.City;
-                    RoleToUpdate.Neighborhood = updateRequest.Neighborhood;
-                    RoleToUpdate.Street = updateRequest.Street;
-                    RoleToUpdate.Number = updateRequest.Number;
+                    RoleToUpdate.Update(updateRequest);
 
                     var response = await userAddressRepository.UpdateAsync(RoleToUpdate, cancellationToken);
                     return Ok(response);
@@ -103,6 +115,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
             }
         }
 
+        /// <summary>
+        /// Exclui um endereço.
+        /// </summary>
+        /// <returns>Retorna a confirmação da exclusão ou uma mensagem de erro.</returns>
         [HttpDelete]
         [Route("DeleteAddress")]
         public async Task<IActionResult> DeleteAddressAsync([FromBody] DeleteAddressRequest deleteRequest, CancellationToken cancellationToken)

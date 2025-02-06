@@ -25,4 +25,9 @@
     <ProjectReference Include="..\White_Horse_Inc_Core\White_Horse_Inc_Core.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
 </Project>

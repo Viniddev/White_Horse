@@ -1,4 +1,9 @@
-﻿using White_Horse_Inc_Core.Models.Base;
+﻿using System.IO;
+using System.Runtime.ConstrainedExecution;
+using White_Horse_Inc_Core.Models.Base;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using White_Horse_Inc_Core.Requests.Roles;
+using White_Horse_Inc_Core.Requests.UserInformations;
 
 namespace White_Horse_Inc_Core.Models
 {
@@ -19,5 +24,24 @@ namespace White_Horse_Inc_Core.Models
         public long AddressId { get; set; }
         public UserAddress Address { get; set; } = null!;
 
+
+        public void Update(UpdateUserInformations userInformations)
+        {
+            if (userInformations != null)
+            {
+                Name = userInformations.Name;
+                Cpf = userInformations.Cpf;
+                Rg = userInformations.Rg;
+                Email = userInformations.Email;
+                Password = userInformations.Password;
+                PhoneNumber = userInformations.PhoneNumber;
+                CompanyRoleId = userInformations.CompanyRoleId;
+                AddressId = userInformations.AddressId;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(userInformations));
+            }
+        }
     }
 }

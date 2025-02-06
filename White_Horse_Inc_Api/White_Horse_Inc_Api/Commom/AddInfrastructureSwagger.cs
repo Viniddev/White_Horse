@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿    using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace White_Horse_Inc_Api.Commom
 {
@@ -8,6 +9,10 @@ namespace White_Horse_Inc_Api.Commom
         {
             services.AddSwaggerGen(c =>
             {
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+
+                c.IncludeXmlComments(xmlPath);
 
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
