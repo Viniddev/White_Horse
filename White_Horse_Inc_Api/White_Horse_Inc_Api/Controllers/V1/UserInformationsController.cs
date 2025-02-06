@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using White_Horse_Inc_Api.Implementations.Interfaces;
-using White_Horse_Inc_Api.Implementations.Repositories;
+using White_Horse_Inc_Api.Implementations.Repository.Interfaces;
 using White_Horse_Inc_Core.Models;
 using White_Horse_Inc_Core.Requests;
-using White_Horse_Inc_Core.Requests.Authentication;
-using White_Horse_Inc_Core.Requests.Roles;
 using White_Horse_Inc_Core.Requests.UserInformations;
 using White_Horse_Inc_Core.Response;
 

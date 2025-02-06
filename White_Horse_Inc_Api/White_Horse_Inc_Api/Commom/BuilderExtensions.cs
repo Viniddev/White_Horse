@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using White_Horse_Inc_Api.Data;
-using White_Horse_Inc_Api.Data.RepositoryMethods;
-using White_Horse_Inc_Api.Implementations.Interfaces;
-using White_Horse_Inc_Api.Implementations.Repositories;
+using White_Horse_Inc_Api.Implementations.Repository.Interfaces;
+using White_Horse_Inc_Api.Implementations.Repository.Repositories;
+using White_Horse_Inc_Api.Implementations.Services;
 using White_Horse_Inc_Core;
-using White_Horse_Inc_Core.Interfaces;
-using White_Horse_Inc_Core.Models;
 
 namespace White_Horse_Inc_Api.Commom
 {
@@ -84,6 +82,8 @@ namespace White_Horse_Inc_Api.Commom
             builder.Services.AddTransient<ICompanyRoleRepository, CompanyRoleRepository>();
             builder.Services.AddTransient<IUserAddressRepository, UserAddressRepository>();
             builder.Services.AddTransient<IUserInformationsRepository, UserInformationsRepository>();
+
+            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
         }
     }
 }
