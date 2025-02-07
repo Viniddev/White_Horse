@@ -16,7 +16,7 @@ namespace White_Horse_Inc_Api.Commom
 
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "API",
+                    Title = "White Horse Inc",
                     Version = "v1"
                 });
 
