@@ -18,9 +18,8 @@ export async function fetchLoginInformations( login: string, senha: string ): Pr
     method: "PUT",
     headers: Headers,
     body: JSON.stringify({ Email: login, Password: senha }),
-  })
-  .catch(error => console.error("Erro:", error));
+  });
 
-  const data: any = await response;
+  const data: Promise<retornoLoginComToken> = await response.json();
   return data;
 }

@@ -3,7 +3,14 @@ export interface retornoLogin {
   sendToken: boolean;
 }
 
-export interface retornoLoginComToken {
-  message: string;
-  token: string;
+export interface Data {
+  UserName: string;
+  Email: string;
+  Token: string;
 }
+
+export interface retornoLoginComToken {
+  data: Data;
+  message: string;
+}
+
