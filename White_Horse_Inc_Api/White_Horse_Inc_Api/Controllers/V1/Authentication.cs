@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using White_Horse_Inc_Api.Implementations.Services;
 using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.ModelTransform;
 using White_Horse_Inc_Core.Requests.Authentication;
 using White_Horse_Inc_Core.Response;
 using White_Horse_Inc_Core.Response.Authentication;
+using White_Horse_Inc_Core.Response.Dtos;
 
 namespace White_Horse_Inc_Api.Controllers.V1
 {
