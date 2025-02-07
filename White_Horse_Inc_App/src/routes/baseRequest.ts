@@ -1,42 +1,26 @@
 import { retornoLoginComToken } from "@/@types/resp";
 import { LOGIN } from "@/utils/backEndUrls/urls";
 
+const token =
+  typeof window !== "undefined" ? sessionStorage.getItem("key") : null;
 
-
-const token: string | null =
-  typeof window !== "undefined" ? localStorage.getItem("key") : null;
-
-
-const Headers = {
+const Headers: Record<string, string> = {
   "Content-Type": "application/json",
-  Autorization: `Bearer ${token}`,
 };
 
+if (token) {
+  Headers["Authorization"] = `Bearer ${token}`;
+}
 
-export async function fetchLoginInformations(
-  login: string,
-  senha: string,
-  token: string | number | undefined
-): Promise<retornoLoginComToken> {
-  if (token == "") {
+export async function fetchLoginInformations( login: string, senha: string ): Promise<retornoLoginComToken> {
 
-    var response: any = await fetch(LOGIN, {
-      method: "POST",
-      headers: Headers,
-      body: JSON.stringify({ login: login, password: senha }),
-    });
+  var response: any = await fetch(LOGIN, {
+    method: "PUT",
+    headers: Headers,
+    body: JSON.stringify({ Email: login, Password: senha }),
+  })
+  .catch(error => console.error("Erro:", error));
 
-  } else {
-
-    var response: any = await fetch(LOGIN, {
-      method: "POST",
-      headers: Headers,
-      body: JSON.stringify({ login: login, password: senha, token: token }),
-    });
-    
-  }
-
-  const data: retornoLoginComToken = await response.json();
-  console.log(data);
+  const data: any = await response;
   return data;
 }

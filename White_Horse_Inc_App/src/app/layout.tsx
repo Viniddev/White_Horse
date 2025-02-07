@@ -10,7 +10,7 @@ import React from "react";
 
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
-import { AppWrapper } from "@/routes/context";
+import { AppWrapper } from "@/pages/context";
 
 export const metadata: Metadata = {
   title: "White Horse Inc.",
