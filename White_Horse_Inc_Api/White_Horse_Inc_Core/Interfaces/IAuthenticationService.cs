@@ -7,7 +7,7 @@ namespace White_Horse_Inc_Api.Implementations.Services
 {
     public interface IAuthenticationService
     {
-        Task<LoginResponse> LoginService(Login loginInformations, CancellationToken cancellationToken);
+        Task<BaseResponse<LoginResponse>> LoginService(Login loginInformations, CancellationToken cancellationToken);
         Task<BaseResponse<UserInformations>> RegisterService(RegisterInformation registryInformation, CancellationToken cancellationToken);
     }
 }

@@ -9,7 +9,7 @@ namespace White_Horse_Inc_Api.Implementations.Services
 {
     public class AuthenticationService(IUserInformationsRepository userInformationsRepository, IUserAddressRepository userAddressRepository, IConfiguration configuration) : IAuthenticationService
     {
-        public async Task<LoginResponse> LoginService(Login loginInformations, CancellationToken cancellationToken)
+        public async Task<BaseResponse<LoginResponse>> LoginService(Login loginInformations, CancellationToken cancellationToken)
         {
             var ListUsers = await userInformationsRepository.GetAllAsync(cancellationToken);
 
@@ -24,12 +24,14 @@ namespace White_Horse_Inc_Api.Implementations.Services
             TokenService tokenService = new TokenService();
             var token = tokenService.GenerateToken(User, configuration);
 
-            return new LoginResponse()
+            var NewLogin = new LoginResponse()
             {
                 Token = token,
                 UserName = User.Name,
                 Email = User.Email,
             };
+
+            return new BaseResponse<LoginResponse>(NewLogin, 200, "Success.");
         }
 
         public async Task<BaseResponse<UserInformations>> RegisterService(RegisterInformation registryInformation, CancellationToken cancellationToken)

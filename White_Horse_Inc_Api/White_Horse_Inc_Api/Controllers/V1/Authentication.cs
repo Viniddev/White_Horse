@@ -20,7 +20,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 if (!ModelState.IsValid)
                     return BadRequest(new BaseResponse<UserInformations?>(null, 500, "Parameters not valid."));
 
-                LoginResponse retorno = await _authenticationService.LoginService(loginInformations, cancellationToken);
+                BaseResponse<LoginResponse> retorno = await _authenticationService.LoginService(loginInformations, cancellationToken);
 
                 return Ok(retorno);
             }
