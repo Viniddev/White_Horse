@@ -10,6 +10,7 @@ import InputCep from "../inputs/inputCep";
 export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
   
   const [userInformations, setUserInformations] = React.useState<UserInformations>(DefaultUserInformations);
+  const [IsInvalid, setIsInvalid] = React.useState<boolean>(false);
 
   return (
     <div>
@@ -27,6 +28,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
                 }
                 label={"Nome"}
                 required={IsRegister ? true : false}
+                invalid={IsInvalid}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -41,6 +43,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
                 mask="999.999.999-99"
                 label={"Cpf"}
                 required={IsRegister ? true : false}
+                invalid={IsInvalid}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -55,6 +58,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
                 mask="99.999.999"
                 label={"Rg"}
                 required={IsRegister ? true : false}
+                invalid={IsInvalid}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -68,6 +72,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
                 }
                 label={"Cargo"}
                 required={IsRegister ? true : false}
+                invalid={IsInvalid}
               />
             </div>
           </>
@@ -85,6 +90,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             }
             label={"E-mail"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -99,6 +105,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             mask="(99) 99999-9999"
             label={"Telefone"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -108,6 +115,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             mask="99999-999"
             label={"Cep"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -124,6 +132,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             }
             label={"Rua"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
 
@@ -141,6 +150,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             }
             label={"Bairro"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -157,6 +167,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             }
             label={"Número"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
 
@@ -174,15 +185,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             }
             label={"Cidade"}
             required={true}
+            invalid={IsInvalid}
           />
         </div>
 
         <div className="field col-12">
           <div className="sessaoBotaoSalvar">
-            <Button
-              label="Atualizar"
-              severity="danger"
-            />
+            <Button label="Atualizar" severity="danger" />
           </div>
         </div>
       </div>

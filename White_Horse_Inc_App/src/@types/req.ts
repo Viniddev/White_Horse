@@ -15,3 +15,8 @@ export interface Endereco {
   cidade: string;
   numero: number;
 }
+
+export interface LoginReq{
+  Email: string;
+  Password: string;
+}

@@ -3,19 +3,19 @@ import { InputText } from "primereact/inputtext";
 import "../../styles/globals.scss";
 import { BuildInputText } from "@/@types/components";
 
-export default function InputTypeText({ state, setState, label, required, invalid }: BuildInputText) {
+export default function InputTypeText(Prop: BuildInputText) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
         <label htmlFor="username" style={{ fontWeight: "500" }}>
-          {label}
+          {Prop.label}
         </label>
         <InputText
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          id={`input_${label}`}
-          required={required}
-          invalid={invalid}
+          value={Prop.state}
+          onChange={(e) => Prop.setState(e.target.value)}
+          id={`input_${Prop.label}`}
+          required={Prop.required}
+          invalid={Prop.invalid}
         />
       </div>
     </div>

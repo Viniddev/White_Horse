@@ -1,9 +1,7 @@
 "use client";
 import "./profile.scss";
 import "../../styles/globals.scss";
-import InputTypeText from "@/components/inputs/inputTypeText";
 import React from "react";
-import { Button } from "primereact/button";
 import FormPadrao from "@/components/formPadraoUsuario/form";
 import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
 import { EMPTY_USER } from "@/utils/constants/consts";

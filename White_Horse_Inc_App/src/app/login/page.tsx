@@ -10,26 +10,23 @@ import Link from "next/link";
 import { CADASTRO, PROFILE } from "@/utils/frontEndUrls/urls";
 import { fetchLoginInformations } from "@/routes/baseRequest";
 import { retornoLoginComToken } from "@/@types/resp";
+import { LoginReq } from "@/@types/req";
 import { Toast } from "primereact/toast";
 
 export default function Login() {
   const toast = useRef<Toast>(null);
-  const [login, setLogin] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [loginInformations, setLoginInformations] = useState<LoginReq>({Email:"", Password:""});
   const [Isloading, setIsLoading] = useState<boolean>(false);
   const [IsInvalid, setIsInvalid] = useState<boolean>(false);
 
   async function FetchLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (login !== "" && password !== "") {
+    if (loginInformations.Email !== "" && loginInformations.Password !== "") {
       setIsInvalid(false);
       setIsLoading(true);
 
-      const retorno: retornoLoginComToken = await fetchLoginInformations(
-        login,
-        password
-      );
+      const retorno: retornoLoginComToken = await fetchLoginInformations(loginInformations);
 
       toast?.current?.show({
         severity: retorno.data ? "info" : "error",
@@ -42,8 +39,7 @@ export default function Login() {
         sessionStorage.setItem("Token", retorno.data.token);
         window.location.href = PROFILE;
       } else {
-        setLogin("");
-        setPassword("");
+        setLoginInformations({ Email: "", Password: "" });
         setIsInvalid(true);
       }
 
@@ -65,17 +61,27 @@ export default function Login() {
         <div className="secaoFormLogin flexColumn">
           <form className="formLogin flexColumn" onSubmit={FetchLogin}>
             <InputTypeText
-              state={login}
-              setState={setLogin}
-              label="User"
-              required={false}
+              state={loginInformations.Email}
+              setState={(newValue) =>
+                setLoginInformations((prevState) => ({
+                  ...prevState,
+                  Email: newValue,
+                }))
+              }
+              label="Email"
+              required={true}
               invalid={IsInvalid}
             />
             <InputTypePassword
-              state={password}
-              setState={setPassword}
-              label="password"
-              required={false}
+              state={loginInformations.Password}
+              setState={(newValue) =>
+                setLoginInformations((prevState) => ({
+                  ...prevState,
+                  Password: newValue,
+                }))
+              }
+              label="Password"
+              required={true}
               invalid={IsInvalid}
             />
 

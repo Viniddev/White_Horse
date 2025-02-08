@@ -32,6 +32,7 @@ export default function Main() {
                 }
                 label={"Nome do curso:"}
                 required={false}
+                invalid={false}
               />
             </div>
             <div className="field col-12 lg:col-4">

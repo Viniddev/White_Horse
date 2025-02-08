@@ -26,6 +26,7 @@ export interface BuildInputNumber {
   setState: (value: number) => void;
   label: string;
   required: boolean;
+  invalid: boolean;
 }
 
 export interface BuildInputCep {
@@ -34,6 +35,7 @@ export interface BuildInputCep {
   label: string;
   required: boolean;
   mask: string;
+  invalid: boolean;
 }
 
 export interface SidebarToggle {
@@ -47,6 +49,7 @@ export interface BuildMaskInput {
   label: string;
   mask: string;
   required: boolean;
+  invalid: boolean;
 }
 
 export interface BuildDefaultForm {
@@ -74,4 +77,5 @@ export interface TopicOptions {
   state: Topico;
   setState: (value: Topico) => void;
   list: Array<Topico>;
+  invalid: boolean;
 }

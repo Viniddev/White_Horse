@@ -1,3 +1,4 @@
+import { LoginReq } from "@/@types/req";
 import { retornoLoginComToken } from "@/@types/resp";
 import { LOGIN } from "@/utils/backEndUrls/urls";
 
@@ -12,12 +13,12 @@ if (token) {
   Headers["Authorization"] = `Bearer ${token}`;
 }
 
-export async function fetchLoginInformations( login: string, senha: string ): Promise<retornoLoginComToken> {
+export async function fetchLoginInformations( loginInformations: LoginReq): Promise<retornoLoginComToken> {
 
   var response: any = await fetch(LOGIN, {
     method: "PUT",
     headers: Headers,
-    body: JSON.stringify({ Email: login, Password: senha }),
+    body: JSON.stringify(loginInformations),
   });
 
   const data: Promise<retornoLoginComToken> = await response.json();

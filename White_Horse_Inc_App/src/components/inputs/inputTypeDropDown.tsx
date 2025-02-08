@@ -19,6 +19,7 @@ export default function DropDown(Topicos: TopicOptions) {
           optionLabel="name"
           placeholder="Selecione um topico"
           className="w-full md:w-full"
+          invalid={Topicos.invalid}
         />
       </div>
     </div>

@@ -3,23 +3,23 @@ import { Password } from 'primereact/password';
 import { BuildInputText } from "@/@types/components";
 import "../../styles/globals.scss";
 
-export default function InputTypePassword({state,setState,label,required,invalid}: BuildInputText) {
+export default function InputTypePassword(Prop: BuildInputText) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
         <label htmlFor="username" style={{ fontWeight: "500" }}>
-          {label}
+          {Prop.label}
         </label>
         <Password
-          id={`input_${label}`}
-          required={required}
-          value={state}
+          id={`input_${Prop.label}`}
+          required={Prop.required}
+          value={Prop.state}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setState(e.target.value)
+            Prop.setState(e.target.value)
           }
           feedback={false}
           toggleMask
-          invalid={invalid}
+          invalid={Prop.invalid}
           className="w-full"
           pt={{
             iconField: {
