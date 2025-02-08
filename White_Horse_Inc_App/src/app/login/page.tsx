@@ -1,39 +1,51 @@
 "use client";
 import "./login.scss";
 import "../../styles/globals.scss";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import React from "react";
 import InputTypeText from "@/components/inputs/inputTypeText";
 import InputTypePassword from "@/components/inputs/inputTypePassword";
 import { Button } from "primereact/button";
 import Link from "next/link";
-import { CADASTRO } from "@/utils/frontEndUrls/urls";
+import { CADASTRO, PROFILE } from "@/utils/frontEndUrls/urls";
 import { fetchLoginInformations } from "@/routes/baseRequest";
 import { retornoLoginComToken } from "@/@types/resp";
 import { Toast } from "primereact/toast";
 
 export default function Login() {
   const toast = useRef<Toast>(null);
-  const [login, setLogin] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
-  const [Isloading, setIsLoading] = React.useState<boolean>(false);
+  const [login, setLogin] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [Isloading, setIsLoading] = useState<boolean>(false);
+  const [IsInvalid, setIsInvalid] = useState<boolean>(false);
 
   async function FetchLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (login != "" && password != "") {
+    if (login !== "" && password !== "") {
+      setIsInvalid(false);
       setIsLoading(true);
 
-      var retorno: retornoLoginComToken = await fetchLoginInformations(
+      const retorno: retornoLoginComToken = await fetchLoginInformations(
         login,
         password
       );
 
       toast?.current?.show({
-        severity: "info",
+        severity: retorno.data ? "info" : "error",
         summary: "Info",
         detail: retorno.message,
+        life: 3500,
       });
+
+      if (retorno.data) {
+        sessionStorage.setItem("Token", retorno.data.token);
+        window.location.href = PROFILE;
+      } else {
+        setLogin("");
+        setPassword("");
+        setIsInvalid(true);
+      }
 
       setIsLoading(false);
     }
@@ -55,15 +67,16 @@ export default function Login() {
             <InputTypeText
               state={login}
               setState={setLogin}
-              label={"User"}
+              label="User"
               required={false}
+              invalid={IsInvalid}
             />
-
             <InputTypePassword
               state={password}
               setState={setPassword}
-              label={"password"}
+              label="password"
               required={false}
+              invalid={IsInvalid}
             />
 
             <div className="sessaoEsqueciASenha">

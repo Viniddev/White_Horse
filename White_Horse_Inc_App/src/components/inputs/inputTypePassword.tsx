@@ -3,7 +3,7 @@ import { Password } from 'primereact/password';
 import { BuildInputText } from "@/@types/components";
 import "../../styles/globals.scss";
 
-export default function InputTypePassword({state,setState,label,required,}: BuildInputText) {
+export default function InputTypePassword({state,setState,label,required,invalid}: BuildInputText) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
@@ -19,6 +19,7 @@ export default function InputTypePassword({state,setState,label,required,}: Buil
           }
           feedback={false}
           toggleMask
+          invalid={invalid}
           className="w-full"
           pt={{
             iconField: {

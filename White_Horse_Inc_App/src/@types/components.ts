@@ -18,6 +18,7 @@ export interface BuildInputText {
   setState: (value: string) => void;
   label: string;
   required: boolean;
+  invalid: boolean;
 }
 
 export interface BuildInputNumber {

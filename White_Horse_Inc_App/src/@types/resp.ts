@@ -4,9 +4,9 @@ export interface retornoLogin {
 }
 
 export interface Data {
-  UserName: string;
-  Email: string;
-  Token: string;
+  userName: string;
+  email: string;
+  token: string;
 }
 
 export interface retornoLoginComToken {
