@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using White_Horse_Inc_Api.Implementations.Repository.Interfaces;
 using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.ModelTransform;
 using White_Horse_Inc_Core.Requests;
 using White_Horse_Inc_Core.Requests.UserInformations;
 using White_Horse_Inc_Core.Response;
+using White_Horse_Inc_Core.Response.Dtos;
 
 namespace White_Horse_Inc_Api.Controllers.V1
 {
@@ -25,7 +27,14 @@ namespace White_Horse_Inc_Api.Controllers.V1
             {
                 var response = await userInformationsRepository.GetAllPagedAsync(pagedRequest, cancellationToken);
 
-                return Ok(response);
+                if (response.Data is null)
+                    return BadRequest("Coudn't register the user.");
+
+                return Ok(new BaseResponse<List<UserInformationResponse>>
+                {
+                    Data = response.Data.Select(x => ModelTransform.TransformUserInformation(x)).ToList(),
+                    Message = response.Message
+                });
             }
             catch
             {
@@ -45,7 +54,14 @@ namespace White_Horse_Inc_Api.Controllers.V1
             {
                 var response = await userInformationsRepository.GetByIdAsync(Id, cancellationToken);
 
-                return Ok(response);
+                if (response.Data is null)
+                    return BadRequest("Coudn't register the user.");
+
+                return Ok(new BaseResponse<UserInformationResponse>
+                {
+                    Data = ModelTransform.TransformUserInformation(response.Data),
+                    Message = response.Message
+                });
             }
             catch
             {
@@ -71,7 +87,15 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     UserToUpdate.Update(updateRequest);
 
                     var response = await userInformationsRepository.UpdateAsync(UserToUpdate, cancellationToken);
-                    return Ok(response);
+
+                    if (response.Data is null)
+                        return BadRequest("Coudn't register the user.");
+
+                    return Ok(new BaseResponse<UserInformationResponse>
+                    {
+                        Data = ModelTransform.TransformUserInformation(response.Data),
+                        Message = response.Message
+                    });
                 }
 
                 return BadRequest(new BaseResponse<UserAddress?>(null, 400, "Couldn't find any item or a bad request happened."));
@@ -100,7 +124,15 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     UserToDisable.DisableEntity();
 
                     var response = await userInformationsRepository.UpdateAsync(UserToDisable, cancellationToken);
-                    return Ok(response);
+
+                    if (response.Data is null)
+                        return BadRequest("Coudn't register the user.");
+
+                    return Ok(new BaseResponse<UserInformationResponse>
+                    {
+                        Data = ModelTransform.TransformUserInformation(response.Data),
+                        Message = response.Message
+                    });
                 }
 
                 return BadRequest(new BaseResponse<UserAddress?>(null, 400, "This item has already been registered in the system."));

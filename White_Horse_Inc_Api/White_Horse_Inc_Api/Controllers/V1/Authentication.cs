@@ -24,7 +24,10 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 BaseResponse<LoginResponse> retorno = await _authenticationService.LoginService(loginInformations, cancellationToken);
 
-                return Ok(retorno);
+                if (retorno.Data is not null)
+                    return Ok(retorno);
+                else
+                    return BadRequest(retorno);
             }
             catch (Exception ex) 
             {
@@ -41,9 +44,16 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 if (!ModelState.IsValid)
                     return BadRequest(new BaseResponse<UserInformations?>(null, 500, "Parameters not valid."));
 
-                BaseResponse<UserInformations> usuarioNovo = await _authenticationService.RegisterService(registryInformation, cancellationToken);
+                var usuarioNovo = await _authenticationService.RegisterService(registryInformation, cancellationToken);
 
-                return Ok(usuarioNovo);
+                if (usuarioNovo.Data is null)
+                    return BadRequest("Erro ao registrar usuário.");
+
+                return Ok(new BaseResponse<UserInformationResponse>
+                {
+                    Data = ModelTransform.TransformUserInformation(usuarioNovo.Data),
+                    Message = usuarioNovo.Message
+                });
             }
             catch (Exception ex)
             {

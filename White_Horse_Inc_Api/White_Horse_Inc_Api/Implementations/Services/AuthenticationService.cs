@@ -14,12 +14,12 @@ namespace White_Horse_Inc_Api.Implementations.Services
             var ListUsers = await userInformationsRepository.GetAllAsync(cancellationToken);
 
             if (ListUsers.TotalCount == 0)
-                throw new ArgumentException("There are no users in the database.");
+                return new BaseResponse<LoginResponse>(null, 404, "There are no users in the database.");
 
             var User = ListUsers.Data?.FirstOrDefault(u => u.Email == loginInformations.Email && BCrypt.Net.BCrypt.Verify(loginInformations.Password, u.Password));
 
             if (User is null)
-                throw new ArgumentException("Couldn't find any item or a bad request happened.");
+                return new BaseResponse<LoginResponse>(null, 404, "User or password incorrect.");
 
             TokenService tokenService = new TokenService();
             var token = tokenService.GenerateToken(User, configuration);

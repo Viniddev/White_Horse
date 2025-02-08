@@ -1,9 +1,5 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using White_Horse_Inc_Api.Data;
+﻿using Microsoft.EntityFrameworkCore;
 using White_Horse_Inc_Core.Interfaces;
-using White_Horse_Inc_Core.Models;
 using White_Horse_Inc_Core.Models.Base;
 using White_Horse_Inc_Core.Requests;
 using White_Horse_Inc_Core.Response;
@@ -44,7 +40,7 @@ namespace White_Horse_Inc_Api.Data.RepositoryMethods
             await _dbSet.AddAsync(model, cancellationToken: cancellationToken);
             await SaveChangesAsync(cancellationToken);
 
-            return new BaseResponse<TModel>(model, 200, "Success.");
+            return new BaseResponse<TModel>(model, 201, "Success.");
         }
 
         public async Task<BaseResponse<TModel>> UpdateAsync(TModel model, CancellationToken cancellationToken)

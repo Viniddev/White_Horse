@@ -20,8 +20,8 @@ namespace White_Horse_Inc_Core.ModelTransform
                 Email = response.Email,
                 Name = response.Name,
                 PhoneNumber = response.PhoneNumber,
-                AddressResponse = AddressTransformation(response.Address),
-                Role = RolesTransformation(response.CompanyRole)
+                AddressResponseId = response.AddressId,
+                RoleId = response.CompanyRoleId
             };
 
             return userInformations;

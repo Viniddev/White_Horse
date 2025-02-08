@@ -17,8 +17,8 @@ namespace White_Horse_Inc_Core.Response.Dtos
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
 
-        public RoleResponse Role { get; set; } = null!;
-        public AddressResponse AddressResponse { get; set; } = null!;
+        public long RoleId { get; set; }
+        public long AddressResponseId { get; set; }
 
     }
 }

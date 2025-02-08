@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using White_Horse_Inc_Api.Implementations.Repository.Interfaces;
 using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.ModelTransform;
 using White_Horse_Inc_Core.Requests;
 using White_Horse_Inc_Core.Requests.Roles;
 using White_Horse_Inc_Core.Response;
+using White_Horse_Inc_Core.Response.Dtos;
 
 namespace White_Horse_Inc_Api.Controllers.V1
 {
@@ -26,7 +28,15 @@ namespace White_Horse_Inc_Api.Controllers.V1
             {
                 var response = await companyRoleRepository.GetAllPagedAsync(pagedRequest, cancellationToken);
 
-                return Ok(response);
+                if (response.Data is null)
+                    return BadRequest("Coudn't register the user.");
+
+
+                return Ok(new BaseResponse<List<RoleResponse>>
+                {
+                    Data = response.Data.Select(x=> ModelTransform.RolesTransformation(x)).ToList(),
+                    Message = response.Message
+                });
             }
             catch 
             {
@@ -46,7 +56,14 @@ namespace White_Horse_Inc_Api.Controllers.V1
             {
                 var response = await companyRoleRepository.GetByIdAsync(Id, cancellationToken);
 
-                return Ok(response);
+                if (response.Data is null)
+                    return NotFound(new BaseResponse<RoleResponse?>(null, 404, "Role not found."));
+
+                return Ok(new BaseResponse<RoleResponse>
+                {
+                    Data = ModelTransform.RolesTransformation(response.Data),
+                    Message = response.Message
+                });
             }
             catch
             {
@@ -74,11 +91,19 @@ namespace White_Horse_Inc_Api.Controllers.V1
 
                 if (Roles.Data?.FirstOrDefault(x => x.Name == newRole.Name && x.Description == newRole.Description) is not null) 
                 {
-                    return BadRequest(new BaseResponse<CompanyRole?>(null, 400, "This item has already been registered in the system."));
+                    return BadRequest(new BaseResponse<RoleResponse?>(null, 400, "This item has already been registered in the system."));
                 }
 
                 var response = await companyRoleRepository.CreateAsync(newRole, cancellationToken);
-                return Ok(response);
+
+                if (response.Data is null)
+                    return NotFound(new BaseResponse<RoleResponse?>(null, 404, "Couldn't create the item."));
+
+                return Ok(new BaseResponse<RoleResponse>
+                {
+                    Data = ModelTransform.RolesTransformation(response.Data),
+                    Message = response.Message,
+                });
             }
             catch
             {
@@ -104,7 +129,15 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     RoleToUpdate.Update(updateRequest);
 
                     var response = await companyRoleRepository.UpdateAsync(RoleToUpdate, cancellationToken);
-                    return Ok(response);
+
+                    if (response.Data is null)
+                        return NotFound(new BaseResponse<RoleResponse?>(null, 404, "Couldn't update the item."));
+
+                    return Ok(new BaseResponse<RoleResponse>
+                    {
+                        Data = ModelTransform.RolesTransformation(response.Data),
+                        Message = response.Message,
+                    });
                 }
 
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 400, "Couldn't find any item or a bad request happened."));
@@ -133,7 +166,15 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     RoleToDisable.DisableEntity();
 
                     var response = await companyRoleRepository.UpdateAsync(RoleToDisable, cancellationToken);
-                    return Ok(response);
+
+                    if (response.Data is null)
+                        return NotFound(new BaseResponse<RoleResponse?>(null, 404, "Couldn't create the item."));
+
+                    return Ok(new BaseResponse<RoleResponse>
+                    {
+                        Data = ModelTransform.RolesTransformation(response.Data),
+                        Message = response.Message,
+                    });
                 }
 
                 return BadRequest(new BaseResponse<CompanyRole?>(null, 400, "This item has already been registered in the system."));
