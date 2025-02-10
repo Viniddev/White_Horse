@@ -48,7 +48,7 @@ export default function Login() {
   }
 
   return (
-    <section className="ConteinerTelaLogin flexRow">
+    <section className="ConteinerTelaLogin">
       <Toast ref={toast} />
       <div className="boxLogin">
         <div className="secaoLogo flexRow">

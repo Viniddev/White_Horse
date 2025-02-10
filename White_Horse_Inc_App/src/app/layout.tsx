@@ -1,5 +1,6 @@
+"use client";
 import { PrimeReactProvider } from "primereact/api";
-import type { Metadata } from "next";
+import { usePathname } from "next/navigation"; // Importa o hook para capturar a URL atual
 
 import "primereact/resources/themes/lara-light-purple/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -11,17 +12,40 @@ import React from "react";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
 import { AppWrapper } from "@/pages/context";
+import { LOGIN } from "@/utils/frontEndUrls/urls";
+import Login from "./login/page";
+import { jwtDecode } from "jwt-decode";
+import Cadastro from "./cadastro/page";
 
-export const metadata: Metadata = {
-  title: "White Horse Inc.",
-  description: "A open source organization that helps you build your dreams.",
+const checkAuth = (): boolean => {
+	if (sessionStorage.getItem("Token")) {
+		const token: string = sessionStorage.getItem("Token")!;
+		const decoded: any = jwtDecode(token);
+
+		const currentTime: number = parseInt(new Date().getTime().toString().substring(0, 10));
+		const expirationTime: number = parseInt(decoded.exp.toString().substring(0, 10));
+
+		if (currentTime > expirationTime) {
+			sessionStorage.removeItem("Token");
+			window.location.href = LOGIN;
+			return false;
+		}
+
+		return true;
+	}
+	return false;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
+  const [autenticado, setAutenticado] = React.useState<boolean>(false);
+  const pathname = usePathname(); // Obtém a URL atual
+
+  React.useEffect(() => {
+    setAutenticado(checkAuth());
+    setPageLoaded(true);
+  }, []);
+
   return (
     <html lang="pt-br">
       <head>
@@ -30,13 +54,25 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="BodyLayout">
-        <AppWrapper>
-          <Header />
-          <PrimeReactProvider>{children}</PrimeReactProvider>
-          <Footer />
-        </AppWrapper>
-      </body>
+      <AppWrapper>
+        <PrimeReactProvider>
+          <body className="BodyLayout">
+            {autenticado ? (
+              <div className="mainFrame">
+                <Header />
+                {children}
+                <Footer />
+              </div>
+            ) : pageLoaded ? (
+              <div className="mainFrame">
+                <Header />
+                {pathname === "/cadastro" ? <Cadastro /> : <Login />}
+                <Footer />
+              </div>
+            ) : null}
+          </body>
+        </PrimeReactProvider>
+      </AppWrapper>
     </html>
   );
 }
