@@ -28,7 +28,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 var response = await userInformationsRepository.GetAllPagedAsync(pagedRequest, cancellationToken);
 
                 if (response.Data is null)
-                    return BadRequest("Coudn't register the user.");
+                    return BadRequest("Coudn't find any user.");
 
                 return Ok(new BaseResponse<List<UserInformationResponse>>
                 {
@@ -55,7 +55,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 var response = await userInformationsRepository.GetByIdAsync(Id, cancellationToken);
 
                 if (response.Data is null)
-                    return BadRequest("Coudn't register the user.");
+                    return BadRequest("Coudn't find the user.");
 
                 return Ok(new BaseResponse<UserInformationResponse>
                 {
@@ -89,7 +89,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     var response = await userInformationsRepository.UpdateAsync(UserToUpdate, cancellationToken);
 
                     if (response.Data is null)
-                        return BadRequest("Coudn't register the user.");
+                        return BadRequest("Coudn't update the user.");
 
                     return Ok(new BaseResponse<UserInformationResponse>
                     {
@@ -126,7 +126,7 @@ namespace White_Horse_Inc_Api.Controllers.V1
                     var response = await userInformationsRepository.UpdateAsync(UserToDisable, cancellationToken);
 
                     if (response.Data is null)
-                        return BadRequest("Coudn't register the user.");
+                        return BadRequest("Coudn't delete the user.");
 
                     return Ok(new BaseResponse<UserInformationResponse>
                     {
@@ -136,6 +136,38 @@ namespace White_Horse_Inc_Api.Controllers.V1
                 }
 
                 return BadRequest(new BaseResponse<UserAddress?>(null, 400, "This item has already been registered in the system."));
+            }
+            catch
+            {
+                return BadRequest(new BaseResponse<UserAddress?>(null, 500, "Couldn't find any item or a bad request happened."));
+            }
+        }
+
+        /// <summary>
+        /// Obtém um usuário pelo ID.
+        /// </summary>
+        /// <returns>Retorna o usuário correspondente ou uma mensagem de erro.</returns>
+        [HttpPut]
+        [Route("GetUserProfileInformations")]
+        public async Task<IActionResult> GetUserProfileInformations(GetUserProfileInformations UserEmail, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var response = await userInformationsRepository.GetAllAsync(cancellationToken);
+
+                if (response.Data is null)
+                    return BadRequest("Coudn't find this user.");
+
+                var UserProfileInformations = response.Data.FirstOrDefault(x=>x.Email == UserEmail.Email);
+
+                if (UserProfileInformations is null)
+                    return BadRequest("Coudn't find this user.");
+
+                return Ok(new BaseResponse<UserProfileInformationResponse>
+                {
+                    Data = ModelTransform.TransformUserProfileInformation(UserProfileInformations),
+                    Message = response.Message
+                });
             }
             catch
             {

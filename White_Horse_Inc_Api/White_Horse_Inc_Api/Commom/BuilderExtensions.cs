@@ -48,7 +48,9 @@ namespace White_Horse_Inc_Api.Commom
         public static void AddDataBaseContext(this WebApplicationBuilder builder)
         {
             //cria o dbContext
-            builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Configuration.ConnectionString));
+            builder.Services.AddDbContext<AppDbContext>(x => 
+                        x.UseSqlServer(Configuration.ConnectionString)
+                        .UseLazyLoadingProxies());
         }
 
         public static void AddEndpointInfrastructure(this WebApplicationBuilder builder)

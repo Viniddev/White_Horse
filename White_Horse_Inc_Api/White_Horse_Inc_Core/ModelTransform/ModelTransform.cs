@@ -1,8 +1,5 @@
 ﻿
-using System.Data;
-using System.Xml.Linq;
 using White_Horse_Inc_Core.Models;
-using White_Horse_Inc_Core.Response;
 using White_Horse_Inc_Core.Response.Dtos;
 
 namespace White_Horse_Inc_Core.ModelTransform
@@ -11,7 +8,7 @@ namespace White_Horse_Inc_Core.ModelTransform
     {
         public static UserInformationResponse TransformUserInformation(UserInformations response)
         {
-            UserInformationResponse userInformations = new UserInformationResponse()
+            return new UserInformationResponse()
             {
                 Id = response.Id,
                 CreationDate = response.CreationDate,
@@ -23,8 +20,26 @@ namespace White_Horse_Inc_Core.ModelTransform
                 AddressResponseId = response.AddressId,
                 RoleId = response.CompanyRoleId
             };
+        }
 
-            return userInformations;
+        public static UserProfileInformationResponse TransformUserProfileInformation(UserInformations response)
+        {
+            return new UserProfileInformationResponse()
+            {
+                Id = response.Id,
+                CreationDate = response.CreationDate,
+                Cpf = response.Cpf,
+                Rg = response.Rg,
+                Email = response.Email,
+                Name = response.Name,
+                PhoneNumber = response.PhoneNumber,
+                Role = response.CompanyRole.Name,
+                Cep = response.Address.Cep,
+                City = response.Address.City,
+                Neighborhood = response.Address.Neighborhood,
+                Number = response.Address.Number,
+                Street = response.Address.Street,
+            };
         }
 
         public static AddressResponse AddressTransformation(UserAddress address)

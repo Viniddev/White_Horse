@@ -14,11 +14,11 @@ namespace White_Horse_Inc_Core.Models
 
 
         public long CompanyRoleId { get; set; }
-        public CompanyRole CompanyRole { get; set; } = null!;
+        public virtual CompanyRole CompanyRole { get; set; } = null!;
 
 
         public long AddressId { get; set; }
-        public UserAddress Address { get; set; } = null!;
+        public virtual UserAddress Address { get; set; } = null!;
 
 
         public void Update(UpdateUserInformations userInformations)

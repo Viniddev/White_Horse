@@ -25,6 +25,8 @@ const checkAuth = (): boolean => {
 		const currentTime: number = parseInt(new Date().getTime().toString().substring(0, 10));
 		const expirationTime: number = parseInt(decoded.exp.toString().substring(0, 10));
 
+    sessionStorage.setItem("Sub", decoded.sub);
+
 		if (currentTime > expirationTime) {
 			sessionStorage.removeItem("Token");
 			window.location.href = LOGIN;

@@ -33,7 +33,6 @@ namespace White_Horse_Inc_Api.Implementations.Services
 
             return new BaseResponse<LoginResponse>(NewLogin, 200, "Success.");
         }
-
         public async Task<BaseResponse<UserInformations>> RegisterService(RegisterInformation registryInformation, CancellationToken cancellationToken)
         {
             var ListUsers = await userInformationsRepository.GetAllAsync(cancellationToken);
@@ -43,10 +42,10 @@ namespace White_Horse_Inc_Api.Implementations.Services
 
             if (ListUsers.TotalCount != 0)
             {
-                var User = ListUsers.Data?
-                    .FirstOrDefault(u => u.Email == registryInformation.Email && u.Cpf == registryInformation.Cpf);
+                var Register = ListUsers.Data?
+                    .FirstOrDefault(u => u.Cpf == registryInformation.Cpf || u.Email == registryInformation.Email);
 
-                if (User is not null)
+                if (Register is not null)
                     throw new ArgumentException("This user has already been registered in the system.");
             }
 
