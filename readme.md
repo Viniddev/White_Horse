@@ -45,10 +45,14 @@ Antes de começar, certifique-se de ter o seguinte instalado:
    ```bash
    git clone https://github.com/Viniddev/White_Horse_Inc.git
    
-2. Adicione os user-secrets:
+2. Abra o bash e execute o comando abaixo (isso irá gerar a sua JWT_KEY):
+   ```bash
+   openssl rand -base64 32
+   
+3. Adicione os user-secrets:
    ```bash
     dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost,1433;Database=[YOUR_DB];User ID=sa;Password=[YOUR_PASSWORD];TrustServerCertificate=True;Encrypt=True;Trusted_Connection=True;"
-    dotnet user-secrets set "JwtKey" "sFmEGfh0bpYege+LRhfmcVExz3DHfN/hTwcmDMbYxGs="
+    dotnet user-secrets set "JwtKey" "[YOUR_JWT_KEY]"
 
 
 ## 📦 Estrutura do Projeto
@@ -63,4 +67,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
    ```bash
    docker run -v ~/docker --name [YOUR_DB_NAME] -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=[YOUR_PASSWORD]" -p 1433:1433 -d mcr.microsoft.com/mssql/server
 
+   
+      
+   
    
