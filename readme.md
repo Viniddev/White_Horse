@@ -31,14 +31,36 @@ A aplicação utiliza **Next.js** para renderização do lado do servidor e otim
 Antes de começar, certifique-se de ter o seguinte instalado:
 
 - [Node.js](https://nodejs.org/) (versão 16 ou superior)
-- [Git](https://git-scm.com/)
+- [Git](https://git-scm.com/) (sempre necessario)
+- [WSL](https://www.youtube.com/watch?v=o1_E4PBl30s)  (Eu recomendaria uma distro do Debian)
 - Editor de código, como [Visual Studio Code](https://code.visualstudio.com/)
 - [.NET SDK](https://dotnet.microsoft.com/download) (versão 6.0 ou superior)
-- [SQL Server](https://www.microsoft.com/en-us/sql-server) (opcional para banco de dados)
+- [SQL Server](https://blog.balta.io/sql-server-docker/) (opcional para banco de dados)
 - [Docker](https://www.docker.com/) (opcional para ambientes isolados)
+
 
 ## 📦 Instalação
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/viniddev/white-horse-inc.git
+   git clone https://github.com/Viniddev/White_Horse_Inc.git
+   
+2. Adicione os user-secrets:
+   ```bash
+    dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost,1433;Database=[YOUR_DB];User ID=sa;Password=[YOUR_PASSWORD];TrustServerCertificate=True;Encrypt=True;Trusted_Connection=True;"
+    dotnet user-secrets set "JwtKey" "sFmEGfh0bpYege+LRhfmcVExz3DHfN/hTwcmDMbYxGs="
+
+
+## 📦 Estrutura do Projeto
+
+1. Criação da estrutura do Back-End:
+   ```bash
+   dotnet new sln -n white_horse_inc
+   dotnet new classlib -o white_horse_inc_api
+   dotnet sln add ./white_horse_inc_api
+   
+2. Para rodar o SqlServer com o Wsl:
+   ```bash
+   docker run -v ~/docker --name [YOUR_DB_NAME] -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=[YOUR_PASSWORD]" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+
+   
