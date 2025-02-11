@@ -66,8 +66,3 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 2. Para rodar o SqlServer com o Wsl:
    ```bash
    docker run -v ~/docker --name [YOUR_DB_NAME] -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=[YOUR_PASSWORD]" -p 1433:1433 -d mcr.microsoft.com/mssql/server
-
-   
-      
-   
-   
