@@ -14,10 +14,6 @@ namespace White_Horse_Inc_Core.Response.Dtos
 
         public string Role { get; set; } = string.Empty;
 
-        public string Cep { get; set; } = string.Empty;
-        public string Street { get; set; } = string.Empty;
-        public string Neighborhood { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public int Number { get; set; }
+        public AddressResponse Endereco { get; set; } = null!;
     }
 }

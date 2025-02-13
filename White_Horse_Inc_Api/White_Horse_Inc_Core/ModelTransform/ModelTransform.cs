@@ -34,11 +34,7 @@ namespace White_Horse_Inc_Core.ModelTransform
                 Name = response.Name,
                 PhoneNumber = response.PhoneNumber,
                 Role = response.CompanyRole.Name,
-                Cep = response.Address.Cep,
-                City = response.Address.City,
-                Neighborhood = response.Address.Neighborhood,
-                Number = response.Address.Number,
-                Street = response.Address.Street,
+                Endereco = AddressTransformation(response.Address)
             };
         }
 
