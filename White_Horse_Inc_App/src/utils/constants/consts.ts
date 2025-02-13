@@ -1,17 +1,21 @@
 
 export const EMPTY_USER = {
+  id: 0,
+  creationDate: "",
   name: "",
   cpf: "",
   rg: "",
-  cargo: "",
+  role: "",
   email: "",
-  telefone: "",
+  phoneNumber: "",
   endereco: {
+    id: 0,
+    creationDate: "",
     cep: "",
-    rua: "",
-    bairro: "",
-    cidade: "",
-    numero: 0,
+    street: "",
+    neighborhood: "",
+    city: "",
+    number: 0,
   },
 };
 

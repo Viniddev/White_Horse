@@ -8,10 +8,10 @@ import InputTypePassword from "@/components/inputs/inputTypePassword";
 import { Button } from "primereact/button";
 import Link from "next/link";
 import { CADASTRO, PROFILE } from "@/utils/frontEndUrls/urls";
-import { fetchLoginInformations } from "@/routes/baseRequest";
 import { retornoLoginComToken } from "@/@types/resp";
 import { LoginReq } from "@/@types/req";
 import { Toast } from "primereact/toast";
+import { fetchLoginInformations } from "../../routes/BaseRequest";
 
 export default function Login() {
   const toast = useRef<Toast>(null);

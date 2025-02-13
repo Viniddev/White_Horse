@@ -1,14 +1,15 @@
+import { BuildDefaultForm } from "@/@types/components";
 
 
-export default function InformacoesImutaveis(){
+export default function InformacoesImutaveis({ DefaultUserInformations }: BuildDefaultForm){
     return (
       <>
-        <h1 className="tituloProfile">Vinicius Dias Rodrigues</h1>
+        <h1 className="tituloProfile">{DefaultUserInformations.name}</h1>
         <div>
-          <h2 className="imutableInformations">CPF: 999.999.999.99</h2>
-          <h2 className="imutableInformations">Rg: 99.999.999</h2>
+          <h2 className="imutableInformations">CPF: {DefaultUserInformations.cpf}</h2>
+          <h2 className="imutableInformations">Rg: {DefaultUserInformations.rg}</h2>
           <h2 className="imutableInformations">
-            CARGO: Desenvolvedor Full Stack
+            CARGO: {DefaultUserInformations.role}
           </h2>
         </div>
       </>

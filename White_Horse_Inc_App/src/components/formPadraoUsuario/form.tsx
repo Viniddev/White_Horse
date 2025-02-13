@@ -8,9 +8,13 @@ import { BuildDefaultForm } from "@/@types/components";
 import InputCep from "../inputs/inputCep";
 
 export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
-  
+
   const [userInformations, setUserInformations] = React.useState<UserInformations>(DefaultUserInformations);
   const [IsInvalid, setIsInvalid] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setUserInformations(DefaultUserInformations);
+  }, [[DefaultUserInformations]]);
 
   return (
     <div>
@@ -63,11 +67,11 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
             </div>
             <div className="field col-12 lg:col-6">
               <InputTypeText
-                state={userInformations.cargo}
+                state={userInformations.role}
                 setState={(newValue) =>
                   setUserInformations((prevState) => ({
                     ...prevState,
-                    cargo: newValue,
+                    role: newValue,
                   }))
                 }
                 label={"Cargo"}
@@ -95,11 +99,11 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeMask
-            state={userInformations.telefone}
+            state={userInformations.phoneNumber}
             setState={(newValue) =>
               setUserInformations((prevState) => ({
                 ...prevState,
-                telefone: newValue,
+                phoneNumber: newValue,
               }))
             }
             mask="(99) 99999-9999"
@@ -120,13 +124,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.rua}
+            state={userInformations.endereco.street}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
                   ...prevState.endereco,
-                  rua: newValue,
+                  street: newValue,
                 },
               }))
             }
@@ -138,13 +142,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.bairro}
+            state={userInformations.endereco.neighborhood}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
                   ...prevState.endereco,
-                  bairro: newValue,
+                  neighborhood: newValue,
                 },
               }))
             }
@@ -155,13 +159,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeNumber
-            state={userInformations.endereco.numero}
+            state={userInformations.endereco.number}
             setState={(newValue: number) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
                   ...prevState.endereco,
-                  numero: newValue,
+                  number: newValue,
                 },
               }))
             }
@@ -173,13 +177,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.cidade}
+            state={userInformations.endereco.city}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
                   ...prevState.endereco,
-                  cidade: newValue,
+                  city: newValue,
                 },
               }))
             }

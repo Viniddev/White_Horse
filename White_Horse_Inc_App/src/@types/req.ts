@@ -1,19 +1,23 @@
 export interface UserInformations {
+  id: number;
   name: string;
   cpf: string;
   rg: string;
-  cargo: string;
+  role: string;
   email: string;
-  telefone: string;
+  phoneNumber: string;
+  creationDate: string;
   endereco: Endereco;
 }
 
 export interface Endereco {
+  id: number;
+  creationDate: string;
   cep: string;
-  rua: string;
-  bairro: string;
-  cidade: string;
-  numero: number;
+  street: string;
+  neighborhood: string;
+  city: string;
+  number: number;
 }
 
 export interface LoginReq{
