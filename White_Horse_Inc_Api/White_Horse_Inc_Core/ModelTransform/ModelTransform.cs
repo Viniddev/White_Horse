@@ -34,7 +34,8 @@ namespace White_Horse_Inc_Core.ModelTransform
                 Name = response.Name,
                 PhoneNumber = response.PhoneNumber,
                 Role = response.CompanyRole.Name,
-                Endereco = AddressTransformation(response.Address)
+                RoleId = response.CompanyRole.Id,
+                Address = AddressTransformation(response.Address)
             };
         }
 

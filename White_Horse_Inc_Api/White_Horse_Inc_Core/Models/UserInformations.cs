@@ -31,8 +31,9 @@ namespace White_Horse_Inc_Core.Models
                 Email = userInformations.Email;
                 Password = userInformations.Password;
                 PhoneNumber = userInformations.PhoneNumber;
-                CompanyRoleId = userInformations.CompanyRoleId;
-                AddressId = userInformations.AddressId;
+                CompanyRoleId = userInformations.RoleId;
+
+                Address.Update(userInformations.Address);
             }
             else
             {

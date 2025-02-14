@@ -13,7 +13,8 @@ namespace White_Horse_Inc_Core.Response.Dtos
         public string PhoneNumber { get; set; } = string.Empty;
 
         public string Role { get; set; } = string.Empty;
+        public long RoleId { get; set; }
 
-        public AddressResponse Endereco { get; set; } = null!;
+        public AddressResponse Address { get; set; } = null!;
     }
 }

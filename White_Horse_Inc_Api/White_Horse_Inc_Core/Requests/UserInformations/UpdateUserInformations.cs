@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using White_Horse_Inc_Core.Models;
+using White_Horse_Inc_Core.Requests.Roles;
 
 namespace White_Horse_Inc_Core.Requests.UserInformations
 {
@@ -15,7 +16,7 @@ namespace White_Horse_Inc_Core.Requests.UserInformations
         public string Password { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
 
-        public int CompanyRoleId { get; set; }
-        public int AddressId { get; set; }
+        public int RoleId { get; set; }
+        public UpdateAddressRequest Address { get; set; } = null!;
     }
 }
