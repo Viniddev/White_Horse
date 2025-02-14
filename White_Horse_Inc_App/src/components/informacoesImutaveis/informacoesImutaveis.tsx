@@ -8,9 +8,7 @@ export default function InformacoesImutaveis({ DefaultUserInformations }: BuildD
         <div>
           <h2 className="imutableInformations">CPF: {DefaultUserInformations.cpf}</h2>
           <h2 className="imutableInformations">Rg: {DefaultUserInformations.rg}</h2>
-          <h2 className="imutableInformations">
-            CARGO: {DefaultUserInformations.role}
-          </h2>
+          <h2 className="imutableInformations"> CARGO: {DefaultUserInformations.role} </h2>
         </div>
       </>
     );

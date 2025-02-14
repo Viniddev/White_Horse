@@ -12,19 +12,26 @@ export default function Profile() {
   const [userData, setUserData] = React.useState<UserInformations>(EMPTY_USER);
 
   async function GetUserInformations(){
-    var email: string | null = sessionStorage.getItem("Sub");
-    if(email != null){
-      var teste: any = await fetchUserProfileInformations(email);
-      return teste.data;
+    var localUserInfo: string = sessionStorage.getItem("UserInfo") ?? "";
+
+    if (localUserInfo == "") {
+      var email: string = sessionStorage.getItem("Sub") ?? "";
+      if (email != "") {
+        var teste: any = await fetchUserProfileInformations(email);
+        return teste.data;
+      }
+    } else {
+      var UserInfo: UserInformations = JSON.parse(localUserInfo);
+      return UserInfo;
     }
   }
 
   React.useEffect(() => {
     const fetchData = async () => {
       var teste = await GetUserInformations();
+      sessionStorage.setItem("UserInfo", JSON.stringify(teste));
       setUserData(teste);
     };
-
     fetchData();
   }, []);
 
