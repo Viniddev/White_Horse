@@ -15,7 +15,7 @@ export default function InputCep(Prop: BuildInputCep) {
           id={`input_mask_${Prop.label}`}
           mask={Prop.mask}
           placeholder={Prop.mask}
-          value={Prop.state.endereco.cep ?? ""}
+          value={Prop.state.address.cep ?? ""}
           onChange={(e) => {
             GetFullAddress(e.target.value ?? "", Prop.setState);
           }}

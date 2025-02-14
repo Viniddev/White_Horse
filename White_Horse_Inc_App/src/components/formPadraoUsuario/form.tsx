@@ -135,12 +135,12 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.street}
+            state={userInformations.address.street}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
-                endereco: {
-                  ...prevState.endereco,
+                address: {
+                  ...prevState.address,
                   street: newValue,
                 },
               }))
@@ -153,12 +153,12 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.neighborhood}
+            state={userInformations.address.neighborhood}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
-                  ...prevState.endereco,
+                  ...prevState.address,
                   neighborhood: newValue,
                 },
               }))
@@ -170,12 +170,12 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeNumber
-            state={userInformations.endereco.number}
+            state={userInformations.address.number}
             setState={(newValue: number) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
-                  ...prevState.endereco,
+                  ...prevState.address,
                   number: newValue,
                 },
               }))
@@ -188,12 +188,12 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.endereco.city}
+            state={userInformations.address.city}
             setState={(newValue: string) =>
               setUserInformations((prevState) => ({
                 ...prevState,
                 endereco: {
-                  ...prevState.endereco,
+                  ...prevState.address,
                   city: newValue,
                 },
               }))

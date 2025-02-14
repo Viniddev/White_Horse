@@ -5,10 +5,11 @@ export const EMPTY_USER = {
   name: "",
   cpf: "",
   rg: "",
+  roleId: 0,
   role: "",
   email: "",
   phoneNumber: "",
-  endereco: {
+  address: {
     id: 0,
     creationDate: "",
     cep: "",

@@ -21,7 +21,7 @@ export async function GetFullAddress(cep: string, setState:  React.Dispatch<Reac
      
       setState((prevState) => ({
         ...prevState,
-        endereco: enderecoCompleto,
+        address: enderecoCompleto,
       }));
     }
   }

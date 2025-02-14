@@ -4,10 +4,11 @@ export interface UserInformations {
   cpf: string;
   rg: string;
   role: string;
+  roleId: number;
   email: string;
   phoneNumber: string;
   creationDate: string;
-  endereco: Endereco;
+  address: Endereco;
 }
 
 export interface Endereco {

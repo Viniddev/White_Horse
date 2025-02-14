@@ -1,12 +1,13 @@
 "use client";
 import "./profile.scss";
 import "../../styles/globals.scss";
-import React from "react";
+import React, { FormEvent } from "react";
 import FormPadrao from "@/components/formPadraoUsuario/form";
 import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
 import { EMPTY_USER } from "@/utils/constants/consts";
 import { fetchUserProfileInformations } from "@/routes/GetUserProfileInformations";
 import { UserInformations } from "@/@types/req";
+import { fetchUpdateUserProfile } from "@/routes/UpdateUserProfileInformations";
 
 export default function Profile() {
   const [userData, setUserData] = React.useState<UserInformations>(EMPTY_USER);
@@ -26,6 +27,13 @@ export default function Profile() {
     }
   }
 
+  async function UpdateUserInformations(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    var teste: any = await fetchUpdateUserProfile(userData);
+    return teste.data;
+  }
+
   React.useEffect(() => {
     const fetchData = async () => {
       var teste = await GetUserInformations();
@@ -37,7 +45,7 @@ export default function Profile() {
 
   return (
     <section className="ProfileConteiner flexRow">
-      <form action="submit" className="FormularioProfile">
+      <form action="submit" className="FormularioProfile" onSubmit={UpdateUserInformations}>
         <div className="sectionProfileImg">
           <div className="headerInformations flexColumn">
             <img
