@@ -9,7 +9,6 @@ import { orderByDescendingFunction } from "../mainStructure/formPesquisa";
 import {
   Prop,
   FiltroFormularioPrincipal,
-  Topico,
 } from "../../@types/components";
 import { TopicosDeDesenvolvimento } from "../../utils/mocks/products";
 import { EMPTY_FILTRO_FORMULARIO_PRINCIPAL } from "../../utils/constants/consts";

@@ -1,51 +1,17 @@
 "use client";
 import "./login.scss";
 import "../../styles/globals.scss";
-import { FormEvent, useRef, useState } from "react";
 import React from "react";
 import InputTypeText from "@/components/inputs/inputTypeText";
 import InputTypePassword from "@/components/inputs/inputTypePassword";
 import { Button } from "primereact/button";
 import Link from "next/link";
-import { CADASTRO, PROFILE } from "@/utils/frontEndUrls/urls";
-import { retornoLoginComToken } from "@/@types/resp";
-import { LoginReq } from "@/@types/req";
+import { CADASTRO } from "@/utils/frontEndUrls/urls";;
 import { Toast } from "primereact/toast";
-import { fetchLoginInformations } from "../../routes/BaseRequest";
+import { usePageLogin } from "./usePageLogin";
 
 export default function Login() {
-  const toast = useRef<Toast>(null);
-  const [loginInformations, setLoginInformations] = useState<LoginReq>({Email:"", Password:""});
-  const [Isloading, setIsLoading] = useState<boolean>(false);
-  const [IsInvalid, setIsInvalid] = useState<boolean>(false);
-
-  async function FetchLogin(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    if (loginInformations.Email !== "" && loginInformations.Password !== "") {
-      setIsInvalid(false);
-      setIsLoading(true);
-
-      const retorno: retornoLoginComToken = await fetchLoginInformations(loginInformations);
-
-      toast?.current?.show({
-        severity: retorno.data ? "info" : "error",
-        summary: "Info",
-        detail: retorno.message,
-        life: 3500,
-      });
-
-      if (retorno.data) {
-        sessionStorage.setItem("Token", retorno.data.token);
-        window.location.href = PROFILE;
-      } else {
-        setLoginInformations({ Email: "", Password: "" });
-        setIsInvalid(true);
-      }
-
-      setIsLoading(false);
-    }
-  }
+  const {toast, loginInformations, setLoginInformations, Isloading, IsInvalid, FetchLogin} = usePageLogin();
 
   return (
     <section className="ConteinerTelaLogin">

@@ -1,47 +1,13 @@
 "use client";
 import "./profile.scss";
 import "../../styles/globals.scss";
-import React, { FormEvent } from "react";
+import React from "react";
 import FormPadrao from "@/components/formPadraoUsuario/form";
 import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
-import { EMPTY_USER } from "@/utils/constants/consts";
-import { fetchUserProfileInformations } from "@/routes/GetUserProfileInformations";
-import { UserInformations } from "@/@types/req";
-import { fetchUpdateUserProfile } from "@/routes/UpdateUserProfileInformations";
+import usePageProfile from "./usePageProfile";
 
 export default function Profile() {
-  const [userData, setUserData] = React.useState<UserInformations>(EMPTY_USER);
-
-  async function GetUserInformations(){
-    var localUserInfo: string = sessionStorage.getItem("UserInfo") ?? "";
-
-    if (localUserInfo == "") {
-      var email: string = sessionStorage.getItem("Sub") ?? "";
-      if (email != "") {
-        var teste: any = await fetchUserProfileInformations(email);
-        return teste.data;
-      }
-    } else {
-      var UserInfo: UserInformations = JSON.parse(localUserInfo);
-      return UserInfo;
-    }
-  }
-
-  async function UpdateUserInformations(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    var teste: any = await fetchUpdateUserProfile(userData);
-    return teste.data;
-  }
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      var teste = await GetUserInformations();
-      sessionStorage.setItem("UserInfo", JSON.stringify(teste));
-      setUserData(teste);
-    };
-    fetchData();
-  }, []);
+  const { UpdateUserInformations, userData } = usePageProfile();
 
   return (
     <section className="ProfileConteiner flexRow">
