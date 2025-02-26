@@ -3,7 +3,7 @@ import { PROFILE } from "@/utils/frontEndUrls/urls";
 import { retornoLoginComToken } from "@/@types/resp";
 import { LoginReq } from "@/@types/req";
 import { Toast } from "primereact/toast";
-import { fetchLoginInformations } from "../../routes/BaseRequest";
+import { fetchLoginInformations } from "../routes/BaseRequest";
 
 export function usePageLogin() {
   const toast = useRef<Toast>(null);

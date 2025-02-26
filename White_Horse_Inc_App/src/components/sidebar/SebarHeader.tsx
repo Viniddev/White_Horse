@@ -6,20 +6,11 @@ import { Sidebar } from "primereact/sidebar";
 import { useState } from "react";
 import DarkModeButton from "../btnDarkMode/btnDarkMode";
 import React from "react";
+import { IsAuthenticated } from "@/hooks/useIsAuthenticated";
 
 export default function SidebarHeader({ state, setState }: SidebarToggle) {
-  const [IsLogged, setIsLogged] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    if (sessionStorage.getItem("Token") != undefined) {
-      setIsLogged(true);
-    }
-  }, []);
-
-  function Sair(){
-    sessionStorage.removeItem("Token");
-    window.location.href = LOGIN;
-  }
+  let { IsLogged, Sair } = IsAuthenticated();
 
   return (
     <Sidebar visible={state} position="right" onHide={() => setState(false)}>

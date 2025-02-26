@@ -4,7 +4,7 @@ import "../../styles/globals.scss";
 import React from "react";
 import FormPadrao from "@/components/formPadraoUsuario/form";
 import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
-import usePageProfile from "./usePageProfile";
+import usePageProfile from "../../hooks/usePageProfile";
 
 export default function Profile() {
   const { UpdateUserInformations, userData } = usePageProfile();

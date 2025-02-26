@@ -3,20 +3,10 @@ import Link from "next/link";
 import { Button } from "primereact/button";
 import React from "react";
 import DarkModeButton from "../btnDarkMode/btnDarkMode";
+import { IsAuthenticated } from "@/hooks/useIsAuthenticated";
 
 export default function HeaderDesktop() {
-  const [IsLogged, setIsLogged] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    if (sessionStorage.getItem("Token") != undefined) {
-      setIsLogged(true);
-    }
-  }, []);
-
-  function Sair(){
-    sessionStorage.removeItem("Token");
-    window.location.href = LOGIN;
-  }
+  let { IsLogged, Sair } = IsAuthenticated();
 
   return (
     <nav className="flexRow headerDesktop">
