@@ -16,7 +16,7 @@ namespace White_Horse_Inc_Api.Implementations.Services
             if (ListUsers.TotalCount == 0)
                 return new BaseResponse<LoginResponse>(null, 404, "There are no users in the database.");
 
-            var User = ListUsers.Data?.FirstOrDefault(u => u.Email == loginInformations.Email && BCrypt.Net.BCrypt.Verify(loginInformations.Password, u.Password));
+            var User = ListUsers.Data?.FirstOrDefault(u => u.Email == loginInformations.Email && PasswordHash.Verify(loginInformations.Password, u.Password));
 
             if (User is null)
                 return new BaseResponse<LoginResponse>(null, 404, "User or password incorrect.");
@@ -38,7 +38,7 @@ namespace White_Horse_Inc_Api.Implementations.Services
             var ListUsers = await userInformationsRepository.GetAllAsync(cancellationToken);
 
             //criptografia da senha
-            string senhaHash = BCrypt.Net.BCrypt.HashPassword(registryInformation.Password);
+            string senhaHash = PasswordHash.Hash(registryInformation.Password);
 
             if (ListUsers.TotalCount != 0)
             {
