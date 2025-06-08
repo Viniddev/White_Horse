@@ -1,4 +1,4 @@
-# White Horse Inc.
+# White Horse.
 
 ![Badge Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow)
 ![Next.js](https://img.shields.io/badge/Next.js-%3E%3D%2012.0-blue)
