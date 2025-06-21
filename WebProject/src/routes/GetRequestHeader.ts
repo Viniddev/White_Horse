@@ -1,4 +1,3 @@
-
 export default function GetHeader(){
     const token =
       typeof window !== "undefined" ? sessionStorage.getItem("Token") : null;

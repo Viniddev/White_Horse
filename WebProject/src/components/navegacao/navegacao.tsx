@@ -1,7 +1,6 @@
 import { HOME } from "@/utils/frontEndUrls/urls";
 import Link from "next/link";
 
-
 export default function LinksNavegacao(){
     return (
       <>

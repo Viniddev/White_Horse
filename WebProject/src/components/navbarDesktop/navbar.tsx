@@ -17,23 +17,25 @@ export default function HeaderDesktop() {
       ) : (
         ""
       )}
-
       {IsLogged ? (
-        <Button 
+        <Button
           label="Sair"
-          severity="danger" 
+          severity="danger"
           outlined
-          type="button" 
-          onClick={Sair}/>
+          type="button"
+          onClick={Sair}
+        />
       ) : (
         ""
       )}
-
       <DarkModeButton />
-
-      <Link href={IsLogged ? PROFILE : LOGIN}>
-        <img src="/profile.png" alt="profile" className="LogoHeader" />
-      </Link>
+      {IsLogged ? (
+        <Link href={PROFILE}>
+          <img src="/profile.png" alt="profile" className="LogoHeader" />
+        </Link>
+      ) : (
+        ""
+      )}
     </nav>
   );
 }

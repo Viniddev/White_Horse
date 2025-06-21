@@ -27,8 +27,6 @@ export default function CardProdutos({ prop }: CardProdutosProps) {
     </div>
   );
 
-  //criar meu proprio card, esse ta paioso e generico
-
   return (
     <div className="card flex justify-content-center sm:w-5 lg:w-auto">
       <Card

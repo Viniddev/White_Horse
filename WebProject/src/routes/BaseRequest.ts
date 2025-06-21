@@ -3,7 +3,6 @@ import { retornoLoginComToken } from "@/@types/resp";
 import { LOGIN } from "@/utils/backEndUrls/urls";
 import GetHeader from "./GetRequestHeader";
 
-
 export async function fetchLoginInformations( loginInformations: LoginReq ): Promise<retornoLoginComToken> {
 
   var response: any = await fetch(LOGIN, {

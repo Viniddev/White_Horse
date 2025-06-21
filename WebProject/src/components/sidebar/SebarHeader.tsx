@@ -3,7 +3,6 @@ import { LOGIN, PROFILE } from "@/utils/frontEndUrls/urls";
 import Link from "next/link";
 import { Button } from "primereact/button";
 import { Sidebar } from "primereact/sidebar";
-import { useState } from "react";
 import DarkModeButton from "../btnDarkMode/btnDarkMode";
 import React from "react";
 import { IsAuthenticated } from "@/hooks/useIsAuthenticated";

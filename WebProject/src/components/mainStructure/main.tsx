@@ -9,7 +9,7 @@ import InputTypeText from "../inputs/inputTypeText";
 import { EMPTY_FILTRO_FORMULARIO_PRINCIPAL } from "@/utils/constants/consts";
 import React from "react";
 import { products, TopicosDeDesenvolvimento } from "@/utils/mocks/products";
-import {filtrarLista } from "./formPesquisa";
+import {filtrarLista } from "../../hooks/useFormPesquisa";
 
 export default function Main() {
   const [produtos, setProdutos] = React.useState(products);
@@ -38,26 +38,24 @@ export default function Main() {
             <div className="field col-12 lg:col-4">
               <InputTypeCurrency
                 state={filtro.preco}
-                setState={(newValue) =>
-                  setFiltro((prevState) => ({
-                    ...prevState,
-                    preco: newValue,
-                  }))
-                }
+                setState={(newValue) => setFiltro((prevState) => ({
+                  ...prevState,
+                  preco: newValue,
+                }))}
                 label={"Preço até:"}
-                required={false}
+                required={false} 
+                invalid={false}
               />
             </div>
             <div className="field col-12 lg:col-4">
               <DropDown
                 list={TopicosDeDesenvolvimento}
                 state={filtro.topico}
-                setState={(newValue) =>
-                  setFiltro((prevState) => ({
-                    ...prevState,
-                    topico: newValue,
-                  }))
-                }
+                setState={(newValue) => setFiltro((prevState) => ({
+                  ...prevState,
+                  topico: newValue,
+                }))} 
+                invalid={false}
               />
             </div>
             <div className="field col-12">

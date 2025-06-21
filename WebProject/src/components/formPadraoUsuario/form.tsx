@@ -1,31 +1,19 @@
 import React from "react";
 import InputTypeText from "../inputs/inputTypeText";
 import { Button } from "primereact/button";
-import { UserInformations } from "@/@types/req";
 import InputTypeNumber from "../inputs/inputTypeNumber";
 import InputTypeMask from "../inputs/inputTypeMask";
 import { BuildDefaultForm } from "@/@types/components";
 import InputCep from "../inputs/inputCep";
+import UseFormPadrao from "@/hooks/useFormPadrao";
 
 export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
-  const isFirstRender = React.useRef(true);
-  const [userInformations, setUserInformations] = React.useState<UserInformations>(DefaultUserInformations);
-  const [IsInvalid, setIsInvalid] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    setUserInformations(DefaultUserInformations);
-  }, [DefaultUserInformations]);
-
-  React.useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    setUserInformations((prevState) => ({
-      ...prevState,
-      ...DefaultUserInformations,
-    }));
-  }, [DefaultUserInformations]);
+  var {
+    userInformations,
+    setUserInformations,
+    IsInvalid,
+  } = UseFormPadrao(DefaultUserInformations)
 
   return (
     <div>
@@ -206,7 +194,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12">
           <div className="sessaoBotaoSalvar">
-            <Button label="Atualizar" severity="danger" />
+            <Button label={IsRegister ? "Cadastrar" : "Atualizar"} severity="danger" />
           </div>
         </div>
       </div>

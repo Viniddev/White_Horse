@@ -1,6 +1,5 @@
 import { BuildDefaultForm } from "@/@types/components";
 
-
 export default function InformacoesImutaveis({ DefaultUserInformations }: BuildDefaultForm){
     return (
       <>

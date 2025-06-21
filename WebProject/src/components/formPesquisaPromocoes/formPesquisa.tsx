@@ -5,7 +5,7 @@ import React from "react";
 import { Button } from "primereact/button";
 import DropDown from "../inputs/inputTypeDropDown";
 import InputTypeCurrency from "../inputs/inputTypeCurrency";
-import { orderByDescendingFunction } from "../mainStructure/formPesquisa";
+import { orderByDescendingFunction } from "../../hooks/useFormPesquisa";
 import {
   Prop,
   FiltroFormularioPrincipal,

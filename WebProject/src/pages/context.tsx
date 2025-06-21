@@ -2,7 +2,6 @@
 
 import React, { useContext } from "react";
 import { createContext } from "react";
-
 const AppContext = createContext<any>(undefined);
 
 export function AppWrapper({ children, }: Readonly<{
