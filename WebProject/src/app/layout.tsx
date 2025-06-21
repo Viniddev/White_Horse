@@ -15,7 +15,11 @@ import Login from "./login/page";
 import Cadastro from "./cadastro/page";
 import UseAuthentication from "@/hooks/useAuthentication";
 
+import * as dotenv from "dotenv";
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  dotenv.config();
+  
   var { 
     pageLoaded, 
     autenticado, 

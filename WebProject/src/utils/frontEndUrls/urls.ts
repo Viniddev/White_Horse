@@ -1,4 +1,4 @@
-const BASE_PATH = "http://localhost:3000";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH_FRONT;
 
 export const HOME = `${BASE_PATH}`;
 export const PROFILE = `${BASE_PATH}/perfil`;

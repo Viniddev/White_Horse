@@ -1,4 +1,4 @@
-const BASE_PATH = "https://localhost:7223/api/v1";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH_BACK;
 
 export const LOGIN = `${BASE_PATH}/login`;
 export const GET_USER_INFORMATIONS = `${BASE_PATH}/users/get-user-by-email`;
