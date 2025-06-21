@@ -11,7 +11,15 @@ import { Toast } from "primereact/toast";
 import { usePageLogin } from "../../hooks/usePageLogin";
 
 export default function Login() {
-  const {toast, loginInformations, setLoginInformations, Isloading, IsInvalid, FetchLogin} = usePageLogin();
+  
+  const {
+    toast, 
+    loginInformations, 
+    setLoginInformations, 
+    Isloading, 
+    IsInvalid, 
+    FetchLogin
+  } = usePageLogin();
 
   return (
     <section className="ConteinerTelaLogin">

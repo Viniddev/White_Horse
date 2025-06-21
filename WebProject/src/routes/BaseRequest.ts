@@ -4,10 +4,10 @@ import { LOGIN } from "@/utils/backEndUrls/urls";
 import GetHeader from "./GetRequestHeader";
 
 
-export async function fetchLoginInformations( loginInformations: LoginReq): Promise<retornoLoginComToken> {
+export async function fetchLoginInformations( loginInformations: LoginReq ): Promise<retornoLoginComToken> {
 
   var response: any = await fetch(LOGIN, {
-    method: "PUT",
+    method: "POST",
     headers: GetHeader(),
     body: JSON.stringify(loginInformations),
   });

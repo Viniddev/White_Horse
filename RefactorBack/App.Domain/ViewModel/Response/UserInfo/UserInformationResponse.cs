@@ -1,4 +1,5 @@
 ﻿using App.Domain.Entities;
+using App.Domain.Enums;
 
 namespace App.Domain.ViewModel.Response.UserInfo;
 
@@ -11,7 +12,8 @@ public class UserInformationResponse
     public string Rg { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
-    public Guid UserAddressId { get; set; }
+    public UserAddress Address { get; set; } = null!;
+    public string Role { get; set; } = string.Empty;
 
     public static UserInformationResponse Map(UserInformations userInfo) 
     {
@@ -24,7 +26,8 @@ public class UserInformationResponse
             Rg = userInfo.Rg,
             Email = userInfo.Email,
             PhoneNumber = userInfo.PhoneNumber,
-            UserAddressId = userInfo.UserAddressId
+            Role = userInfo.UserRole.ToString(),
+            Address = userInfo.UserAddress ?? new UserAddress(),
         };
     }
 }

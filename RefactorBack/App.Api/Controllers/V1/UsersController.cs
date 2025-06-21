@@ -1,6 +1,7 @@
 ﻿using App.Domain.Services;
 using App.Domain.ViewModel.Request;
 using App.Domain.ViewModel.Request.UserInfo;
+using App.Domain.ViewModel.Response.UserInfo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.V1;
@@ -13,6 +14,7 @@ public static class UsersController
 
         group.MapPut("get-all", GetAll);
         group.MapGet("get-by-id/{Id}", GetById);
+        group.MapPut("get-user-by-email", GetUserByEmail);
         group.MapPut("update", UpdateInformations);
         group.MapDelete("delete/{Id}", Delete);
     }
@@ -31,12 +33,25 @@ public static class UsersController
     }
 
     public static async Task<IResult> GetById(
-        [FromRoute] Guid Id, 
+        [FromRoute] Guid Id,
         [FromServices] IUserService _userService,
         CancellationToken cancellationToken
     )
     {
         var response = await _userService.GetUserByIdService(Id, cancellationToken);
+
+        return response.Data is not null
+            ? Results.Ok(response)
+            : Results.BadRequest(response);
+    }
+
+    public static async Task<IResult> GetUserByEmail(
+       [FromBody] GetProfileInfo getProfile,
+       [FromServices] IUserService _userService,
+       CancellationToken cancellationToken
+    )
+    {
+        var response = await _userService.GetUserByEmailService(getProfile, cancellationToken);
 
         return response.Data is not null
             ? Results.Ok(response)

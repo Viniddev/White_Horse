@@ -52,4 +52,13 @@ public class UserService(IUserInformationsRepository _userRepository, IUnitOfWor
             ? new BaseResponse<UserInformationResponse>(UserInformationResponse.Map(response), 200, "Usuario encontrado com sucesso")
             : new BaseResponse<UserInformationResponse>(null, 404, "Usuario nao encontrado no sistema");
     }
+
+    public async Task<BaseResponse<UserInformationResponse>> GetUserByEmailService(GetProfileInfo email, CancellationToken cancellationToken)
+    {
+        var response = await _userRepository.GetUserProfileInformationsRepository(email, cancellationToken);
+
+        return response is not null
+           ? new BaseResponse<UserInformationResponse>(UserInformationResponse.Map(response), 200, "Usuario encontrado com sucesso")
+           : new BaseResponse<UserInformationResponse>(null, 404, "Usuario nao encontrado no sistema");
+    }
 }

@@ -7,7 +7,10 @@ import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesI
 import usePageProfile from "../../hooks/usePageProfile";
 
 export default function Profile() {
-  const { UpdateUserInformations, userData } = usePageProfile();
+  const { 
+    userData,
+    UpdateUserInformations
+  } = usePageProfile();
 
   return (
     <section className="ProfileConteiner flexRow">

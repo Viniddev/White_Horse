@@ -15,7 +15,7 @@ export default function usePageProfile() {
     if (localUserInfo == "") {
       let email: string = sessionStorage.getItem("Sub") ?? "";
       if (email != "") {
-        let userInfo: any = await fetchPutRequest({ Email: email }, GET_USER_INFORMATIONS);
+        let userInfo: any = await fetchPutRequest({Email: email}, GET_USER_INFORMATIONS);
 
         if(!userInfo.data){
           toast?.current?.show({
@@ -63,5 +63,10 @@ export default function usePageProfile() {
     fetchData();
   }, []);
 
-  return { GetUserInformations, UpdateUserInformations, userData, setUserData };
+  return {
+    GetUserInformations, 
+    UpdateUserInformations, 
+    userData, 
+    setUserData 
+  };
 }
