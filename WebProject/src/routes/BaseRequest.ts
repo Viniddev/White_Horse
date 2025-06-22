@@ -6,7 +6,7 @@ import GetHeader from "./GetRequestHeader";
 export async function fetchLoginInformations( loginInformations: LoginReq ): Promise<retornoLoginComToken> {
 
   var response: any = await fetch(LOGIN, {
-    method: "POST",
+    method: "PUT",
     headers: GetHeader(),
     body: JSON.stringify(loginInformations),
   });
