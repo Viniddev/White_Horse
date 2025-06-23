@@ -5,6 +5,7 @@ using App.Application.Usecases.UserData;
 using App.Domain.Services.Base;
 using App.Application.Usecases.Address;
 using App.Application.Usecases.Posts;
+using App.Application.Usecases.Responses;
 
 namespace App.Application;
 
@@ -16,6 +17,7 @@ public static class DependencyInjection
         service.AddTransient<IUserService, UserService>();
         service.AddTransient<IUserAddressService, UserAddressService>();
         service.AddTransient<IPostsService, PostsService>();
+        service.AddTransient<IResponsesService, ResponsesService>();
 
         return service;
     }

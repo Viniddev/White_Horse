@@ -27,5 +27,6 @@ public static class AppExtensions
         app.MapUsersEndpoints();
         app.MapUserAddressEndpoints();
         app.MapPostsEndpoints();
+        app.MapResponsesEndpoints();
     }
 }

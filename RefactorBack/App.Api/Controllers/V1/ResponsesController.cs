@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.V1;
 
-public static class PostsController
+public static class ResponsesController
 {
-    public static void MapPostsEndpoints(this IEndpointRouteBuilder map) 
+    public static void MapResponsesEndpoints(this IEndpointRouteBuilder map) 
     {
-        var group = map.MapGroup("api/v1/posts/").RequireAuthorization();
+        var group = map.MapGroup("api/v1/responses/").RequireAuthorization();
 
         group.MapPut("get-all", GetAll);
         group.MapGet("get-by-id/{Id}", GetById);
@@ -20,11 +20,11 @@ public static class PostsController
 
     public static async Task<IResult> GetAll(
         [FromBody] PagedRequest request, 
-        [FromServices] IPostsService _postsService, 
+        [FromServices] IResponsesService _responsesService, 
         CancellationToken cancellationToken
     ) 
     {
-        var response = await _postsService.GetAllPosts(request, cancellationToken);
+        var response = await _responsesService.GetAllResponses(request, cancellationToken);
 
         return response.Data is not null
             ? Results.Ok(response)
@@ -33,11 +33,11 @@ public static class PostsController
 
     public static async Task<IResult> GetById(
         [FromRoute] Guid Id,
-        [FromServices] IPostsService _postsService,
+        [FromServices] IResponsesService _responsesService,
         CancellationToken cancellationToken
     )
     {
-        var response = await _postsService.GetPostById(Id, cancellationToken);
+        var response = await _responsesService.GetResponseById(Id, cancellationToken);
 
         return response.Data is not null
             ? Results.Ok(response)
@@ -46,11 +46,11 @@ public static class PostsController
 
     public static async Task<IResult> CreatePost(
        [FromBody] CreateAddressRequest request,
-       [FromServices] IPostsService _postsService,
+       [FromServices] IResponsesService _responsesService,
        CancellationToken cancellationToken
    )
     {
-        var response = await _postsService.CreatePost(request, cancellationToken);
+        var response = await _responsesService.RespondPost(request, cancellationToken);
 
         return response.Data is not null
             ? Results.Ok(response)
@@ -59,11 +59,11 @@ public static class PostsController
 
     public static async Task<IResult> UpdateInformations(
         [FromBody] UpdateAddressRequest request,
-        [FromServices] IPostsService _postsService,
+        [FromServices] IResponsesService _responsesService,
         CancellationToken cancellationToken
     )
     {
-        var response = await _postsService.UpdatePost(request, cancellationToken);
+        var response = await _responsesService.UpdateResponse(request, cancellationToken);
 
         return response.Data
             ? Results.Ok(response)
@@ -72,11 +72,11 @@ public static class PostsController
 
     public static async Task<IResult> Delete(
         [FromRoute] Guid Id,
-        [FromServices] IPostsService _postsService,
+        [FromServices] IResponsesService _responsesService,
         CancellationToken cancellationToken
     )
     {
-        var response = await _postsService.DeletePost(Id, cancellationToken);
+        var response = await _responsesService.DeleteResponse(Id, cancellationToken);
 
         return response.Data
             ? Results.Ok(response)

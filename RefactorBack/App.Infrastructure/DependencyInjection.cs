@@ -15,6 +15,7 @@ public static class DependencyInjection
         service.AddTransient<IUserInformationsRepository, UserInformationsRepository>();
         service.AddTransient<IUserAddressRepository, UserAddressRepository>();
         service.AddTransient<IPostsRepository, PostsRepository>();
+        service.AddTransient<IResponsesRepository, ResponsesRepository>();
 
         return service;
     }

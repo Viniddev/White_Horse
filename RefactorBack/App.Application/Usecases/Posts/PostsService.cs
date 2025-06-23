@@ -6,7 +6,7 @@ using App.Domain.ViewModel.Response.Address;
 
 namespace App.Application.Usecases.Posts;
 
-internal class PostsService : IPostsService
+public class PostsService : IPostsService
 {
     public Task<BaseResponse<AddressResponse>> CreatePost(CreateAddressRequest request, CancellationToken cancellationToken)
     {
