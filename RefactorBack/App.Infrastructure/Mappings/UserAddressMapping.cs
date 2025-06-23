@@ -1,7 +1,6 @@
 ﻿using App.Domain.Abstractions;
 using App.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace App.Infrastructure.Mappings;
@@ -11,8 +10,6 @@ public class UserAddressMapping : EntityBaseMapping<UserAddress>, IEntityTypeCon
     public new void Configure(EntityTypeBuilder<UserAddress> builder)
     {
         base.Configure(builder);
-
-        builder.ToTable("UserAddress");
 
         builder.Property(x => x.Cep)
                .HasColumnType("NVARCHAR")
@@ -37,5 +34,7 @@ public class UserAddressMapping : EntityBaseMapping<UserAddress>, IEntityTypeCon
         builder.Property(x => x.Number)
            .HasColumnType("INT")
            .IsRequired();
+
+        builder.ToTable("UserAddress");
     }
 }
