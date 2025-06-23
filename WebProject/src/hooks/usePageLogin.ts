@@ -1,5 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
-import { PROFILE } from "@/utils/frontEndUrls/urls";
+import { HOME } from "@/utils/frontEndUrls/urls";
 import { retornoLoginComToken } from "@/@types/resp";
 import { LoginReq } from "@/@types/req";
 import { Toast } from "primereact/toast";
@@ -31,7 +31,7 @@ export function usePageLogin() {
 
       if (retorno.data) {
         sessionStorage.setItem("Token", retorno.data.token);
-        window.location.href = PROFILE;
+        window.location.href = HOME;
       } else {
         setLoginInformations({ Email: "", Password: "" });
         setIsInvalid(true);
