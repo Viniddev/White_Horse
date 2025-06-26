@@ -1,14 +1,14 @@
 ﻿using App.Domain.Services;
 using App.Domain.ViewModel.Request;
-using App.Domain.ViewModel.Request.Address;
+using App.Domain.ViewModel.Request.Posts;
 using App.Domain.ViewModel.Response;
-using App.Domain.ViewModel.Response.Address;
+using App.Domain.ViewModel.Response.Posts;
 
 namespace App.Application.Usecases.Posts;
 
 public class PostsService : IPostsService
 {
-    public Task<BaseResponse<AddressResponse>> CreatePost(CreateAddressRequest request, CancellationToken cancellationToken)
+    public Task<BaseResponse<PostInformationsResponse>> CreatePost(CreatePostRequest request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
@@ -18,17 +18,17 @@ public class PostsService : IPostsService
         throw new NotImplementedException();
     }
 
-    public Task<PagedResponse<List<AddressResponse>>> GetAllPosts(PagedRequest request, CancellationToken cancellationToken)
+    public Task<PagedResponse<List<PostInformationsResponse>>> GetAllPosts(PagedRequest request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
-    public Task<BaseResponse<AddressResponse>> GetPostById(Guid Id, CancellationToken cancellationToken)
+    public Task<BaseResponse<PostInformationsResponse>> GetPostById(Guid Id, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
-    public Task<BaseResponse<bool>> UpdatePost(UpdateAddressRequest addressInfo, CancellationToken cancellationToken)
+    public Task<BaseResponse<bool>> UpdatePost(CreatePostRequest addressInfo, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

@@ -10,7 +10,7 @@ public class MediaBase: BaseEntity
         Likes++;
     }
 
-    public void Reprovar()
+    public void DesCurtir()
     {
         Deslikes++;
     }

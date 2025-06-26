@@ -1,6 +1,6 @@
 ﻿using App.Domain.Services;
 using App.Domain.ViewModel.Request;
-using App.Domain.ViewModel.Request.Address;
+using App.Domain.ViewModel.Request.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.V1;
@@ -45,7 +45,7 @@ public static class ResponsesController
     }
 
     public static async Task<IResult> CreatePost(
-       [FromBody] CreateAddressRequest request,
+       [FromBody] CreateResponseRequest request,
        [FromServices] IResponsesService _responsesService,
        CancellationToken cancellationToken
    )
@@ -58,7 +58,7 @@ public static class ResponsesController
     }
 
     public static async Task<IResult> UpdateInformations(
-        [FromBody] UpdateAddressRequest request,
+        [FromBody] CreateResponseRequest request,
         [FromServices] IResponsesService _responsesService,
         CancellationToken cancellationToken
     )
