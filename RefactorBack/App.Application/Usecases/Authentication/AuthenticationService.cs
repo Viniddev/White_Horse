@@ -19,7 +19,7 @@ public class AuthenticationService(
 {
     public async Task<BaseResponse<LoginResponse>> LoginServiceAsync(LoginInformations login, CancellationToken cancellationToken)
     {
-        var result = await _userInfoRepository.GetAllUsers(cancellationToken);
+        var result = await _userInfoRepository.GetAllAsync(cancellationToken);
         var user = result?.FirstOrDefault(u => u.Email == login.Email && PasswordHash.Verify(u.Password, login.Password));
 
         if (user is null)
@@ -33,7 +33,7 @@ public class AuthenticationService(
 
     public async Task<BaseResponse<RegisterInformation>> CreateUserServiceAsync(RegisterInformation request, CancellationToken cancellationToken)
     {
-        var ListaUsers = await _userInfoRepository.GetAllUsers(cancellationToken) ?? [];
+        var ListaUsers = await _userInfoRepository.GetAllAsync(cancellationToken) ?? [];
 
         if (ListaUsers.Count > 0)
         {

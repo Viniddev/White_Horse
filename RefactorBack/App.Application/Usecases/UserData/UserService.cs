@@ -33,11 +33,11 @@ public class UserService(IUserInformationsRepository _userRepository, IUnitOfWor
 
     public async Task<PagedResponse<List<UserInformationResponse>>> GetAllUsersService(PagedRequest request, CancellationToken cancellationToken)
     {
-        var response = await _userRepository.GetAllUsers(cancellationToken) ?? [];
+        var response = await _userRepository.GetAllAsync(cancellationToken) ?? [];
 
         if (response.Count > 0)
         {
-            var listUsersResponse = response.Select(UserInformationResponse.Map).ToList();
+            var listUsersResponse = response.Select(x => new UserInformationResponse(x)).ToList();
             return new PagedResponse<List<UserInformationResponse>>(listUsersResponse, listUsersResponse.Count, listUsersResponse.Count, request.PageNumber);
         }
         
@@ -46,10 +46,10 @@ public class UserService(IUserInformationsRepository _userRepository, IUnitOfWor
 
     public async Task<BaseResponse<UserInformationResponse>> GetUserByIdService(Guid Id, CancellationToken cancellationToken)
     {
-        var response = await _userRepository.GetUserByIdAsync(Id, cancellationToken);
+        var response = await _userRepository.GetByIdAsync(Id, cancellationToken);
 
         return response is not null 
-            ? new BaseResponse<UserInformationResponse>(UserInformationResponse.Map(response), 200, "Usuario encontrado com sucesso")
+            ? new BaseResponse<UserInformationResponse>(new UserInformationResponse(response), 200, "Usuario encontrado com sucesso")
             : new BaseResponse<UserInformationResponse>(null, 404, "Usuario nao encontrado no sistema");
     }
 
@@ -58,7 +58,7 @@ public class UserService(IUserInformationsRepository _userRepository, IUnitOfWor
         var response = await _userRepository.GetUserProfileInformationsRepository(email, cancellationToken);
 
         return response is not null
-           ? new BaseResponse<UserInformationResponse>(UserInformationResponse.Map(response), 200, "Usuario encontrado com sucesso")
+           ? new BaseResponse<UserInformationResponse>(new UserInformationResponse(response), 200, "Usuario encontrado com sucesso")
            : new BaseResponse<UserInformationResponse>(null, 404, "Usuario nao encontrado no sistema");
     }
 }

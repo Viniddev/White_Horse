@@ -1,6 +1,6 @@
 ﻿using App.Domain.Services;
 using App.Domain.ViewModel.Request;
-using App.Domain.ViewModel.Request.Responses;
+using App.Domain.ViewModel.Request.ResponsesFromPosts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.V1;

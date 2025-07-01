@@ -4,8 +4,8 @@ using App.Domain.Services;
 using App.Application.Usecases.UserData;
 using App.Domain.Services.Base;
 using App.Application.Usecases.Address;
-using App.Application.Usecases.Posts;
-using App.Application.Usecases.Responses;
+using App.Application.Usecases.PostsService;
+using App.Application.Usecases.ResponsesService;
 
 namespace App.Application;
 

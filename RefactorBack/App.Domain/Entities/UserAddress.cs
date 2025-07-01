@@ -6,14 +6,13 @@ namespace App.Domain.Entities;
 
 public class UserAddress : BaseEntity, IAggregateRoot
 {
-
-    public UserAddress() { }
-
     public string Cep { get; set; } = string.Empty;
     public string Street { get; set; } = string.Empty;
     public string Neighborhood { get; set; } = string.Empty;
     public string City { get; set; } = string.Empty;
     public int Number { get; set; }
+
+    public UserAddress() { }
 
     public UserAddress(UpdateAddressRequest address)
     {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace App.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatingPostsStructure : Migration
+    public partial class CreatingPosts : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,6 @@ namespace App.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatorId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
-                    UserId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     Content = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
                     Topic = table.Column<string>(type: "NVARCHAR(280)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "DATETIME2", nullable: false),
@@ -30,20 +29,19 @@ namespace App.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_UserInformations_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Posts_UserInformations_CreatorId",
+                        column: x => x.CreatorId,
                         principalTable: "UserInformations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Responses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatorId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
-                    UserId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     PostId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     Message = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "DATETIME2", nullable: false),
@@ -62,27 +60,27 @@ namespace App.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Responses_UserInformations_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Responses_UserInformations_CreatorId",
+                        column: x => x.CreatorId,
                         principalTable: "UserInformations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_UserId",
+                name: "IX_Posts_CreatorId",
                 table: "Posts",
-                column: "UserId");
+                column: "CreatorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Responses_CreatorId",
+                table: "Responses",
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Responses_PostId",
                 table: "Responses",
                 column: "PostId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Responses_UserId",
-                table: "Responses",
-                column: "UserId");
         }
 
         /// <inheritdoc />

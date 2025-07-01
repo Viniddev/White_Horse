@@ -7,7 +7,6 @@ namespace App.Domain.Entities;
 public class UserInformations: BaseEntity, IAggregateRoot
 {
     //default constructor for EF Core
-    public UserInformations() { }
     public string Name { get; private set; } = string.Empty;
     public string Cpf { get; private set; } = string.Empty;
     public string Rg { get; private set; } = string.Empty;
@@ -20,17 +19,7 @@ public class UserInformations: BaseEntity, IAggregateRoot
     public Guid UserAddressId { get; private set; }
     public virtual UserAddress UserAddress { get; private set; } = null!;
 
-    public UserInformations(RegisterInformation userInformations, Guid AddressId)
-    {
-        Name = userInformations.Name;
-        Cpf = userInformations.Cpf;
-        Rg = userInformations.Rg;
-        Email = userInformations.Email;
-        Password = userInformations.Password;
-        PhoneNumber = userInformations.PhoneNumber;
-        UserRole = userInformations.UserRole;
-        UserAddressId = AddressId;
-    }
+    public UserInformations() { }
 
     public UserInformations(RegisterInformation userInformations)
     {
@@ -41,5 +30,17 @@ public class UserInformations: BaseEntity, IAggregateRoot
         Password = userInformations.Password;
         PhoneNumber = userInformations.PhoneNumber;
         UserRole = userInformations.UserRole;
+    }
+
+    public UserInformations(RegisterInformation userInformations, Guid AddressId)
+    {
+        Name = userInformations.Name;
+        Cpf = userInformations.Cpf;
+        Rg = userInformations.Rg;
+        Email = userInformations.Email;
+        Password = userInformations.Password;
+        PhoneNumber = userInformations.PhoneNumber;
+        UserRole = userInformations.UserRole;
+        UserAddressId = AddressId;
     }
 }

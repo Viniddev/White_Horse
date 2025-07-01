@@ -20,8 +20,14 @@ public class PostsMapping : MediaBaseMapping<Posts>, IEntityTypeConfiguration<Po
             .HasColumnType("NVARCHAR(280)");
 
         builder.Property(u => u.CreatorId)
-           .HasColumnType("UNIQUEIDENTIFIER")
-           .IsRequired();
+            .HasColumnName("CreatorId")
+            .HasColumnType("UNIQUEIDENTIFIER")
+            .IsRequired();
+
+        builder.HasOne(p => p.User)
+            .WithMany()
+            .HasForeignKey(p => p.CreatorId)
+            .IsRequired();
 
         builder.ToTable("Posts");
     }

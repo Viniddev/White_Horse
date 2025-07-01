@@ -15,19 +15,18 @@ public class UserInformationResponse
     public UserAddress Address { get; set; } = null!;
     public string Role { get; set; } = string.Empty;
 
-    public static UserInformationResponse Map(UserInformations userInfo) 
+    public UserInformationResponse() { }
+
+    public UserInformationResponse(UserInformations userInfo) 
     {
-        return new() 
-        {
-            Id = userInfo.Id,
-            CreationDate = userInfo.CreationDate,
-            Name = userInfo.Name,
-            Cpf = userInfo.Cpf,
-            Rg = userInfo.Rg,
-            Email = userInfo.Email,
-            PhoneNumber = userInfo.PhoneNumber,
-            Role = userInfo.UserRole.ToString(),
-            Address = userInfo.UserAddress ?? new UserAddress(),
-        };
+        Id = userInfo.Id;
+        CreationDate = userInfo.CreationDate;
+        Name = userInfo.Name;
+        Cpf = userInfo.Cpf;
+        Rg = userInfo.Rg;
+        Email = userInfo.Email;
+        PhoneNumber = userInfo.PhoneNumber;
+        Role = userInfo.UserRole.ToString();
+        Address = userInfo.UserAddress ?? new UserAddress();
     }
 }

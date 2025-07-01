@@ -16,7 +16,7 @@ public class UserAddressService(IUserAddressRepository _addressRepository, IUnit
         var response = await _addressRepository.CreateAsync(new UserAddress(request), cancellationToken);
 
         return response is not null ?
-            new BaseResponse<AddressResponse>(AddressResponse.Map(response), 201, "Endereço criado com sucesso") :
+            new BaseResponse<AddressResponse>(new AddressResponse(response), 201, "Endereço criado com sucesso") :
             new BaseResponse<AddressResponse>(null, 400, "Erro ao criar endereço");
     }
 
@@ -32,11 +32,11 @@ public class UserAddressService(IUserAddressRepository _addressRepository, IUnit
 
     public async Task<PagedResponse<List<AddressResponse>>> GetAllAddresses(PagedRequest request, CancellationToken cancellationToken)
     {
-        var response = await _addressRepository.GetAllUsers(cancellationToken) ?? [];
+        var response = await _addressRepository.GetAllAsync(cancellationToken) ?? [];
 
         if (response.Count == 0)
         {
-            var listAddressResponse = response.Select(AddressResponse.Map).ToList();
+            var listAddressResponse = response.Select(x => new AddressResponse(x)).ToList();
             return new PagedResponse<List<AddressResponse>>(listAddressResponse, listAddressResponse.Count, listAddressResponse.Count, request.PageNumber);
         }
 
@@ -45,10 +45,10 @@ public class UserAddressService(IUserAddressRepository _addressRepository, IUnit
 
     public async Task<BaseResponse<AddressResponse>> GetAddressById(Guid Id, CancellationToken cancellationToken)
     {
-        var response = await _addressRepository.GetUserByIdAsync(Id, cancellationToken);
+        var response = await _addressRepository.GetByIdAsync(Id, cancellationToken);
 
         return response is not null
-            ? new BaseResponse<AddressResponse>(AddressResponse.Map(response), 200, "Usuario encontrado com sucesso")
+            ? new BaseResponse<AddressResponse>( new AddressResponse(response), 200, "Usuario encontrado com sucesso")
             : new BaseResponse<AddressResponse>(null, 404, "Usuario nao encontrado no sistema");
     }
 

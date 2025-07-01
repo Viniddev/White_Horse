@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250623044310_CreatingPostsStructure")]
-    partial class CreatingPostsStructure
+    [Migration("20250630233737_CreatingPosts")]
+    partial class CreatingPosts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,8 @@ namespace App.Infrastructure.Migrations
                         .HasColumnType("DATETIME2");
 
                     b.Property<Guid>("CreatorId")
-                        .HasColumnType("UNIQUEIDENTIFIER");
+                        .HasColumnType("UNIQUEIDENTIFIER")
+                        .HasColumnName("CreatorId");
 
                     b.Property<long>("Deslikes")
                         .HasColumnType("BIGINT");
@@ -60,12 +61,9 @@ namespace App.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("DATETIME2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CreatorId");
 
                     b.ToTable("Posts", (string)null);
                 });
@@ -101,14 +99,11 @@ namespace App.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("DATETIME2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("CreatorId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PostId");
 
                     b.ToTable("Responses");
                 });
@@ -217,7 +212,7 @@ namespace App.Infrastructure.Migrations
                 {
                     b.HasOne("App.Domain.Entities.UserInformations", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -226,15 +221,15 @@ namespace App.Infrastructure.Migrations
 
             modelBuilder.Entity("App.Domain.Entities.Responses", b =>
                 {
-                    b.HasOne("App.Domain.Entities.Posts", "Post")
+                    b.HasOne("App.Domain.Entities.UserInformations", "User")
                         .WithMany()
-                        .HasForeignKey("PostId")
+                        .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("App.Domain.Entities.UserInformations", "User")
+                    b.HasOne("App.Domain.Entities.Posts", "Post")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

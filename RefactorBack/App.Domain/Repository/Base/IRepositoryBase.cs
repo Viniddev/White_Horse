@@ -7,6 +7,6 @@ public interface IRepositoryBase<TEntity>: IAggregateRoot
     Task<TEntity?> CreateAsync(TEntity user, CancellationToken cancellationToken = default);
     TEntity? UpdateAsync(TEntity user, CancellationToken cancellationToken = default);
     Task<TEntity?> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
-    Task<TEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default);
-    Task<List<TEntity>?> GetAllUsers(CancellationToken cancellationToken = default);
+    Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<List<TEntity>?> GetAllAsync(CancellationToken cancellationToken = default);
 }

@@ -51,5 +51,10 @@ public class UserInformationsMapping : EntityBaseMapping<UserInformations>, IEnt
         builder.Property(u => u.UserAddressId)
             .HasColumnType("UNIQUEIDENTIFIER")
             .IsRequired();
+
+        builder.HasOne(p => p.UserAddress)
+            .WithMany()
+            .HasForeignKey(p => p.UserAddressId)
+            .IsRequired();
     }
 }

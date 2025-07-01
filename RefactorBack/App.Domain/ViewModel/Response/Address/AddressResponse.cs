@@ -12,17 +12,14 @@ public class AddressResponse
     public string City { get; set; } = string.Empty;
     public int Number { get; set; }
 
-    public static AddressResponse Map(UserAddress address)
+    public AddressResponse(UserAddress address)
     {
-        return new()
-        {
-            Id = address.Id,
-            CreationDate = address.CreationDate,
-            Cep = address.Cep,
-            Street = address.Street,
-            Neighborhood = address.Neighborhood,
-            City = address.City,
-            Number = address.Number
-        };
+        Id = address.Id;
+        CreationDate = address.CreationDate;
+        Cep = address.Cep;
+        Street = address.Street;
+        Neighborhood = address.Neighborhood;
+        City = address.City;
+        Number = address.Number;
     }
 }

@@ -16,11 +16,21 @@ public class ResponsesMapping : MediaBaseMapping<Responses>, IEntityTypeConfigur
             .HasColumnType("NVARCHAR(MAX)");
 
         builder.Property(u => u.CreatorId)
-          .HasColumnType("UNIQUEIDENTIFIER")
-          .IsRequired();
+            .HasColumnType("UNIQUEIDENTIFIER")
+            .IsRequired();
 
         builder.Property(u => u.PostId)
-          .HasColumnType("UNIQUEIDENTIFIER")
-          .IsRequired();
+            .HasColumnType("UNIQUEIDENTIFIER")
+            .IsRequired();
+
+        builder.HasOne(p => p.User)
+            .WithMany()
+            .HasForeignKey(p => p.CreatorId)
+            .IsRequired();
+
+        builder.HasOne(p => p.Post)
+            .WithMany()
+            .HasForeignKey(p => p.PostId)
+            .IsRequired();
     }
 }

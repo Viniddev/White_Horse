@@ -1,6 +1,6 @@
 ﻿using App.Domain.Services;
 using App.Domain.ViewModel.Request;
-using App.Domain.ViewModel.Request.Posts;
+using App.Domain.ViewModel.Request.PostsRequests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.V1;

@@ -50,7 +50,7 @@ public class RepositoryBase<TEntity>(AppDbContext _context) : IRepositoryBase<TE
         }
     }
 
-    public async Task<TEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         try
         {
@@ -63,7 +63,7 @@ public class RepositoryBase<TEntity>(AppDbContext _context) : IRepositoryBase<TE
         }
     }
 
-    public async Task<List<TEntity>?> GetAllUsers(CancellationToken cancellationToken = default)
+    public async Task<List<TEntity>?> GetAllAsync(CancellationToken cancellationToken = default)
     {
         try
         {
