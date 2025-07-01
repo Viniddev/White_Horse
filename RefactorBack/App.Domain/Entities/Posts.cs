@@ -7,7 +7,7 @@ public class Posts: MediaBase, IAggregateRoot
 {
 
     public Guid CreatorId { get; private set; }
-    public virtual UserInformations? User { get; private set; }
+    public virtual UserInformations Creator { get; private set; } = null!;
 
     public string Content { get; private set; } = string.Empty;
     public string Topic { get; private set; } = string.Empty;

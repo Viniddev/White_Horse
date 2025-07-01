@@ -24,7 +24,7 @@ public class PostsMapping : MediaBaseMapping<Posts>, IEntityTypeConfiguration<Po
             .HasColumnType("UNIQUEIDENTIFIER")
             .IsRequired();
 
-        builder.HasOne(p => p.User)
+        builder.HasOne(p => p.Creator)
             .WithMany()
             .HasForeignKey(p => p.CreatorId)
             .IsRequired();
