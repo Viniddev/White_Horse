@@ -1,6 +1,8 @@
 using App.Api.Common;
 using App.Domain;
 
+//---------------------------Builder----------------------------//
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddConfiguration();
@@ -13,7 +15,7 @@ builder.AddCrossOrigin();
 
 builder.AddEndpointInfrastructure();
 
-//--------------------------------------------------------------//
+//----------------------------App-------------------------------//
 
 var app = builder.Build();
 

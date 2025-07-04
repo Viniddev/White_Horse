@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "primereact/button";
 import React from "react";
 import DarkModeButton from "../btnDarkMode/btnDarkMode";
-import { IsAuthenticated } from "@/hooks/useIsAuthenticated";
+import { IsAuthenticated } from "@/hooks/useUserIsAuthenticated";
 
 export default function HeaderDesktop() {
   let { IsLogged, Sair } = IsAuthenticated();

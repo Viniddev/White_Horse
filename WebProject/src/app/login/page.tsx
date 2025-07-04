@@ -74,7 +74,7 @@ export default function Login() {
               <Link href={CADASTRO}>
                 <Button label="Cadastrar" outlined severity="warning" />
               </Link>
-              <Button label="Submit" type="submit" loading={Isloading} />
+              <Button label="Entrar" type="submit" loading={Isloading} />
             </div>
           </form>
         </div>

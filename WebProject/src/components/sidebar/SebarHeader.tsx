@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { Sidebar } from "primereact/sidebar";
 import DarkModeButton from "../btnDarkMode/btnDarkMode";
 import React from "react";
-import { IsAuthenticated } from "@/hooks/useIsAuthenticated";
+import { IsAuthenticated } from "@/hooks/useUserIsAuthenticated";
 
 export default function SidebarHeader({ state, setState }: SidebarToggle) {
 

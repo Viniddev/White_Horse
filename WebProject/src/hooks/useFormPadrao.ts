@@ -3,8 +3,7 @@ import React from "react";
 
 export default function UseFormPadrao(DefaultUserInformations: UserInformations) {
   const isFirstRender = React.useRef(true);
-  const [userInformations, setUserInformations] =
-    React.useState<UserInformations>(DefaultUserInformations);
+  const [userInformations, setUserInformations] = React.useState<UserInformations>(DefaultUserInformations);
   const [IsInvalid] = React.useState<boolean>(false);
 
   React.useEffect(() => {

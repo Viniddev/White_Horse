@@ -10,7 +10,7 @@ export interface ProductCardInformations {
 }
 
 export interface CardProdutosProps {
-  prop: ProductCardInformations; // Aqui declaramos a prop
+  prop: ProductCardInformations;
 }
 
 export interface BuildInputText {
@@ -55,6 +55,7 @@ export interface BuildMaskInput {
 export interface BuildDefaultForm {
   IsRegister: boolean;
   DefaultUserInformations: UserInformations;
+  SetUserState: React.Dispatch<React.SetStateAction<UserInformations>>;
 }
 
 export interface Prop {

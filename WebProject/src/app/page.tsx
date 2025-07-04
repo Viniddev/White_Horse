@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import "../styles/home/homeStyle.scss";
+import "../styles/homeStyle.scss";
 import "../styles/globals.scss";
 
 import Main from "@/components/mainStructure/main";

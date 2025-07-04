@@ -59,7 +59,7 @@ public static class UsersController
     }
 
     public static async Task<IResult> UpdateInformations(
-        [FromBody] RegisterInformation request,
+        [FromBody] UpdateUserInformations request,
         [FromServices] IUserService _userService,
         CancellationToken cancellationToken
     )

@@ -13,7 +13,6 @@ public static class AddressController
 
         group.MapPut("get-all-addresses", GetUserAddressesAsync);
         group.MapGet("get-addresses-by-id/{id}", GetUserAddressById);
-        group.MapPut("update-user-address", UpdateUserAddressAsync);
         group.MapDelete("delete-user-address/{id}", DeleteUserAddressAsync);
     }
 
@@ -41,22 +40,6 @@ public static class AddressController
         return result.Data is not null
             ? Results.Ok(result)
             : Results.NotFound(result);
-    }
-
-    public static async Task<IResult> UpdateUserAddressAsync(
-        [FromServices] IUserAddressService _userAddressService,
-        [FromBody] UpdateAddressRequest request,
-        CancellationToken cancellationToken
-    )
-    {
-        if (request == null)
-            return Results.BadRequest("User address information cannot be null");
-
-        var result = await _userAddressService.UpdateAddress(request, cancellationToken);
-
-        return result.Data
-            ? Results.Ok(result) 
-            : Results.BadRequest(result);
     }
 
     public static async Task<IResult> DeleteUserAddressAsync(

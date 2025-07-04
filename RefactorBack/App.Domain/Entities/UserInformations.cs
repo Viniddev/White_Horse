@@ -21,15 +21,12 @@ public class UserInformations: BaseEntity, IAggregateRoot
 
     public UserInformations() { }
 
-    public UserInformations(RegisterInformation userInformations)
+    public void CopyValuesFrom(UpdateUserInformations userInformations)
     {
-        Name = userInformations.Name;
-        Cpf = userInformations.Cpf;
-        Rg = userInformations.Rg;
         Email = userInformations.Email;
-        Password = userInformations.Password;
         PhoneNumber = userInformations.PhoneNumber;
         UserRole = userInformations.UserRole;
+        UserAddress = userInformations.Address;
     }
 
     public UserInformations(RegisterInformation userInformations, Guid AddressId)
@@ -38,7 +35,6 @@ public class UserInformations: BaseEntity, IAggregateRoot
         Cpf = userInformations.Cpf;
         Rg = userInformations.Rg;
         Email = userInformations.Email;
-        Password = userInformations.Password;
         PhoneNumber = userInformations.PhoneNumber;
         UserRole = userInformations.UserRole;
         UserAddressId = AddressId;

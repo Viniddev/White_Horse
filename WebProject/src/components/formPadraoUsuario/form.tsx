@@ -7,13 +7,12 @@ import { BuildDefaultForm } from "@/@types/components";
 import InputCep from "../inputs/inputCep";
 import UseFormPadrao from "@/hooks/useFormPadrao";
 
-export default function FormPadrao({ IsRegister, DefaultUserInformations }: BuildDefaultForm) {
-
-  var {
-    userInformations,
-    setUserInformations,
-    IsInvalid,
-  } = UseFormPadrao(DefaultUserInformations)
+export default function FormPadrao({
+  IsRegister,
+  DefaultUserInformations,
+  SetUserState,
+}: BuildDefaultForm) {
+  var { userInformations, IsInvalid } = UseFormPadrao(DefaultUserInformations);
 
   return (
     <div>
@@ -24,13 +23,13 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
               <InputTypeText
                 state={userInformations.name}
                 setState={(newValue) =>
-                  setUserInformations((prevState) => ({
+                  SetUserState((prevState) => ({
                     ...prevState,
                     name: newValue,
                   }))
                 }
                 label={"Nome"}
-                required={IsRegister ? true : false}
+                required={IsRegister}
                 invalid={IsInvalid}
               />
             </div>
@@ -38,14 +37,14 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
               <InputTypeMask
                 state={userInformations.cpf}
                 setState={(newValue) =>
-                  setUserInformations((prevState) => ({
+                  SetUserState((prevState) => ({
                     ...prevState,
                     cpf: newValue,
                   }))
                 }
                 mask="999.999.999-99"
                 label={"Cpf"}
-                required={IsRegister ? true : false}
+                required={IsRegister}
                 invalid={IsInvalid}
               />
             </div>
@@ -53,31 +52,35 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
               <InputTypeMask
                 state={userInformations.rg}
                 setState={(newValue) =>
-                  setUserInformations((prevState) => ({
+                  SetUserState((prevState) => ({
                     ...prevState,
                     rg: newValue,
                   }))
                 }
                 mask="99.999.999"
                 label={"Rg"}
-                required={IsRegister ? true : false}
+                required={IsRegister}
                 invalid={IsInvalid}
               />
             </div>
-            <div className="field col-12 lg:col-6">
-              <InputTypeText
-                state={userInformations.role}
-                setState={(newValue) =>
-                  setUserInformations((prevState) => ({
-                    ...prevState,
-                    role: newValue,
-                  }))
-                }
-                label={"Cargo"}
-                required={IsRegister ? true : false}
-                invalid={IsInvalid}
-              />
-            </div>
+            {!IsRegister ? (
+              <div className="field col-12 lg:col-6">
+                <InputTypeText
+                  state={userInformations.role}
+                  setState={(newValue) =>
+                    SetUserState((prevState) => ({
+                      ...prevState,
+                      role: newValue,
+                    }))
+                  }
+                  label={"Cargo"}
+                  required={!IsRegister}
+                  invalid={IsInvalid}
+                />
+              </div>
+            ) : (
+              ""
+            )}
           </>
         ) : (
           ""
@@ -86,7 +89,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeText
             state={userInformations.email}
             setState={(newValue) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
                 email: newValue,
               }))
@@ -100,7 +103,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeMask
             state={userInformations.phoneNumber}
             setState={(newValue) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
                 phoneNumber: newValue,
               }))
@@ -114,7 +117,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
         <div className="field col-12 lg:col-6">
           <InputCep
             state={userInformations}
-            setState={setUserInformations}
+            setState={SetUserState}
             mask="99999-999"
             label={"Cep"}
             required={true}
@@ -125,7 +128,7 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeText
             state={userInformations.address.street}
             setState={(newValue: string) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
                 address: {
                   ...prevState.address,
@@ -143,9 +146,9 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeText
             state={userInformations.address.neighborhood}
             setState={(newValue: string) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
-                endereco: {
+                address: {
                   ...prevState.address,
                   neighborhood: newValue,
                 },
@@ -160,9 +163,9 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeNumber
             state={userInformations.address.number}
             setState={(newValue: number) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
-                endereco: {
+                address: {
                   ...prevState.address,
                   number: newValue,
                 },
@@ -178,9 +181,9 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
           <InputTypeText
             state={userInformations.address.city}
             setState={(newValue: string) =>
-              setUserInformations((prevState) => ({
+              SetUserState((prevState) => ({
                 ...prevState,
-                endereco: {
+                address: {
                   ...prevState.address,
                   city: newValue,
                 },
@@ -194,7 +197,10 @@ export default function FormPadrao({ IsRegister, DefaultUserInformations }: Buil
 
         <div className="field col-12">
           <div className="sessaoBotaoSalvar">
-            <Button label={IsRegister ? "Cadastrar" : "Atualizar"} severity="danger" />
+            <Button
+              label={IsRegister ? "Cadastrar" : "Atualizar"}
+              severity="danger"
+            />
           </div>
         </div>
       </div>

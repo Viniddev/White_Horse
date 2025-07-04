@@ -1,4 +1,4 @@
-import { UserInformations } from "@/@types/req";
+import { UserInformations, UpdateUserInformations } from "@/@types/req";
 import { fetchPutRequest } from "@/routes/FetchPutRequest";
 import { GET_USER_INFORMATIONS, UPDATE_USER_INFORMATIONS } from "@/utils/backEndUrls/urls";
 import { EMPTY_USER } from "@/utils/constants/consts";
@@ -14,8 +14,10 @@ export default function usePageProfile() {
 
     if (localUserInfo == "") {
       let email: string = sessionStorage.getItem("Sub") ?? "";
-      if (email != "") {
-        let userInfo: any = await fetchPutRequest({Email: email}, GET_USER_INFORMATIONS);
+      if(email === "")
+        return;
+
+      let userInfo: any = await fetchPutRequest({Email: email}, GET_USER_INFORMATIONS);
 
         if(!userInfo.data){
           toast?.current?.show({
@@ -27,7 +29,6 @@ export default function usePageProfile() {
           return;
         }
         return userInfo.data;
-      }
     } else {
       let UserInfo: UserInformations = JSON.parse(localUserInfo);
       return UserInfo;
@@ -37,7 +38,15 @@ export default function usePageProfile() {
   async function UpdateUserInformations(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    let userInfo: any = await fetchPutRequest(userData, UPDATE_USER_INFORMATIONS);
+    const updateInformations: UpdateUserInformations = {
+      id: userData.id,
+      role: userData.role,
+      email: userData.email,
+      phoneNumber: userData.phoneNumber,
+      address: userData.address,
+    };
+
+    let userInfo: any = await fetchPutRequest(updateInformations, UPDATE_USER_INFORMATIONS);
     
     if(!userInfo.data){
       toast?.current?.show({
@@ -48,6 +57,9 @@ export default function usePageProfile() {
       }); 
       return;
     } 
+    
+    sessionStorage.removeItem("UserInfo");
+    GetUserInformations();
     return userInfo.data;
   }
 
@@ -55,11 +67,12 @@ export default function usePageProfile() {
     const fetchData = async () => {
       let userInfo: UserInformations = await GetUserInformations();
 
-      if(userInfo)
+      if (userInfo)
         sessionStorage.setItem("UserInfo", JSON.stringify(userInfo));
 
       setUserData(userInfo);
     };
+
     fetchData();
   }, []);
 

@@ -23,7 +23,6 @@ public class UserAddress : BaseEntity, IAggregateRoot
         Number = address.Number;
     }
 
-
     public UserAddress(CreateAddressRequest address)
     {
         Cep = address.Cep;

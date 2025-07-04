@@ -44,7 +44,7 @@ public class AuthenticationService(
         }
 
         //cria o endereco e commita
-        UserAddress address = new(request.UserAddress);
+        UserAddress address = new(request.Address);
         await _userAddressRepository.CreateAsync(address);
         await _unitOfWork.CommitAsync();
 

@@ -9,7 +9,10 @@ using App.Domain.ViewModel.Response.UserInfo;
 
 namespace App.Application.Usecases.UserData;
 
-public class UserService(IUserInformationsRepository _userRepository, IUnitOfWork _unitOfWork) : IUserService
+public class UserService(
+    IUserInformationsRepository _userRepository,
+    IUnitOfWork _unitOfWork
+) : IUserService
 {
     public async Task<BaseResponse<bool>> DeleteUserService(Guid Id, CancellationToken cancellationToken)
     {
@@ -21,14 +24,20 @@ public class UserService(IUserInformationsRepository _userRepository, IUnitOfWor
             : new BaseResponse<bool>(false, 404, "Usuario nao encontrado no sistema");
     }
 
-    public Task<BaseResponse<bool>> UpdateUserService(RegisterInformation userInfo, CancellationToken cancellationToken)
+    public async Task<BaseResponse<bool>> UpdateUserService(UpdateUserInformations userInfo, CancellationToken cancellationToken)
     {
-        var response = _userRepository.UpdateAsync(new UserInformations(userInfo), cancellationToken);
-        _unitOfWork.CommitAsync(cancellationToken);
+        var user = await _userRepository.GetByIdAsync(userInfo.Id, cancellationToken);
 
-        return response is not null
-            ? Task.FromResult(new BaseResponse<bool>(true, 200, "Usuario atualizado com sucesso"))
-            : Task.FromResult(new BaseResponse<bool>(false, 404, "Usuario nao encontrado no sistema"));
+        if (user is not null) 
+        {
+            user.CopyValuesFrom(userInfo);
+            var result = _userRepository.UpdateAsync(user, cancellationToken);
+            await _unitOfWork.CommitAsync(cancellationToken);
+
+            return new BaseResponse<bool>(true, 200, "Usuario atualizado com sucesso");
+        }
+
+        return new BaseResponse<bool>(false, 404, "Usuario nao encontrado no sistema");
     }
 
     public async Task<PagedResponse<List<UserInformationResponse>>> GetAllUsersService(PagedRequest request, CancellationToken cancellationToken)

@@ -10,6 +10,5 @@ public interface IUserAddressService
     Task<BaseResponse<AddressResponse>> CreateAddress(CreateAddressRequest request, CancellationToken cancellationToken);
     Task<PagedResponse<List<AddressResponse>>> GetAllAddresses(PagedRequest request, CancellationToken cancellationToken);
     Task<BaseResponse<AddressResponse>> GetAddressById(Guid Id, CancellationToken cancellationToken);
-    Task<BaseResponse<bool>> UpdateAddress(UpdateAddressRequest addressInfo, CancellationToken cancellationToken);
     Task<BaseResponse<bool>> DeleteAddress(Guid Id, CancellationToken cancellationToken);
 }

@@ -51,14 +51,4 @@ public class UserAddressService(IUserAddressRepository _addressRepository, IUnit
             ? new BaseResponse<AddressResponse>( new AddressResponse(response), 200, "Usuario encontrado com sucesso")
             : new BaseResponse<AddressResponse>(null, 404, "Usuario nao encontrado no sistema");
     }
-
-    public Task<BaseResponse<bool>> UpdateAddress(UpdateAddressRequest addressInfo, CancellationToken cancellationToken)
-    {
-        var response = _addressRepository.UpdateAsync(new UserAddress(addressInfo), cancellationToken);
-        _unitOfWork.CommitAsync(cancellationToken);
-
-        return response is not null
-            ? Task.FromResult(new BaseResponse<bool>(true, 200, "Endereço atualizado com sucesso"))
-            : Task.FromResult(new BaseResponse<bool>(false, 404, "Endereço nao encontrado no sistema"));
-    }
 }

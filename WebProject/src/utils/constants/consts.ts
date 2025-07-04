@@ -5,7 +5,6 @@ export const EMPTY_USER = {
   name: "",
   cpf: "",
   rg: "",
-  roleId: 0,
   role: "",
   email: "",
   phoneNumber: "",
