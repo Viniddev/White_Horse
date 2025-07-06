@@ -5,17 +5,20 @@ import React from "react";
 import FormPadrao from "@/components/formPadraoUsuario/form";
 import InformacoesImutaveis from "@/components/informacoesImutaveis/informacoesImutaveis";
 import usePageProfile from "../../hooks/usePageProfile";
+import { Toast } from "primereact/toast";
 
 export default function Profile() {
   
   const { 
     userData,
     setUserData,
-    UpdateUserInformations
+    UpdateUserInformations,
+    toast
   } = usePageProfile();
 
   return (
     <section className="ProfileConteiner flexRow">
+      <Toast ref={toast} />
       <form
         action="submit"
         className="FormularioProfile"

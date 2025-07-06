@@ -19,4 +19,9 @@ public class Responses: MediaBase, IAggregateRoot
         PostId = response.PostId;
         Message = response.Message;
     }
+
+    public void CopyValuesFrom(UpdateResponseRequest values) 
+    {
+        Message = values.Message;
+    }
 }

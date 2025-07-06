@@ -31,7 +31,7 @@ public class UserService(
         if (user is not null) 
         {
             user.CopyValuesFrom(userInfo);
-            var result = _userRepository.UpdateAsync(user, cancellationToken);
+            _userRepository.UpdateAsync(user, cancellationToken);
             await _unitOfWork.CommitAsync(cancellationToken);
 
             return new BaseResponse<bool>(true, 200, "Usuario atualizado com sucesso");

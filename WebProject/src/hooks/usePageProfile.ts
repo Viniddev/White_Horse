@@ -56,7 +56,14 @@ export default function usePageProfile() {
         life: 3500,
       }); 
       return;
-    } 
+    }else{
+      toast?.current?.show({
+        severity: "info",
+        summary: "Info",
+        detail: userInfo.message,
+        life: 3500,
+      });
+    }
     
     sessionStorage.removeItem("UserInfo");
     GetUserInformations();
@@ -77,9 +84,10 @@ export default function usePageProfile() {
   }, []);
 
   return {
-    GetUserInformations, 
-    UpdateUserInformations, 
-    userData, 
-    setUserData 
+    GetUserInformations,
+    UpdateUserInformations,
+    userData,
+    setUserData,
+    toast,
   };
 }

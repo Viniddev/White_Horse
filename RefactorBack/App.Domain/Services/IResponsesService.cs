@@ -10,6 +10,6 @@ public interface IResponsesService
     Task<BaseResponse<PostRequestResponse>> RespondPost(CreateResponseRequest request, CancellationToken cancellationToken);
     Task<PagedResponse<List<PostRequestResponse>>> GetAllResponses(PagedRequest request, CancellationToken cancellationToken);
     Task<BaseResponse<PostRequestResponse>> GetResponseById(Guid Id, CancellationToken cancellationToken);
-    Task<BaseResponse<bool>> UpdateResponse(CreateResponseRequest responseInfo, CancellationToken cancellationToken);
+    Task<BaseResponse<bool>> UpdateResponse(UpdateResponseRequest responseInfo, CancellationToken cancellationToken);
     Task<BaseResponse<bool>> DeleteResponse(Guid Id, CancellationToken cancellationToken);
 }

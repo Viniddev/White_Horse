@@ -7,6 +7,7 @@ export interface UserInformations {
   email: string;
   phoneNumber: string;
   creationDate: string;
+  password: string;
   address: Endereco;
 }
 

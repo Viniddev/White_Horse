@@ -6,6 +6,9 @@ import InputTypeMask from "../inputs/inputTypeMask";
 import { BuildDefaultForm } from "@/@types/components";
 import InputCep from "../inputs/inputCep";
 import UseFormPadrao from "@/hooks/useFormPadrao";
+import InputTypePassword from "../inputs/inputTypePassword";
+
+import "./formStyles.scss";
 
 export default function FormPadrao({
   IsRegister,
@@ -114,95 +117,122 @@ export default function FormPadrao({
             invalid={IsInvalid}
           />
         </div>
-        <div className="field col-12 lg:col-6">
-          <InputCep
-            state={userInformations}
-            setState={SetUserState}
-            mask="99999-999"
-            label={"Cep"}
-            required={true}
-            invalid={IsInvalid}
-          />
-        </div>
-        <div className="field col-12 lg:col-6">
-          <InputTypeText
-            state={userInformations.address.street}
-            setState={(newValue: string) =>
-              SetUserState((prevState) => ({
-                ...prevState,
-                address: {
-                  ...prevState.address,
-                  street: newValue,
-                },
-              }))
-            }
-            label={"Rua"}
-            required={true}
-            invalid={IsInvalid}
-          />
-        </div>
 
-        <div className="field col-12 lg:col-6">
-          <InputTypeText
-            state={userInformations.address.neighborhood}
-            setState={(newValue: string) =>
-              SetUserState((prevState) => ({
-                ...prevState,
-                address: {
-                  ...prevState.address,
-                  neighborhood: newValue,
-                },
-              }))
-            }
-            label={"Bairro"}
-            required={true}
-            invalid={IsInvalid}
-          />
-        </div>
-        <div className="field col-12 lg:col-6">
-          <InputTypeNumber
-            state={userInformations.address.number}
-            setState={(newValue: number) =>
-              SetUserState((prevState) => ({
-                ...prevState,
-                address: {
-                  ...prevState.address,
-                  number: newValue,
-                },
-              }))
-            }
-            label={"Número"}
-            required={true}
-            invalid={IsInvalid}
-          />
-        </div>
-
-        <div className="field col-12 lg:col-6">
-          <InputTypeText
-            state={userInformations.address.city}
-            setState={(newValue: string) =>
-              SetUserState((prevState) => ({
-                ...prevState,
-                address: {
-                  ...prevState.address,
-                  city: newValue,
-                },
-              }))
-            }
-            label={"Cidade"}
-            required={true}
-            invalid={IsInvalid}
-          />
-        </div>
-
-        <div className="field col-12">
-          <div className="sessaoBotaoSalvar">
-            <Button
-              label={IsRegister ? "Cadastrar" : "Atualizar"}
-              severity="danger"
+        {IsRegister ? (
+          <div className="field col-12 lg:col-6">
+            <InputTypePassword
+              state={userInformations.password}
+              setState={(newValue) =>
+                SetUserState((prevState) => ({
+                  ...prevState,
+                  password: newValue,
+                }))
+              }
+              label={"Senha"}
+              required={IsRegister}
+              invalid={IsInvalid}
             />
           </div>
+        ) : (
+          ""
+        )}
+
+        <div className="formgrid grid">
+          <div className="field col-12 lg:col-12">
+            <h1 className="SubsectionAddressTitle">Endereço:</h1>
+          </div>
+
+          <div className="field col-12 lg:col-6">
+            <InputCep
+              state={userInformations}
+              setState={SetUserState}
+              mask="99999-999"
+              label={"Cep"}
+              required={true}
+              invalid={IsInvalid}
+            />
+          </div>
+          <div className="field col-12 lg:col-6">
+            <InputTypeText
+              state={userInformations.address.street}
+              setState={(newValue: string) =>
+                SetUserState((prevState) => ({
+                  ...prevState,
+                  address: {
+                    ...prevState.address,
+                    street: newValue,
+                  },
+                }))
+              }
+              label={"Rua"}
+              required={true}
+              invalid={IsInvalid}
+            />
+          </div>
+
+          <div className="field col-12 lg:col-6">
+            <InputTypeText
+              state={userInformations.address.neighborhood}
+              setState={(newValue: string) =>
+                SetUserState((prevState) => ({
+                  ...prevState,
+                  address: {
+                    ...prevState.address,
+                    neighborhood: newValue,
+                  },
+                }))
+              }
+              label={"Bairro"}
+              required={true}
+              invalid={IsInvalid}
+            />
+          </div>
+          <div className="field col-12 lg:col-6">
+            <InputTypeNumber
+              state={userInformations.address.number}
+              setState={(newValue: number) =>
+                SetUserState((prevState) => ({
+                  ...prevState,
+                  address: {
+                    ...prevState.address,
+                    number: newValue,
+                  },
+                }))
+              }
+              label={"Número"}
+              required={true}
+              invalid={IsInvalid}
+            />
+          </div>
+
+          <div className="field col-12 lg:col-6">
+            <InputTypeText
+              state={userInformations.address.city}
+              setState={(newValue: string) =>
+                SetUserState((prevState) => ({
+                  ...prevState,
+                  address: {
+                    ...prevState.address,
+                    city: newValue,
+                  },
+                }))
+              }
+              label={"Cidade"}
+              required={true}
+              invalid={IsInvalid}
+            />
+          </div>
+
+          <div className="field col-12">
+            <div className="sessaoBotaoSalvar">
+              <Button
+                label={IsRegister ? "Cadastrar" : "Atualizar"}
+                severity="danger"
+              />
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   );

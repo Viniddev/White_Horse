@@ -54,13 +54,19 @@ public class PostsService(IPostsRepository _postRepository, IUnitOfWork _unitOfW
             : new BaseResponse<PostInformationsResponse>(null, 404, "Post nao encontrado no sistema");
     }
 
-    public Task<BaseResponse<bool>> UpdatePost(CreatePostRequest postInfo, CancellationToken cancellationToken)
+    public async Task<BaseResponse<bool>> UpdatePost(UpdatePostRequest postInfo, CancellationToken cancellationToken)
     {
-        var response = _postRepository.UpdateAsync(new Posts(postInfo), cancellationToken);
-        _unitOfWork.CommitAsync(cancellationToken);
+        var post = await _postRepository.GetByIdAsync(postInfo.PostId, cancellationToken);
 
-        return response is not null
-            ? Task.FromResult(new BaseResponse<bool>(true, 200, "Post atualizado com sucesso"))
-            : Task.FromResult(new BaseResponse<bool>(false, 404, "Post nao encontrado no sistema"));
+        if (post is not null) 
+        {
+            post.CopyValuesFrom(postInfo);
+            _postRepository.UpdateAsync(post, cancellationToken);
+            await _unitOfWork.CommitAsync(cancellationToken);
+
+            return new BaseResponse<bool>(true, 200, "Post atualizado com sucesso");
+        }
+
+        return new BaseResponse<bool>(false, 404, "Post nao encontrado no sistema");
     }
 }

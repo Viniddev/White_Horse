@@ -58,7 +58,7 @@ public static class PostsController
     }
 
     public static async Task<IResult> UpdateInformations(
-        [FromBody] CreatePostRequest request,
+        [FromBody] UpdatePostRequest request,
         [FromServices] IPostsService _postsService,
         CancellationToken cancellationToken
     )

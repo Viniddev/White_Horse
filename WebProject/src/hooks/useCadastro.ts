@@ -17,7 +17,7 @@ export default function UseCadastro(){
 
       let userInfo: any = await fetchPostRequest(userData, REGISTER);
 
-      if (!userInfo.data) {
+      if (userInfo.data === null) {
         toast?.current?.show({
           severity: "error",
           summary: "Info",
@@ -36,5 +36,6 @@ export default function UseCadastro(){
       setUserData,
       userInformations,
       RegisterInformations,
+      toast,
     };
 }

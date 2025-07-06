@@ -20,4 +20,9 @@ public class Posts: MediaBase, IAggregateRoot
         Topic = createPost.Topic;
         Content = createPost.Content;
     }
+
+    public void CopyValuesFrom(UpdatePostRequest values) 
+    {
+        Content = values.Content;
+    }
 }

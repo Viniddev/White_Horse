@@ -58,7 +58,7 @@ public static class ResponsesController
     }
 
     public static async Task<IResult> UpdateInformations(
-        [FromBody] CreateResponseRequest request,
+        [FromBody] UpdateResponseRequest request,
         [FromServices] IResponsesService _responsesService,
         CancellationToken cancellationToken
     )

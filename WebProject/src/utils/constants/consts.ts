@@ -1,5 +1,6 @@
+import { UserInformations } from "@/@types/req";
 
-export const EMPTY_USER = {
+export const EMPTY_USER: UserInformations = {
   id: 0,
   creationDate: "",
   name: "",
@@ -8,6 +9,7 @@ export const EMPTY_USER = {
   role: "",
   email: "",
   phoneNumber: "",
+  password: "",
   address: {
     id: 0,
     creationDate: "",

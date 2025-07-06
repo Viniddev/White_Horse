@@ -53,13 +53,19 @@ public class ResponsesService(IResponsesRepository _responsesRepository, IUnitOf
             : new BaseResponse<PostRequestResponse>(null, 500, "Erro inesperado ao salvar a entidade no banco.");
     }
 
-    public Task<BaseResponse<bool>> UpdateResponse(CreateResponseRequest responseInfo, CancellationToken cancellationToken)
+    public async Task<BaseResponse<bool>> UpdateResponse(UpdateResponseRequest responseInfo, CancellationToken cancellationToken)
     {
-        var response = _responsesRepository.UpdateAsync(new Responses(responseInfo), cancellationToken);
-        _unitOfWork.CommitAsync(cancellationToken);
+        var response = await _responsesRepository.GetByIdAsync(responseInfo.ResponseId, cancellationToken);
 
-        return response is not null
-            ? Task.FromResult(new BaseResponse<bool>(true, 200, "Resposta atualizada com sucesso"))
-            : Task.FromResult(new BaseResponse<bool>(false, 404, "Resposta nao encontrada no sistema"));
+        if (response is not null) 
+        {
+            response.CopyValuesFrom(responseInfo);
+            _responsesRepository.UpdateAsync(response, cancellationToken);
+            await _unitOfWork.CommitAsync(cancellationToken);
+
+            return new BaseResponse<bool>(true, 200, "Resposta atualizada com sucesso");
+        }
+
+        return new BaseResponse<bool>(false, 404, "Resposta nao encontrada no sistema");
     }
 }
