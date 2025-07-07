@@ -6,7 +6,6 @@ using App.Domain.ViewModel.Request;
 using App.Domain.ViewModel.Request.PostsRequests;
 using App.Domain.ViewModel.Response;
 using App.Domain.ViewModel.Response.PostsResponses;
-using App.Domain.ViewModel.Response.UserInfo;
 
 namespace App.Application.Usecases.PostsService;
 

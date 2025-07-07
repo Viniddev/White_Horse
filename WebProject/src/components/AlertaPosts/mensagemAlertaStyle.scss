@@ -1,0 +1,18 @@
+.conteinerAlerta{
+    width: 100%;
+    height: 150px;
+    font-size: 2rem;
+    background-color: var(--bannerColor);
+    border-radius: 8px;
+}
+
+#tipoBuscando{
+    border: 2px solid red;
+    color: red;
+}
+
+#tipoNaoEncontrado{
+    border: 2px solid #E67514;
+    color: #E67514;
+    font-weight: 400;
+}
