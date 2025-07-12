@@ -14,6 +14,7 @@ export default function InputCep(Prop: BuildInputCep) {
         <InputMask
           id={`input_mask_${Prop.label}`}
           mask={Prop.mask}
+          key={Prop.state.address.cep}
           placeholder={Prop.mask}
           value={Prop.state.address.cep ?? ""}
           onChange={(e) => {

@@ -10,26 +10,30 @@ export default function Post(element: IPostElements) {
 
     return (
       <div className="cardPost">
-        <h1 className="titlePost">{informations.topic}</h1>
+        <div className="postBody" id="postHeader">
+          <h1 className="titlePost">{informations.topic}</h1>
+        </div>
 
         <hr className="postDivision" />
 
-        <p className="conteudoPost">{informations.content}</p>
+        <div className="postBody">
+          <p className="conteudoPost">{informations.content}</p>
 
-        <div className="sessaoInterativa">
-          <div className="flexRow interactButtons" id="like">
-            <p className="statistics">{informations.likes}</p>
-            <i
-              className="pi pi-thumbs-up-fill"
-              style={{ fontSize: "1rem", color: "green" }}
-            ></i>
-          </div>
-          <div className="flexRow interactButtons" id="deslike">
-            <p className="statistics">{informations.deslikes}</p>
-            <i
-              className="pi pi-thumbs-down-fill"
-              style={{ fontSize: "1rem", color: "red" }}
-            ></i>
+          <div className="sessaoInterativa">
+            <div className="flexRow interactButtons" id="like">
+              <p className="statistics">{informations.likes}</p>
+              <i
+                className="pi pi-thumbs-up-fill"
+                style={{ fontSize: "1rem", color: "green" }}
+              ></i>
+            </div>
+            <div className="flexRow interactButtons" id="deslike">
+              <p className="statistics">{informations.deslikes}</p>
+              <i
+                className="pi pi-thumbs-down-fill"
+                style={{ fontSize: "1rem", color: "red" }}
+              ></i>
+            </div>
           </div>
         </div>
       </div>

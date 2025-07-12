@@ -15,6 +15,7 @@ export default function FormPadrao({
   DefaultUserInformations,
   SetUserState,
 }: BuildDefaultForm) {
+  
   var { userInformations, IsInvalid } = UseFormPadrao(DefaultUserInformations);
 
   return (
@@ -33,7 +34,7 @@ export default function FormPadrao({
                 }
                 label={"Nome"}
                 required={IsRegister}
-                invalid={IsInvalid}
+                invalid={IsInvalid.name}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -48,7 +49,7 @@ export default function FormPadrao({
                 mask="999.999.999-99"
                 label={"Cpf"}
                 required={IsRegister}
-                invalid={IsInvalid}
+                invalid={IsInvalid.cpf}
               />
             </div>
             <div className="field col-12 lg:col-6">
@@ -63,7 +64,7 @@ export default function FormPadrao({
                 mask="99.999.999"
                 label={"Rg"}
                 required={IsRegister}
-                invalid={IsInvalid}
+                invalid={IsInvalid.rg}
               />
             </div>
             {!IsRegister ? (
@@ -78,7 +79,7 @@ export default function FormPadrao({
                   }
                   label={"Cargo"}
                   required={!IsRegister}
-                  invalid={IsInvalid}
+                  invalid={IsInvalid.role}
                 />
               </div>
             ) : (
@@ -99,7 +100,7 @@ export default function FormPadrao({
             }
             label={"E-mail"}
             required={true}
-            invalid={IsInvalid}
+            invalid={IsInvalid.email}
           />
         </div>
         <div className="field col-12 lg:col-6">
@@ -114,7 +115,7 @@ export default function FormPadrao({
             mask="(99) 99999-9999"
             label={"Telefone"}
             required={true}
-            invalid={IsInvalid}
+            invalid={IsInvalid.phoneNumber}
           />
         </div>
 
@@ -130,7 +131,7 @@ export default function FormPadrao({
               }
               label={"Senha"}
               required={IsRegister}
-              invalid={IsInvalid}
+              invalid={IsInvalid.password}
             />
           </div>
         ) : (
@@ -149,7 +150,7 @@ export default function FormPadrao({
               mask="99999-999"
               label={"Cep"}
               required={true}
-              invalid={IsInvalid}
+              invalid={IsInvalid.cep}
             />
           </div>
           <div className="field col-12 lg:col-6">
@@ -166,7 +167,7 @@ export default function FormPadrao({
               }
               label={"Rua"}
               required={true}
-              invalid={IsInvalid}
+              invalid={IsInvalid.cep}
             />
           </div>
 
@@ -184,7 +185,7 @@ export default function FormPadrao({
               }
               label={"Bairro"}
               required={true}
-              invalid={IsInvalid}
+              invalid={IsInvalid.cep}
             />
           </div>
           <div className="field col-12 lg:col-6">
@@ -201,7 +202,7 @@ export default function FormPadrao({
               }
               label={"Número"}
               required={true}
-              invalid={IsInvalid}
+              invalid={IsInvalid.numeroEndereco}
             />
           </div>
 
@@ -219,7 +220,7 @@ export default function FormPadrao({
               }
               label={"Cidade"}
               required={true}
-              invalid={IsInvalid}
+              invalid={IsInvalid.cep}
             />
           </div>
 
@@ -232,7 +233,6 @@ export default function FormPadrao({
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

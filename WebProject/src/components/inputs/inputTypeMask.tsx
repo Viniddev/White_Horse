@@ -12,6 +12,7 @@ export default function InputTypeMask(Prop: BuildMaskInput) {
         </label>
         <InputMask
           id={`input_mask_${Prop.label}`}
+          key={Prop.state}
           mask={Prop.mask}
           placeholder={Prop.mask}
           value={Prop.state ?? ""}

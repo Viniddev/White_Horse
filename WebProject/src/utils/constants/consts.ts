@@ -1,8 +1,9 @@
 import { IPostRequest } from "@/@types/IPostRequest";
+import { IValidFields } from "@/@types/IValidFields";
 import { UserInformations } from "@/@types/req";
 
 export const EMPTY_USER: UserInformations = {
-  id: 0,
+  id: '',
   creationDate: "",
   name: "",
   cpf: "",
@@ -12,7 +13,7 @@ export const EMPTY_USER: UserInformations = {
   phoneNumber: "",
   password: "",
   address: {
-    id: 0,
+    id: '',
     creationDate: "",
     cep: "",
     street: "",
@@ -33,3 +34,15 @@ export const EMPTY_POST: IPostRequest = {
   content: '',
   creatorId: ''
 }
+
+export const VALID_FIELDS_EMPTY: IValidFields = {
+  name: false,
+  cpf: false,
+  rg: false,
+  email: false,
+  phoneNumber: false,
+  password: false,
+  cep: false,
+  numeroEndereco: false,
+  role: false
+};

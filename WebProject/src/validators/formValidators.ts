@@ -1,47 +1,36 @@
+import { IValidFields } from "@/@types/IValidFields";
 import { UserInformations } from "@/@types/req";
+import { VALID_FIELDS_EMPTY } from "@/utils/constants/consts";
 
-export function validarDadosUsuario(usuario: UserInformations): Record<string, string> {
-  const erros: Record<string, string> = {};
+export function validarDadosUsuario(usuario: UserInformations): IValidFields {
+  const erros: IValidFields = VALID_FIELDS_EMPTY;
 
   // 1. Validar Nome
-  if (!validarNome(usuario.name)) {
-    erros.name = "Nome inválido. É necessário nome e sobrenome.";
-  }
+  erros.name = validarNome(usuario.name);
 
   // 2. Validar CPF
-  if (!validarCPF(usuario.cpf)) {
-    erros.cpf = "O CPF informado é inválido.";
-  }
+  erros.cpf = validarCPF(usuario.cpf);
 
   // 3. Validar RG
-  if (!validarRG(usuario.rg)) {
-    erros.rg = "O RG informado é inválido.";
-  }
+  erros.rg = validarRG(usuario.rg);
 
   // 4. Validar Email
-  if (!validarEmail(usuario.email)) {
-    erros.email = "O formato do e-mail é inválido.";
-  }
+  erros.email = validarEmail(usuario.email);
 
   // 5. Validar Telefone
-  if (!validarTelefone(usuario.phoneNumber)) {
-    erros.phoneNumber = "O telefone deve ter 10 ou 11 dígitos (com DDD).";
-  }
+  erros.phoneNumber = validarTelefone(usuario.phoneNumber);
 
   // 6. Validar Senha
-  if (!validarSenha(usuario.password)) {
-    erros.password = "A senha deve ter no mínimo 8 caracteres.";
-  }
+  erros.password = validarSenha(usuario.password);
 
   // 7. Validar CEP (parte do endereço)
-  if (!validarFormatoCEP(usuario.address.cep)) {
-    erros.cep = "O formato do CEP é inválido.";
-  }
+  erros.cep = validarFormatoCEP(usuario.address.cep);
 
-  // Adicione outras validações obrigatórias, como o número do endereço
-  if (!usuario.address.number || usuario.address.number === 0) {
-    erros.numeroEndereco = "O número do endereço é obrigatório.";
-  }
+  // 8. Validar Numero do endereco é inválido
+  erros.numeroEndereco = (usuario.address.number === null || usuario.address.number === 0);
+
+  // 9. Validar Cargo Usuário é inválido
+  erros.role = (usuario.role === null || typeof usuario.role !== "string");
 
   return erros;
 }
@@ -49,16 +38,16 @@ export function validarDadosUsuario(usuario: UserInformations): Record<string, s
 function validarNome(nome: string) {
   // Verifica se o nome não é nulo ou apenas espaços em branco
   if (!nome || nome.trim() === "") {
-    return false;
+    return true;
   }
 
   // Divide o nome em partes e verifica se há pelo menos duas (nome e sobrenome)
   const partesNome = nome.trim().split(/\s+/);
   if (partesNome.length < 2) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function validarCPF(cpf: string) {
@@ -67,7 +56,7 @@ function validarCPF(cpf: string) {
 
   // Verifica se o CPF tem 11 dígitos ou se é uma sequência de números iguais
   if (cpfLimpo.length !== 11 || /^(\d)\1{10}$/.test(cpfLimpo)) {
-    return false;
+    return true;
   }
 
   let soma = 0;
@@ -82,7 +71,7 @@ function validarCPF(cpf: string) {
     resto = 0;
   }
   if (resto !== parseInt(cpfLimpo.substring(9, 10))) {
-    return false;
+    return true;
   }
 
   // Validação do segundo dígito verificador
@@ -95,10 +84,10 @@ function validarCPF(cpf: string) {
     resto = 0;
   }
   if (resto !== parseInt(cpfLimpo.substring(10, 11))) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function validarRG(rg: string) {
@@ -117,18 +106,13 @@ function validarFormatoCEP(cep: string) {
   // Remove o traço
   const cepLimpo = String(cep).replace("-", "");
 
-  // Verifica se o CEP tem 8 dígitos e se são todos números
-  if (/^\d{8}$/.test(cepLimpo)) {
-    return true;
-  }
-
-  return false;
+  return !/^\d{8}$/.test(cepLimpo); // true se for inválido
 }
 
 function validarEmail(email: string) {
   // Verifica se o campo não é nulo ou vazio
   if (!email) {
-    return false;
+    return true;
   }
 
   // Expressão regular para validar o formato do e-mail.
@@ -136,7 +120,7 @@ function validarEmail(email: string) {
   const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
   // O método .test() da expressão regular retorna true ou false
-  return regex.test(String(email).toLowerCase());
+  return !regex.test(String(email).toLowerCase());
 }
 
 function validarTelefone(telefone: string) {
@@ -144,12 +128,15 @@ function validarTelefone(telefone: string) {
   const telefoneLimpo = String(telefone).replace(/\D/g, "");
 
   // Verifica se o número de dígitos é 10 (fixo) ou 11 (celular)
-  return telefoneLimpo.length >= 10 && telefoneLimpo.length <= 11;
+  return !(telefoneLimpo.length >= 10 && telefoneLimpo.length <= 11);
 }
 
 
-function validarSenha(senha: string) {
+function validarSenha(senha: string | null): boolean {
   // Regra simples: verifica se a senha não é nula e tem pelo menos 8 caracteres.
   // Você pode adicionar mais regras aqui (ex: letra maiúscula, número, etc.)
-  return senha && senha.length >= 8;
+  if (typeof senha !== "string") 
+    return false;
+
+  return senha.length >= 8;
 }
