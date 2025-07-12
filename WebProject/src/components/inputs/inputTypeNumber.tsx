@@ -15,6 +15,7 @@ export default function InputTypeNumber(Prop: BuildInputNumber) {
           value={Prop.state ?? 0}
           onValueChange={(e) => Prop.setState(e.value ?? 0)}
           required={Prop.required}
+          invalid={Prop.invalid}
         />
       </div>
     </div>

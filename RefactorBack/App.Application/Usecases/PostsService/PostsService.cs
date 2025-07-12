@@ -37,8 +37,10 @@ public class PostsService(IPostsRepository _postRepository, IUnitOfWork _unitOfW
 
         if (response.Count > 0)
         {
-            var listUsersResponse = response.Select(x => new PostInformationsResponse(x)).ToList();
-            return new PagedResponse<List<PostInformationsResponse>>(listUsersResponse, listUsersResponse.Count, listUsersResponse.Count, request.PageNumber);
+            response = [.. response.OrderByDescending(x => x.CreationDate)];
+
+            var listPosts = response.Select(x => new PostInformationsResponse(x)).ToList();
+            return new PagedResponse<List<PostInformationsResponse>>(listPosts, listPosts.Count, listPosts.Count, request.PageNumber);
         }
 
         return new PagedResponse<List<PostInformationsResponse>>(null, 0, 0, 1);

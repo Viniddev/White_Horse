@@ -10,7 +10,7 @@ export async function GetFullAddress(cep: string, setState:  React.Dispatch<Reac
 
     if (!response.erro) {
       var enderecoCompleto: Endereco = {
-        id: 0,
+        id: '',
         creationDate: "",
         street: response.logradouro,
         cep: response.cep,

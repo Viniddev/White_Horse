@@ -18,6 +18,13 @@
       }
     }
   }
+
+  .fixed-speed-dial {
+    position: fixed;
+    bottom: 10rem;
+    right: 6rem;
+    z-index: 999;
+  }
 }
 
 @media screen and (max-width: 800px) {

@@ -1,0 +1,10 @@
+.inputTextArea{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .input{
+        display: flex;
+        flex-direction: column;
+    }
+}

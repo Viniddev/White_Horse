@@ -6,8 +6,7 @@ import "./postsStyles.scss";
 
 export default function Post(element: IPostElements) {
 
-    const [informations, setInformations] =
-      useState<IPostsInformations>(element.element);
+    const [informations, setInformations] = useState<IPostsInformations>(element.element);
 
     return (
       <div className="cardPost">
@@ -18,15 +17,15 @@ export default function Post(element: IPostElements) {
         <p className="conteudoPost">{informations.content}</p>
 
         <div className="sessaoInterativa">
-          <div className="like flexRow">
-            <p>{informations.likes}</p>
+          <div className="flexRow interactButtons" id="like">
+            <p className="statistics">{informations.likes}</p>
             <i
               className="pi pi-thumbs-up-fill"
-              style={{ fontSize: "1rem", color: "lightgreen" }}
+              style={{ fontSize: "1rem", color: "green" }}
             ></i>
           </div>
-          <div className="deslike flexRow">
-            <p>{informations.deslikes}</p>
+          <div className="flexRow interactButtons" id="deslike">
+            <p className="statistics">{informations.deslikes}</p>
             <i
               className="pi pi-thumbs-down-fill"
               style={{ fontSize: "1rem", color: "red" }}

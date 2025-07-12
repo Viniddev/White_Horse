@@ -8,14 +8,25 @@ import { useRef, useState, useEffect } from "react";
 export default function getAllPosts(){
     const toast = useRef<Toast>(null);
     const [loading, setLoading] = useState(true);
+    const [visible, setVisible] = useState<boolean>(false);
     const [posts, setPosts] = useState<Array<IPostsInformations>>([]);
+
+    const items: any[] = [
+        {
+            label: 'Add',
+            icon: 'pi pi-pencil',
+            command: () => {
+              setVisible(true);
+            }
+        }
+      ]
 
     async function getAllPosts() {
       setLoading(true);
       try {
         const pagedRequest: IPagedRequest = {
           PageNumber: 1,
-          PageSize: 10,
+          PageSize: 6,
         };
 
         var postsList: IGetPostsResponse = await fetchPutRequest(
@@ -54,5 +65,8 @@ export default function getAllPosts(){
       loading,
       posts,
       toast,
+      visible,
+      setVisible,
+      items,
     };
 }

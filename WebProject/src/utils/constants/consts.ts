@@ -1,3 +1,4 @@
+import { IPostRequest } from "@/@types/IPostRequest";
 import { UserInformations } from "@/@types/req";
 
 export const EMPTY_USER: UserInformations = {
@@ -26,3 +27,9 @@ export const EMPTY_FILTRO_FORMULARIO_PRINCIPAL = {
   nome: "",
   topico: { name: "", code: 0 },
 };
+
+export const EMPTY_POST: IPostRequest = {
+  topic: '',
+  content: '',
+  creatorId: ''
+}

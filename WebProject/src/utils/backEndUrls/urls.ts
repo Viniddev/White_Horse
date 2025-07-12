@@ -10,6 +10,7 @@ export const UPDATE_USER_INFORMATIONS = `${BASE_PATH}/users/update`;
 
 //posts
 export const GET_ALL_POSTS = `${BASE_PATH}/posts/get-all`;
+export const CREATE_POST = `${BASE_PATH}/posts/create`;
 
 //address
 export const VIACEP = (e: string) => `https://viacep.com.br/ws/${e}/json/`;

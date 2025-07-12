@@ -1,5 +1,5 @@
 export interface UserInformations {
-  id: number;
+  id: string;
   name: string;
   cpf: string;
   rg: string;
@@ -12,7 +12,7 @@ export interface UserInformations {
 }
 
 export interface UpdateUserInformations {
-  id: number;
+  id: string;
   role: string;
   email: string;
   phoneNumber: string;
@@ -20,7 +20,7 @@ export interface UpdateUserInformations {
 }
 
 export interface Endereco {
-  id: number;
+  id: string;
   creationDate: string;
   cep: string;
   street: string;
