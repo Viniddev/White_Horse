@@ -10,21 +10,17 @@ export default function UseFormPadrao(DefaultUserInformations: UserInformations)
   const [IsInvalid, setIsInvalid] = React.useState<IValidFields>(VALID_FIELDS_EMPTY);
 
   useEffect(() => {
-    setUserInformations(DefaultUserInformations);
-  }, [DefaultUserInformations]);
-
-  useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-    
+
     setUserInformations(DefaultUserInformations);
-
-    var validFields = validarDadosUsuario(DefaultUserInformations);
-
-    setIsInvalid(validFields);
   }, [DefaultUserInformations]);
+
+  useEffect(() => {
+    setIsInvalid(validarDadosUsuario(DefaultUserInformations));
+  }, [userInformations]);
 
   return {
     isFirstRender,

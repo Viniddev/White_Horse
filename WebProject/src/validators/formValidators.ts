@@ -96,10 +96,10 @@ function validarRG(rg: string) {
 
   // Verifica se o RG não está vazio e tem um comprimento comum (entre 7 e 9 dígitos)
   if (rgLimpo.length >= 7 && rgLimpo.length <= 9) {
-    return true;
+    return false;
   }
 
-  return false;
+  return true;
 }
 
 function validarFormatoCEP(cep: string) {
@@ -136,7 +136,7 @@ function validarSenha(senha: string | null): boolean {
   // Regra simples: verifica se a senha não é nula e tem pelo menos 8 caracteres.
   // Você pode adicionar mais regras aqui (ex: letra maiúscula, número, etc.)
   if (typeof senha !== "string") 
-    return false;
+    return true;
 
-  return senha.length >= 8;
+  return !(senha.length >= 8);
 }
