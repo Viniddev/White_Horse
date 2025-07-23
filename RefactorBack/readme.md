@@ -1,4 +1,4 @@
-# Estudos sobre Clean Architecture + Unitary Test
+# Clean Architecture + Unitary Test
 
 ![Badge Status](https://img.shields.io/badge/status-Finalizado-green)
 ![.NET](https://img.shields.io/badge/.NET-%3E%3D%206.0-blue)
