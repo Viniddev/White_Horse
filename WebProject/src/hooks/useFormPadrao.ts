@@ -16,16 +16,12 @@ export default function UseFormPadrao(DefaultUserInformations: UserInformations)
     }
 
     setUserInformations(DefaultUserInformations);
-  }, [DefaultUserInformations]);
-
-  useEffect(() => {
     setIsInvalid(validarDadosUsuario(DefaultUserInformations));
-  }, [userInformations]);
+  }, [DefaultUserInformations]);
 
   return {
     isFirstRender,
     userInformations,
-    setUserInformations,
     IsInvalid,
   };
 }

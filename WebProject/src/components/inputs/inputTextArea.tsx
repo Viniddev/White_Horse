@@ -7,7 +7,7 @@ export default function InputTypeTextArea(Prop: BuildInputText) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
-        <label htmlFor="username" style={{ fontWeight: "500" }}>
+        <label htmlFor="defaultForm" style={{ fontWeight: "500" }}>
           {Prop.label}
         </label>
         <InputTextarea

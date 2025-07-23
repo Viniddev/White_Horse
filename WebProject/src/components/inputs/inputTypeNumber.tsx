@@ -7,7 +7,7 @@ export default function InputTypeNumber(Prop: BuildInputNumber) {
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
-        <label htmlFor="locale-user" className="font-bold block">
+        <label htmlFor="defaultForm" className="font-bold block">
           {Prop.label}
         </label>
         <InputNumber

@@ -7,7 +7,6 @@ import UseCadastro from "@/hooks/useCadastro";
 import { Toast } from "primereact/toast";
 
 export default function Cadastro() {
-  
   const {
     setUserData, 
     userInformations, 

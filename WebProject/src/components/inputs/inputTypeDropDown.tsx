@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
-import { TopicOptions, Topico } from "@/@types/components";
-
-
+import { TopicOptions } from "@/@types/components";
 
 export default function DropDown(Topicos: TopicOptions) {
-
   return (
     <div className="card flex justify-content-center FullLine">
       <div className="flex flex-column gap-2" style={{ width: "90%" }}>
-        <label htmlFor="username" style={{ fontWeight: "500" }}>
+        <label htmlFor="defaultForm" style={{ fontWeight: "500" }}>
           Tópicos
         </label>
         <Dropdown

@@ -16,7 +16,7 @@ export default function FormPadrao({
   SetUserState,
 }: BuildDefaultForm) {
   
-  var { userInformations, IsInvalid } = UseFormPadrao(DefaultUserInformations);
+  var { IsInvalid } = UseFormPadrao(DefaultUserInformations);
 
   return (
     <div>
@@ -25,7 +25,7 @@ export default function FormPadrao({
           <>
             <div className="field col-12 lg:col-6">
               <InputTypeText
-                state={userInformations.name}
+                state={DefaultUserInformations.name}
                 setState={(newValue) =>
                   SetUserState((prevState) => ({
                     ...prevState,
@@ -39,7 +39,7 @@ export default function FormPadrao({
             </div>
             <div className="field col-12 lg:col-6">
               <InputTypeMask
-                state={userInformations.cpf}
+                state={DefaultUserInformations.cpf}
                 setState={(newValue) =>
                   SetUserState((prevState) => ({
                     ...prevState,
@@ -54,7 +54,7 @@ export default function FormPadrao({
             </div>
             <div className="field col-12 lg:col-6">
               <InputTypeMask
-                state={userInformations.rg}
+                state={DefaultUserInformations.rg}
                 setState={(newValue) =>
                   SetUserState((prevState) => ({
                     ...prevState,
@@ -70,7 +70,7 @@ export default function FormPadrao({
             {!IsRegister ? (
               <div className="field col-12 lg:col-6">
                 <InputTypeText
-                  state={userInformations.role}
+                  state={DefaultUserInformations.role}
                   setState={(newValue) =>
                     SetUserState((prevState) => ({
                       ...prevState,
@@ -91,7 +91,7 @@ export default function FormPadrao({
         )}
         <div className="field col-12 lg:col-6">
           <InputTypeText
-            state={userInformations.email}
+            state={DefaultUserInformations.email}
             setState={(newValue) =>
               SetUserState((prevState) => ({
                 ...prevState,
@@ -105,7 +105,7 @@ export default function FormPadrao({
         </div>
         <div className="field col-12 lg:col-6">
           <InputTypeMask
-            state={userInformations.phoneNumber}
+            state={DefaultUserInformations.phoneNumber}
             setState={(newValue) =>
               SetUserState((prevState) => ({
                 ...prevState,
@@ -122,7 +122,7 @@ export default function FormPadrao({
         {IsRegister ? (
           <div className="field col-12 lg:col-6">
             <InputTypePassword
-              state={userInformations.password}
+              state={DefaultUserInformations.password}
               setState={(newValue) =>
                 SetUserState((prevState) => ({
                   ...prevState,
@@ -145,7 +145,7 @@ export default function FormPadrao({
 
           <div className="field col-12 lg:col-6">
             <InputCep
-              state={userInformations}
+              state={DefaultUserInformations}
               setState={SetUserState}
               mask="99999-999"
               label={"Cep"}
@@ -155,7 +155,7 @@ export default function FormPadrao({
           </div>
           <div className="field col-12 lg:col-6">
             <InputTypeText
-              state={userInformations.address.street}
+              state={DefaultUserInformations.address.street}
               setState={(newValue: string) =>
                 SetUserState((prevState) => ({
                   ...prevState,
@@ -173,7 +173,7 @@ export default function FormPadrao({
 
           <div className="field col-12 lg:col-6">
             <InputTypeText
-              state={userInformations.address.neighborhood}
+              state={DefaultUserInformations.address.neighborhood}
               setState={(newValue: string) =>
                 SetUserState((prevState) => ({
                   ...prevState,
@@ -190,7 +190,7 @@ export default function FormPadrao({
           </div>
           <div className="field col-12 lg:col-6">
             <InputTypeNumber
-              state={userInformations.address.number}
+              state={DefaultUserInformations.address.number}
               setState={(newValue: number) =>
                 SetUserState((prevState) => ({
                   ...prevState,
@@ -208,7 +208,7 @@ export default function FormPadrao({
 
           <div className="field col-12 lg:col-6">
             <InputTypeText
-              state={userInformations.address.city}
+              state={DefaultUserInformations.address.city}
               setState={(newValue: string) =>
                 SetUserState((prevState) => ({
                   ...prevState,
