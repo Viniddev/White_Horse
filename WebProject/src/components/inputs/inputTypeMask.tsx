@@ -4,22 +4,21 @@ import { BuildMaskInput } from "@/@types/components";
 import { InputMask } from "primereact/inputmask";
 
 export default function InputTypeMask(Prop: BuildMaskInput) {
+  const handleChange = (e: any) => {
+    const rawValue = e.target.value.replace(/\D/g, "");
 
-const handleChange = (e: any) => {
-  const rawValue = e.target.value.replace(/\D/g, "");
+    const validationMap = {
+      rg: (v: string) => v.length >= 8,
+      cpf: (v: string) => v.length === 11,
+      telefone: (v: string) => v.length === 11,
+    };
 
-  const validationMap = {
-    rg: (v: string) => v.length >= 8,
-    cpf: (v: string) => v.length === 11,
-    telefone: (v: string) => v.length === 11,
+    const fieldType = Prop.label.toLowerCase() as keyof typeof validationMap;
+
+    if (validationMap[fieldType]?.(rawValue)) {
+      Prop.setState(rawValue);
+    }
   };
-
-  const fieldType = Prop.label.toLowerCase() as keyof typeof validationMap;
-
-  if (validationMap[fieldType]?.(rawValue)) {
-    Prop.setState(rawValue);
-  }
-};
 
   return (
     <div className="card flex justify-content-center FullLine">

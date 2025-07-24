@@ -3,6 +3,7 @@ import { IPostsInformations } from "@/@types/IPostsInformations";
 import { IPostElements } from "@/@types/IPostsElements";
 
 import "./postsStyles.scss";
+import { POSTS } from "@/utils/frontEndUrls/urls";
 
 export default function Post(element: IPostElements) {
 
@@ -34,6 +35,15 @@ export default function Post(element: IPostElements) {
                 style={{ fontSize: "1rem", color: "red" }}
               ></i>
             </div>
+            <a href={POSTS(informations.id)} className="linkPost">
+              <div className="flexRow sessaoComentarios">
+                <p className="informativo">Participe dos comentários</p>
+                <i
+                  className="pi pi-reply"
+                  style={{ fontSize: "1rem", color: "red" }}
+                ></i>
+              </div>
+            </a>
           </div>
         </div>
       </div>
